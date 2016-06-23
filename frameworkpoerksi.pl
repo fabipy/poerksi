@@ -4,7 +4,7 @@
 
 % start / exit the game
 poerksi :- read_sentence(Input), poerksi(Input),!.
-poerksi([tschüss]) :- writeln('Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man micht findet.'). %
+poerksi([tschuess]) :- writeln('Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man micht findet.'). %
 
 % User-Input (after program is started)
 poerksi(Input) :-
