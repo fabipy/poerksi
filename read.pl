@@ -6,12 +6,12 @@ read_string(Delimiter,String) :- get0(C), name(Delimiter,[DelChar]), read_string
 read_string(DelChar,DelChar,[]) :- !, get0(10). % get0(10): liest Zeilenumbruchzeichen
 read_string(DelChar,C,[C|RestString]) :- get0(Cnew), read_string(DelChar,Cnew,RestString).
 
-% Liste trennen in Wörter
+% Liste trennen in WÃ¶rter
 split_string(_,[],[]).
 split_string(SepChar,CharList,[Chunk|SingleLists]) :- get_chunk(SepChar,CharList,Chunk,RestCharList),
                                                       split_string(SepChar,RestCharList,SingleLists).
 
-% einzelne Wörter erkennen
+% einzelne WÃ¶rter erkennen
 get_chunk(_,[],[],[]).
 get_chunk(SepChar,[SepChar|RestCharList],[],RestCharList) :- !.
 get_chunk(SepChar,[OtherChar|RestCharList],[OtherChar|RestChunk],UnusedCharList) :-
