@@ -120,3 +120,5 @@ match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht 
 
 % last resort (if user's input can't be matched otherwise)
 match(_,X) :- Answers = [['Ich bin zwar Professor, doch damit bin ich leider überfragt.'],['Erzählen Sie mehr.'],['Haben Sie vielleicht noch andere Fragen?'],['Sie wollen ja ganz schön viel wissen.'],['Vielleicht haben Sie ja noch dringlichere Fragen.']], random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+
+%test ob Änderungen in Github jetzt angezeigt werden
