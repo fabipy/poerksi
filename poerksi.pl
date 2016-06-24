@@ -165,7 +165,9 @@ match([was,_,st],['s.t. ist die Abkürzung für lateinisch „sine tempore“, w
 match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für das Studium der Medienwissenschaft geeignet.']).
 match([arschloch],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']).
 match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
-match([du,_],['So lange kennen wir uns schon dass Sie mich duzen.']).
+match([du,_],['Also bitte! Ich bin Professor und möchte gesiezt werden.']).
+match([sie,_],['Okay, dass macht es auch nicht viel besser.
+Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
 
 %empty input
 match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht helfen.']).
