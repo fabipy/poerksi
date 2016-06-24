@@ -3,7 +3,7 @@
 :- include('read.pl'). % uses file read.pl
 
 % start / exit the game
-poerksi :- read_sentence(Input), poerksi(Input),!.
+poerksi :- prompt(_,'> '), read_sentence(Input), poerksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
 poerksi([tschuess]) :- writeln('Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man micht findet.').
 
 % User-Input (after program is started)

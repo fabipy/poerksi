@@ -57,7 +57,7 @@ bib('Uni-Bibliothek','Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
 %Dynamische Variablen
 
 :- dynamic name/1.
-name("Gast").
+name('Gast').
 
 %Vorlesungsinformationen/3 (Vorlesungsname, Semesterbelegung,
 %Profilzugehörigkeit)
@@ -66,22 +66,12 @@ name("Gast").
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
 
-%read_name/1
-%noch nicht vollständig, name(X) noch einfügen und mit Dialogsystem kompatibel // FL 23.06.16
-read_name(NewName) :-
-	write("Hallo mein Name ist Poerksi. Ich kann Ihnen bestimmt irgendwie weiterhelfen. Wie heißt du denn?"),nl,
-	read(X),
-	retract(name(_)),assert(name(X)),
-	name(NewName).
-
-
 %-------------------------------------------------
 %    Ein- und Ausgabe
 %-------------------------------------------------
 
 % Smalltalk
-match([hallo],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
-Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
+match([hallo],['Ich bin Dr. Poerksi Ihr virtueller Assistent. Haben Sie eine Frage?']).
 match([guten,tag],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 match([hi],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
@@ -89,25 +79,36 @@ Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfe
 match([servus],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 
-match([ich,heisse,X],['Schön dich kennenzulernen',X,'Ein herzliches Willkommen unter uns Medienwissenschaftlern!']) :- name("Gast"),retract(name(_)), assert(name(X)).
-match([ich,heisse,N],['Dann heißt du jetzt eben:',L]) :- assertz(name(N)), findall(B,name(B),L).
+match([was,machst,du],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
 
-%Beleidigungen
-match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für das Studium der Medienwissenschaft geeignet.']).
-match([arschloch],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']).
-match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
-match([du,_],['Für Sie immer noch SIE. Ich habe Ihnen niemals das DU angeboten.']).
+match([wer,bist,du],['Es ist schön Sie kennenzulernen. Haben Sie denn auch Fragen an mich mitgebracht',LastElement,'?']) :- name('Gast'),write('Ich bin eine künstliche Intelligenz, die ratlosen Studenten weiterhelfen soll. Mich gibt es aber noch gar nicht so lange hier am Institut.
+Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
+Aber genug philosophiert, wer bist du? Wie ist dein Name?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
+match([wer,bist,du],['Habe ich das nicht schon erwähnt? Ich bin Dr. Poerksi und helfe Ihnen bei Ihren Fragen gerne weiter.']) :- not(name('Gast')).
 
-% auf read_name verweisen und namen speichern / 23.06.16 FL | muss noch getan werden
-match([wie,heisse,ich],['Ich kenne deinen Namen leider noch nicht. Wie heißt du denn?']) :- name("Gast").
+match([wer,bin,ich],['Wer Sie sind? Sie sind ein Hilfesuchender. Vielleicht ist Ihnen ja auch nur langweilig und anstatt zu lernen, unterhalten Sie sich lieber mit mir. 
+Ersteres ist vollkommen in Ordnung. Letzteres könnte problematisch sein.']) :-  name('Gast').
+match([wer,bin,ich],['Ihr Name ist',X,'und ich vermute mal, Sie sind Student hier. 
+Vielleicht sind Sie aber auch ein Professor, der sich als Student ausgibt?']) :- not(name('Gast')),name(X).
 
-match([wie,heisse,ich],['Sie haben Ihren eigenen Namen vergessen? Ich kann Ihnen helfen. Sie heißen:',L]) :- findall(N,name(N),L).
+match([ich,heisse,X],['Schön dich kennenzulernen',X,'Ein herzliches Willkommen unter uns Medienwissenschaftlern!']) :- name('Gast'),retract(name(_)), assert(name(X)).
+match([ich,heisse,N],['Dann werde ich Sie ab sofort',N,'nennen.']) :- not(name('Gast')),retract(name(_)),assert(name(N)).
+
+match([wie,heisse,ich],['Schoen Sie kennen zu lernen',LastElement]) :- name('Gast'),write('Ich kenne Ihren Namen leider noch nicht. Wie heißen Sie denn?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
+match([wie,heisse,ich],['Vergesslichkeit unter Studenten? Als ich so alt war wie Sie gab es so etwas noch nicht. 
+Nun denken Sie mal stark nach, Ihr Name wird Ihnen schon wieder einfallen.']) :- not(name('Gast')).
 %Anfrage: Wie ist mein Name..
-match([wie, geht, es, dir],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
-match([was,geht],['Normalerweise ist mir so ein Sprachgebrauch nicht geläufig aber läuft bei mir. Und was geht bei Ihnen?']).
-match([was,geht,ab],['Normalerweise ist mir so ein Sprachgebrauch nicht geläufig aber läuft bei mir. Und was geht bei Ihnen?']).
+
+match([wie, geht, es, _],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
+match([wie, gehts],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
+
+match([was,geht],['Leider nicht viel wenn man keine Beine hat.']).
+match([was,geht,ab],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :- write('Normalerweise ist mir so ein Sprachgebrauch nicht geläufig, aber mir geht es prächtig. Und was geht bei Ihnen?'),nl,read_sentence(_).
+match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
+
 match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber bei meiner Muttersprache. Das geht einfach schneller und ich kann dir mehr von meinem Wissen weiter geben.']).
-%Anfrage: was kann man später damit machen?
+%Anfrage: wer ist dein Lieblingsprof .. ?
+
 match([was,kann,_,spaeter,damit,machen],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
 	Öffentlichkeitsarbeit,
 	(Fach)Journalismus,
@@ -132,7 +133,6 @@ match([welche,_,habe,_,nach,dem,studium],['Durch dieses sehr empfehlenswerte Stu
 	Medienkonzeption und -produktion
 	Medienmanagement,
 	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
-%Anfrage: wer bist du? %easter egg
 
 %Allgemeine Infos zum Studium
 match([wie,viele,semester,_,_,_],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
@@ -161,8 +161,14 @@ match([was,_,ct],['c.t. ist die Abkürzung für lateinisch „cum tempore“, wa
 match([was,_,st],['s.t. ist die Abkürzung für lateinisch „sine tempore“, was im deutschen „ohne Zeit“ bedeutet.
 10 Uhr s.t. bedeutet somit die Veranstaltung beginnt um 10:00 Uhr']).
 
+%Beleidigungen
+match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für das Studium der Medienwissenschaft geeignet.']).
+match([arschloch],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']).
+match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
+match([du,_],['So lange kennen wir uns schon dass Sie mich duzen.']).
+
 %empty input
 match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht helfen.']).
 
 % last resort (if user's input can't be matched otherwise)
-match(_,X) :- Answers = [['Ich bin zwar Professor, doch damit bin ich leider überfragt.'],['Erzählen Sie mehr.'],['Haben Sie vielleicht noch andere Fragen?'],['Sie wollen ja ganz schön viel wissen.'],['Vielleicht haben Sie ja noch dringlichere Fragen.']], random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+match(_,X) :- Answers = [['Wussten Sie, dass es mich erst seit Juni 2016 gibt? Es kommt mir so vor als wäre es gestern gewesen.'],['Erzählen Sie mehr.'],['Haben Sie vielleicht noch andere Fragen?'],['Es ist schön sich mit jemanden zu unterhalten.'],['Vielleicht haben Sie ja noch ein dringlicheres Anliegen?']], random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
