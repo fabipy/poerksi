@@ -1,0 +1,63 @@
+Exemplarische Anfragen Übersicht
+
+SmallTalk 
+	Hallo
+	Wie heißt du?
+	Ich heiße…
+	Wie heiße ich
+	Wie geht es dir
+	Was geht
+	Do you speak English
+	Was kann man später damit machen?
+
+Eastereggs
+	Wer bist du?
+		Ich bin die künstliche Intelligenz von Bernhard Pörksen. Ich wurde von 3 Studenten der Fakultät Medienwissenschaft erschaffen… 
+	Let’s Play…
+		Ich will X spielen
+		Emoji game
+		Filme raten
+		Schere Stein Papier Spock implementieren
+		…
+		Andere spiele..?
+	Erkennt Audrücke und reagiert darauf
+		Z.B. Sie haben ja ein ganz unverschämtes Mundwerk.
+	Dialog kann man hinterher sharen, z.B. auf Facebook
+
+Ansprechpartner
+	- Wie ist die Mailadresse von X?
+	- In welchem Raum finde ich X?
+	- Wer ist der Ansprechpartner für X?
+Stundenplan
+	- Wo finde ich meinen Stundenplan?
+	- Was muss ich im X. Semester belegen?
+	- Was bedeutet s.t.?
+	- Was bedeutet c.t.?
+Praktikum
+	- Wann muss ich ein Praktikum machen?
+	- Wie lange muss ein Praktikum gehen?
+	- Wie finde ich einen Praktikumsplatz?
+	- Wer ist der Ansprechpartner für Praktikas?
+Projektstudium
+	- Was ist ein Projektstudium?
+	- Wo kann ich ein Projektstudium machen?
+Profile
+	- Was beinhaltet Profil X?
+	- Was sind die Schwerpunkte von Profil X?
+Allgemeines
+	- Wo ist der Brechbau?
+	- Wo ist der Kupferbau?
+	- Wann ist die Brechtbau Bibliothek donnerstags geöffnet?
+	- Wie sind die Öffnungszeiten der Brechtbau Bibliothek?
+	- Brauche ich Zusatzliteratur?
+	- Was ist APA 6th?
+
+Formales
+	Kommentare richtig platzieren
+	Dokumentation gleichzeitig anfangen
+
+Ausweichende Antworten
+	5 Antworten bisher [25.06.16]
+	Add
+		Hast du schon unsere Spiele probiert? Probier doch mal _ <- hier spiel einfügen
+

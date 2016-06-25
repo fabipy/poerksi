@@ -1,0 +1,9 @@
+"Nutzertest" meine Fam (FL)
+	wie wird das wetter heute.
+	was esse ich heute.
+	wie geht es dir.
+	was arbeitest du.
+	magst du musik? -> [magst|_] AW: ich mag vieles..
+
+Nutzertest Übungsgruppe
+	..

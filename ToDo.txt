@@ -1,0 +1,31 @@
+1)	Programm füttern
+
+2)	Umformulieren von Anfragen
+
+3)	„Intelligenter Dialog“ Programm merkt sich Name und Interessen… und streut diese in späteren Dialog ein
+	a.	Abwechselnde Antworten (Zufällig)
+	b.	Reset von dynamischer Wissensbasis
+	c.	Hin und wieder mal den Namen einstreuen wenn bekannt
+
+4)	DCG-Grammatik einbauen
+
+5)	Anfragen ohne .
+	a.	Programm liest alle Zeichen egal ob groß oder kleingeschrieben
+
+6)	Kurzanleitung (am Schluss)
+
+7)	Abschlusskommentar
+
+
+
+BUGS
+•	Siezen oder Duzen möglichst vereinheitlichen
+	o	Siezen vielleicht witziger als „Prof. Poerksi“ der Studenten berät
+	
+•	Frameworkpoerksi wird nicht automatisch gestartet mit include
+	o	Gefixt, lag an der Kodierung (UTF-8 muss ausgewählt sein) / 23.06.16 FL
+	o	Poerksi. Kann nun direkt gestartet werden ohne consult von ‚frameworkpoerksi‘.
+
+•	Jetzt gibt es Probleme mit Sonderzeichen
+•	ÜÖÄ und UE OE AE vereinheitlichen,
+	o	Anfragen mit öäü und ß erlauben
