@@ -4,7 +4,7 @@
 
 % start / exit the game
 poerksi :- prompt(_,'> '), read_sentence(Input), poerksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
-poerksi([tschuess]) :- writeln('Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man micht findet.').
+poerksi([tschuess]) :- writeln('Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet.').
 
 % User-Input (after program is started)
 poerksi(Input) :-
