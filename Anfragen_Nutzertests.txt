@@ -1,9 +1,16 @@
-"Nutzertest" meine Fam (FL)
+﻿"Nutzertest" meine Fam (FL)
 	wie wird das wetter heute.
 	was esse ich heute.
 	wie geht es dir.
 	was arbeitest du.
 	magst du musik? -> [magst|_] AW: ich mag vieles..
 
+"Nutzertest" meine Fam (RB)
+	was haben sie studiert.
+	auf antwort du bist ungeeinget für studium: warum?
+	wie alt sind sie.
+	in welchem gebäude findet die Vorlesung statt.
+	wie viele semester studiert man.
+	muss man ein pflichtpraktikum machen.
 Nutzertest Übungsgruppe
 	..
