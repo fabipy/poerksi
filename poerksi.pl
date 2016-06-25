@@ -72,12 +72,19 @@ name('Gast').
 
 % Smalltalk
 match([hallo],['Ich bin Dr. Poerksi Ihr virtueller Assistent. Haben Sie eine Frage?']).
+match([guten,morgen],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
+Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 match([guten,tag],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
+Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
+match([guten,abend],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 match([hi],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 match([servus],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
+match([halli,hallo],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
+Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
+
 
 match([was,machst,du],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
 
@@ -139,6 +146,9 @@ match([wie,viele,semester,_,_,_],['Im Bachelor gibt es eine Regelstudienzeit von
 match([wie,lange,dauert,das,studium],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
 match([wann,_,das,studium],['Das Studium der Medienwissenschaft können Sie jedes Wintersemester an der Eliteuniversität Tübingen beginnen.']).
 match([was,ist,der,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
+match([gibt,es,einen,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
+match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlenswerte. 
+	In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.'])
 
 %Info zur Bib
 match([wann,ist,die,X,geoeffnet],['Die',X,hat,folgende,'Öffnungszeiten: ',Y]):- bib(X,Y).
@@ -166,7 +176,7 @@ match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind
 match([arschloch],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']).
 match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
 match([du,_],['Also bitte! Ich bin Professor und möchte gesiezt werden.']).
-match([sie,_],['Okay, dass macht es auch nicht viel besser.
+match([sie,_],['Okay, dass macht es nicht viel besser.
 Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
 
 %empty input
