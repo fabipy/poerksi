@@ -7,25 +7,58 @@
 %--------------------
 
 %Personen am Institut
+%person/2
+% Syntax: person(id,[[Nachname,Vorname,Geschlecht,Zusatz],[RaumNr],[Email],[Telefonnr.],[Bereich]])
 
-%anprechpartner/4 (Name, Kontakt, Raum, Zuständigkeitsbereich)
-ansprechpartner('Prof. Dr. Jürg Häusermann','juerg.hausermann@uni-tuebingen.de','Raum 270','Medienanalyse und Medienproduktion').
-ansprechpartner('Prof. Dr. Claus Kleber','claus.kleber@uni-tuebingen.de','Raum 209','Jouranlistische Themen und Berufspraxis in Film und Fernsehen').
-ansprechpartner('Prof. Dr. Susanne Marschall','susanne.marschall@uni-tuebingen.de','Raum 210','Audiovisuelle Medien, Film und Fernsehen').
-ansprechpartner('Prof. Dr. Klaus Sachs-Hombach','klaus.sachs-hornbach@uni-tuebingen.de','Raum 256','Medieninnovation und Medienwandel').
-ansprechpartner('Prof. Dr. Bernhard Pörksen','bernhard.poerksen@uni-tuebingen.de','Raum 260','Kritischer Medienjournalismus').
-ansprechpartner('Prof. Dr. Tanja Thomas','tanja.thomas@uni-tuebingen.de','Raum 217','Transformation der Medienkultur').
-ansprechpartner('Prof. Dr. Guido Zurstiege','guido.zurstiege@uni-tuebingen.de','Raum 264','Empirische Medienforschung').
-ansprechpartner('Dr. Torsten Maurer','torsten.maurer@uni-tuebingen.de','Raum 268','Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und Anrechnung von Studienleistungen').
-ansprechpartner('Birgit Losch','birgit.losch@uni-tuebingen.de','Raum 211','Administrative Verwaltung').
-ansprechpartner('Dr. Thomas Wilke','thomas.wilke@uni-tuebingen.de','Raum 136','Allgemeine Studienberatung').
-ansprechpartner('Pia Fruth','pia.fruth@uni-tuebingen.de','Raum 269','Zuständige für Praktikumsberatung und -anerkennung').
-ansprechpartner('Kurt Schneider','kurt.schneider@uni-tuebingen.de','Raum 022','Leiter des Zentrums für Medienkompetenz').
-ansprechpartner('Fachschaft Medienwissenschaft','fachschaft@medienwissenschaft.uni-tuebingen.de','Raum 140','Vermittlung zwischen Dozenten und Studenten').
+person(0,[[haeusermann;juerg,prof,dr],[raum,270],["juerg.haeusermann@uni-tuebingen.de"],["07071 29-77515"],
+			["Medienanalyse und Medienproduktion"]]).
+person(1,[[claus,kleber,herr,prof,dr],[raum,209],["claus.kleber@uni-tuebingen.de"],["keine Angabe"],
+			["Jouranlistische Themen und Berufspraxis in Film und Fernsehen"]]).
+person(2,[[susanne,marschall,frau,prof,dr],[raum,210],["susanne.marschall@uni-tuebingen.de"],["07071 29-72354"],
+			["Audiovisuelle Medien, Film und Fernsehen"]]).
+person(3,[[klaus,"sachs-hombach",herr,prof,dr],[raum,256],["klaus.sachs-hombach@uni-tuebingen.de"],["07071 29-72815"],
+			["Medieninnovation und Medienwandel"]]).
+person(4,[[bernhard,poerksen,herr,prof,dr],[raum,260],["bernhard.poerksen@uni-tuebingen.de"],["07071 29-72798"],
+			["Kritischer Medienjournalismus"]]).
+person(5,[[tanja,thomas,frau,prof,dr],[raum,217],["tanja.thomas@uni-tuebingen.de"],["07071 29-76816"],
+			["Transformation der Medienkultur"]]).
+person(6,[[guido,zurstiege,herr,prof,dr],[raum,264],["guido.zurstiege@uni-tuebingen.de"],["07071 29-78435"],
+			["Empirische Medienforschung"]]).
+person(7,[[torsten,maurer,herr,dr],[raum,268],["torsten.maurer@uni-tuebingen.de"],["07071 29-72356"],
+			['Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und 
+			Anrechnung von Studienleistungen']]).
+person(8,[[birgit,losch,frau],[raum,211],["birgit.losch@uni-tuebingen.de"],["07071 29-72352"],
+			["Administrative Verwaltung"]]).
+person(9,[[thomas,wilke,herr,dr],[raum,136],["thomas.wilke@uni-tuebingen.de"],["07071 29-72830"],
+			["Allgemeine Studienberatung"]]).
+person(10,[[pia,fruth,frau],[raum,269],["pia.fruth@uni-tuebingen.de"],["07071 29-72 413"],
+			["Zuständige für Praktikumsberatung und -anerkennung"]]).
+person(11,[[kurt,schneider],[raum,022],["kurt.schneider@uni-tuebingen.de"],["07071 29-77590"],
+			["Leiter des Zentrums für Medienkompetenz"]]).
+person(12,[[fachschaft,medienwissenschaft],[raum,140],["fachschaft@medienwissenschaft.uni-tuebingen.de"],["keine Angabe"],
+			["Vermittlung zwischen Dozenten und Studenten"]]).
 
-%ansprechp/0 
-% Gibt Liste von Ansprechpartnern aus
-ansprechp :- setof(Name,ansprechpartner(Name,_,_,_),X), write(X).
+
+%! person_search/3
+%  searches for keyword in persons of the institute
+%  returns the list of found person + ID
+
+person_search(KeyWord,PersonList,ID) :-
+	person(ID,PersonList),
+	member(ListItem,PersonList),
+	member(KeyWord,ListItem).
+	
+%! print_person_info/1
+%  returns infos about person
+
+print_person_info(ID) :-
+	person(ID,[N,R,E,T,Z]),
+	N = [NN,VN|_],
+	write("Name:"),tab(1),write([VN,NN]),nl,
+	write("Raum:"),tab(1),write(R),nl,
+	write("Email:"),tab(1),write(E),nl,
+	write("Telefon:"),tab(1),write(T),nl,
+	write("Interessiert sich fuer:"),tab(1),write(Z),nl.
 
 %Basisstudium
 
@@ -151,8 +184,16 @@ match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlen
 match([wann,ist,die,X,geoeffnet],['Die',X,hat,folgende,'Öffnungszeiten: ',Y]):- bib(X,Y).
 
 % funktioniert nicht / FL 23.06.16
-%Info zu Ansprechpartnern
-match([info,ansprechpartner],[mewi,hat,folgende,ansprechpartner,':',ansprechp]).
+%Info zu Personen
+
+match([wer,ist,X],["Was willst du noch wissen?"]) :- person_search(X,_,ID),print_person_info(ID).
+match([wie,_,die,email,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
+match([was,_,die,email,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
+match([wie,_,die,emailadresse,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
+match([wie,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
+match([wie,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
+match([was,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
+match([wo,finde,ich,X],Raum) :- person_search(X,[_,Raum,_,_,_],_).
 
 %Informationen zu Vorlesungen und Seminaren
 match([wie,viele,ects,punkte,_,man,fuer,die,X],['Die', X, gibt, Y]):-
