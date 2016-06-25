@@ -85,12 +85,11 @@ Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfe
 match([halli,hallo],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 
-
 match([was,machst,du],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
 
 match([wer,bist,du],['Es ist schön Sie kennenzulernen. Haben Sie denn auch Fragen an mich mitgebracht',LastElement,'?']) :- name('Gast'),write('Ich bin eine künstliche Intelligenz, die ratlosen Studenten weiterhelfen soll. Mich gibt es aber noch gar nicht so lange hier am Institut.
 Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
-Aber genug philosophiert, wer bist du? Wie ist dein Name?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
+Aber genug philosophiert, wer Sind Sie denn? Wie ist Ihr Name?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
 match([wer,bist,du],['Habe ich das nicht schon erwähnt? Ich bin Dr. Poerksi und helfe Ihnen bei Ihren Fragen gerne weiter.']) :- not(name('Gast')).
 
 match([wer,bin,ich],['Wer Sie sind? Sie sind ein Hilfesuchender. Vielleicht ist Ihnen ja auch nur langweilig und anstatt zu lernen, unterhalten Sie sich lieber mit mir. 
@@ -99,22 +98,20 @@ match([wer,bin,ich],['Ihr Name ist',X,'und ich vermute mal, Sie sind Student hie
 Vielleicht sind Sie aber auch ein Professor, der sich als Student ausgibt?']) :- not(name('Gast')),name(X).
 
 match([ich,heisse,X],['Schön dich kennenzulernen',X,'Ein herzliches Willkommen unter uns Medienwissenschaftlern!']) :- name('Gast'),retract(name(_)), assert(name(X)).
-match([ich,heisse,N],['Dann werde ich Sie ab sofort',N,'nennen.']) :- not(name('Gast')),retract(name(_)),assert(name(N)).
+match([ich,heisse,X],['Dann werde ich Sie ab sofort',X,'nennen.']) :- not(name('Gast')),retract(name(_)),assert(name(X)).
 
 match([wie,heisse,ich],['Schoen Sie kennen zu lernen',LastElement]) :- name('Gast'),write('Ich kenne Ihren Namen leider noch nicht. Wie heißen Sie denn?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
 match([wie,heisse,ich],['Vergesslichkeit unter Studenten? Als ich so alt war wie Sie gab es so etwas noch nicht. 
 Nun denken Sie mal stark nach, Ihr Name wird Ihnen schon wieder einfallen.']) :- not(name('Gast')).
-%Anfrage: Wie ist mein Name..
 
-match([wie, geht, es, _],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
-match([wie, gehts],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
+match([wie,geht,es,_],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
+match([wie,gehts],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
 
 match([was,geht],['Leider nicht viel wenn man keine Beine hat.']).
 match([was,geht,ab],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :- write('Normalerweise ist mir so ein Sprachgebrauch nicht geläufig, aber mir geht es prächtig. Und was geht bei Ihnen?'),nl,read_sentence(_).
 match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
 
 match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber bei meiner Muttersprache. Das geht einfach schneller und ich kann dir mehr von meinem Wissen weiter geben.']).
-%Anfrage: wer ist dein Lieblingsprof .. ?
 
 match([was,kann,_,spaeter,damit,machen],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
 	Öffentlichkeitsarbeit,
@@ -158,11 +155,9 @@ match([wann,ist,die,X,geoeffnet],['Die',X,hat,folgende,'Öffnungszeiten: ',Y]):-
 match([info,ansprechpartner],[mewi,hat,folgende,ansprechpartner,':',ansprechp]).
 
 %Informationen zu Vorlesungen und Seminaren
-%vielleicht eine Antwort -> die <Eingabe> gibt es gar nicht bei MeWi, bei Fehleingabe
-
-match([wie,viele,ects,punkte,bekommt,man,fuer,die,X],['Die', X, gibt, Y]):-
+match([wie,viele,ects,punkte,_,man,fuer,die,X],['Die', X, gibt, Y]):-
 	vorlesung(_,X,Y);seminar(_,X,Y);lehrredaktion(_,X,Y).
-match([wie,viele,ects,punkte,bekommt,man,fuer,die,Z],['Die', Z, gibt, Y]):-
+match([wie,viele,ects,punkte,_,man,fuer,die,Z],['Die', Z, gibt, Y]):-
 	vorlesung(Z,_,Y); seminar(Z,_,Y);lehrredaktion(Z,_,Y).
 
 %allgemeine Informationen
