@@ -3,9 +3,9 @@
 :- include('frameworkpoerksi.pl').
 :- set_prolog_flag(encoding,utf8).
 
-%--------------------
+%---------------------------------------
 %    Wissensbasis
-%--------------------
+%---------------------------------------
 
 %Personen am Institut
 %person/2

@@ -1,7 +1,7 @@
 % PROLOG
 
 :- include('frameworkpoerksi.pl').
-:- set_prolog_flag(encoding,utf8).
+:- encoding(utf8).
 
 %---------------------------------------
 %    Wissensbasis
