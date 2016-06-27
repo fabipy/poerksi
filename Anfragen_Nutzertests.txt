@@ -12,5 +12,19 @@
 	in welchem gebäude findet die Vorlesung statt.
 	wie viele semester studiert man.
 	muss man ein pflichtpraktikum machen.
+
+"Nutzertest" (Patricia)
+	du wiederholst dich.
+	---> durch Wiederholungen wird das Wissen gefestigt. Aber du kannst ja einmal etwas anders fragen.
+	wo muss ich hin, um X zu finden?
+	wo bekomme ich einen neuen Studienausweis?
+	wo kann ich einen studienausweisaufdruck machen?
+	wo ist das prüfungsamt?
+	wo bekomme ich eine Immatrikulationsbescheinigung? 
+	wo bekomme ich was zu essen?
+	welche buslinie fährt von X ab?	
+	gibt es hochschulsport?                   
+	wie kann ich mich beim hochschulsport anmelden?
+
 Nutzertest Übungsgruppe
 	..
