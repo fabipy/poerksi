@@ -38,6 +38,22 @@ person(11,[[kurt,schneider],[raum,022],["kurt.schneider@uni-tuebingen.de"],["070
 person(12,[[fachschaft,medienwissenschaft],[raum,140],["fachschaft@medienwissenschaft.uni-tuebingen.de"],["keine Angabe"],
 			["Vermittlung zwischen Dozenten und Studenten"]]).
 
+%Essen Name,Adresse
+essen('Cafeteria Unibibliothek in der Wilhelmstraße 32').
+essen('Cafeteria im Brechtbau in der Wilhelmstraße 50').
+essen('Mensa in der Wilhelmstraße 13').
+essen('Unkel in der Wilhelmstraße 17').
+essen('Bäckerei Gauker in der Nauklerstraße 31').
+essen('Bäckerei Keim in der Wilhelmstraße 20').
+essen('Asia-Imbiss Wok-In in der Wilhelmstraße 20').
+essen('REWE in der Mohlstraße 26').
+
+
+%begrüssung
+guten(tag).
+guten(morgen).
+guten(abend).
+
 
 %! person_search/3
 %  searches for keyword in persons of the institute
@@ -105,12 +121,8 @@ name('Gast').
 
 % Smalltalk
 match([hallo],['Ich bin Dr. Poerksi Ihr virtueller Assistent. Haben Sie eine Frage?']).
-match([guten,morgen],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts fÃ¼r Medienwissenschaft.
-Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
-match([guten,tag],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts fÃ¼r Medienwissenschaft.
-Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
-match([guten,abend],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts fÃ¼r Medienwissenschaft.
-Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
+match([guten,X],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts fÃ¼r Medienwissenschaft.
+Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']):-guten(X).
 match([hi],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts fÃ¼r Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 match([servus],['Hallo, mein Name ist Dr. Poerksi und ich bin der virtuelle Studi-Ratgeber des Instituts fÃ¼r Medienwissenschaft.
@@ -179,6 +191,10 @@ match([was,ist,der,nc],['Da der Vergabe der StudienplÃ¤tze ein hochkomplexes Ver
 match([gibt,es,einen,nc],['Da der Vergabe der StudienplÃ¤tze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
 match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlenswerte.
 	In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
+
+%essen
+%zwischenabstände fehlen noch
+match([wo,kann,_,essen,gehen],['Es ist wichtig, dass Sie ihr Gehirn fit halten und dann ist es super, wenn Sie schon nach Essensmöglichkeiten fragen. Hier finden Sie genügend Nervennahrung',Y ]):-bagof(X,essen(X),Y).
 
 %Info zur Bib
 match([wann,ist,die,X,geoeffnet],['Die',X,hat,folgende,'Ã–ffnungszeiten: ',Y]):- bib(X,Y).
