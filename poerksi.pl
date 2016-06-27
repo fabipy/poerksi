@@ -25,7 +25,7 @@ person(5,[[tanja,thomas,frau,prof,dr],[raum,217],["tanja.thomas@uni-tuebingen.de
 person(6,[[guido,zurstiege,herr,prof,dr],[raum,264],["guido.zurstiege@uni-tuebingen.de"],["07071 29-78435"],
 			["Empirische Medienforschung"]]).
 person(7,[[torsten,maurer,herr,dr],[raum,268],["torsten.maurer@uni-tuebingen.de"],["07071 29-72356"],
-			['Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und 
+			['Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und
 			Anrechnung von Studienleistungen']]).
 person(8,[[birgit,losch,frau],[raum,211],["birgit.losch@uni-tuebingen.de"],["07071 29-72352"],
 			["Administrative Verwaltung"]]).
@@ -47,7 +47,7 @@ person_search(KeyWord,PersonList,ID) :-
 	person(ID,PersonList),
 	member(ListItem,PersonList),
 	member(KeyWord,ListItem).
-	
+
 %! print_person_info/1
 %  returns infos about person
 
@@ -125,16 +125,16 @@ Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ic
 Aber genug philosophiert, wer Sind Sie denn? Wie ist Ihr Name?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
 match([wer,bist,du],['Habe ich das nicht schon erwähnt? Ich bin Dr. Poerksi und helfe Ihnen bei Ihren Fragen gerne weiter.']) :- not(name('Gast')).
 
-match([wer,bin,ich],['Wer Sie sind? Sie sind ein Hilfesuchender. Vielleicht ist Ihnen ja auch nur langweilig und anstatt zu lernen, unterhalten Sie sich lieber mit mir. 
+match([wer,bin,ich],['Wer Sie sind? Sie sind ein Hilfesuchender. Vielleicht ist Ihnen ja auch nur langweilig und anstatt zu lernen, unterhalten Sie sich lieber mit mir.
 Ersteres ist vollkommen in Ordnung. Letzteres könnte problematisch sein.']) :-  name('Gast').
-match([wer,bin,ich],['Ihr Name ist',X,'und ich vermute mal, Sie sind Student hier. 
+match([wer,bin,ich],['Ihr Name ist',X,'und ich vermute mal, Sie sind Student hier.
 Vielleicht sind Sie aber auch ein Professor, der sich als Student ausgibt?']) :- not(name('Gast')),name(X).
 
 match([ich,heisse,X],['Schön dich kennenzulernen',X,'Ein herzliches Willkommen unter uns Medienwissenschaftlern!']) :- name('Gast'),retract(name(_)), assert(name(X)).
 match([ich,heisse,X],['Dann werde ich Sie ab sofort',X,'nennen.']) :- not(name('Gast')),retract(name(_)),assert(name(X)).
 
 match([wie,heisse,ich],['Schoen Sie kennen zu lernen',LastElement]) :- name('Gast'),write('Ich kenne Ihren Namen leider noch nicht. Wie heißen Sie denn?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
-match([wie,heisse,ich],['Vergesslichkeit unter Studenten? Als ich so alt war wie Sie gab es so etwas noch nicht. 
+match([wie,heisse,ich],['Vergesslichkeit unter Studenten? Als ich so alt war wie Sie gab es so etwas noch nicht.
 Nun denken Sie mal stark nach, Ihr Name wird Ihnen schon wieder einfallen.']) :- not(name('Gast')).
 
 match([wie,geht,es,_],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
@@ -177,7 +177,7 @@ match([wie,lange,dauert,das,studium],['Im Bachelor gibt es eine Regelstudienzeit
 match([wann,_,das,studium],['Das Studium der Medienwissenschaft können Sie jedes Wintersemester an der Eliteuniversität Tübingen beginnen.']).
 match([was,ist,der,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
 match([gibt,es,einen,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
-match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlenswerte. 
+match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlenswerte.
 	In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
 
 %Info zur Bib
@@ -214,6 +214,9 @@ match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
 match([du,_],['Also bitte! Ich bin Professor und möchte gesiezt werden.']).
 match([sie,_],['Okay, dass macht es nicht viel besser.
 Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
+
+%wdh
+match([du,wiederholst,dich],['Wiederholungen festigen neuerlenrtes Wissen. Aber viellecht k�nnen Sie ihre Frage ja auch anders stellen.']).
 
 %empty input
 match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht helfen.']).
