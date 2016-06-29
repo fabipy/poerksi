@@ -1,8 +1,6 @@
 % PROLOG
 
 :- include('read.pl'). % uses file read.pl
-:- encoding(utf8).
-
 
 % start / exit the game
 poerksi :- prompt(_,'> '), read_sentence(Input), poerksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
