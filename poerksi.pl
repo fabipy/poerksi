@@ -205,7 +205,8 @@ match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlen
 
 %essen
 %zwischenabstände fehlen noch
-match([wo,kann,_,essen,gehen],['Es ist wichtig, dass Sie ihr Gehirn fit halten und dann ist es sehr gut, wenn Sie schon nach Essensmöglichkeiten fragen. Hier finden Sie genügend Nervennahrung rund um den Brechtbau:',Y]):-bagof(X,essen(X),Y).
+match([wo,kann,_,essen,gehen],['Es ist wichtig, dass Sie ihr Gehirn fit halten und dann ist es sehr gut, wenn Sie schon nach Essensmöglichkeiten fragen.
+Hier finden Sie genügend Nervennahrung rund um den Brechtbau:',Y]):-bagof(X,essen(X),Y).
 
 
 %Info zur Bib

@@ -4,19 +4,20 @@
 
 
 % start / exit the game
-poerksi :- prompt(_,'> '), read_sentence(Input), poerksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
+poerksi :- prompt(_,'User:       '), read_sentence(Input), poerksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
 poerksi(['tschüss']) :- writeln('Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet.').
 
 
 % User-Input (after program is started)
 poerksi(Input) :-
+  write('Dr.Poerksi: '),
   match(Input,Output), % match user input (define match in poerksi.pl)
   reply(Output),
   read_sentence(Input1),!,
   poerksi(Input1).
 
 % Output after User-Input
-reply([Head|Tail]) :- write('Dr.Poerksi: '),write(user_output,Head), write(user_output,' '),
+reply([Head|Tail]) :- write(user_output,Head), write(user_output,' '),
 	               reply(Tail).
 reply([]) :- nl.
 
