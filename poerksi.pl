@@ -49,7 +49,6 @@ essen('Bäckerei Keim in der Wilhelmstraße 20').
 essen('Asia-Imbiss Wok-In in der Wilhelmstraße 20').
 essen('REWE in der Mohlstraße 26').
 
-
 %begr�ssung
 guten(tag).
 guten(morgen).
@@ -76,6 +75,13 @@ print_person_info(ID) :-
 	write("Email:"),tab(1),write(E),nl,
 	write("Telefon:"),tab(1),write(T),nl,
 	write("Interessiert sich fuer:"),tab(1),write(Z),nl.
+
+%print_list/2
+%prints any list with list element and new line
+print_list([],_).
+print_list([First|RestInputList], _) :-
+	write(First),nl,
+	print_list(RestInputList,First).
 
 %Basisstudium
 
@@ -206,7 +212,7 @@ match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlen
 %essen
 %zwischenabstände fehlen noch
 match([wo,kann,_,essen,gehen],['Es ist wichtig, dass Sie ihr Gehirn fit halten und dann ist es sehr gut, wenn Sie schon nach Essensmöglichkeiten fragen.
-Hier finden Sie genügend Nervennahrung rund um den Brechtbau:',Y]):-bagof(X,essen(X),Y).
+Hier finden Sie genügend Nervennahrung rund um den Brechtbau:']):- bagof(X,essen(X),Y), print_list(Y,_).
 
 
 %Info zur Bib
