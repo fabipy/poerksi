@@ -310,10 +310,10 @@ Hier finden Sie genügend Nervennahrung rund um den Brechtbau:']):- bagof(X,esse
 match([wann,ist,die,X,geöffnet],['Die',X,hat,folgende,'Öffnungszeiten: ',Y]):- bib(X,Y).
 
 % Fragen zu Geb�uden
-match([wo,ist,der,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstra�e 50']).
-match([wo,finde,ich,den,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstra�e 50']).
-match([wo,ist,der,kupferbau],['Der Kupferbau ist in der Hölderlinstra�e 5. Hier finden Vorlesungen statt.']).
-match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstra�e 5. Hier finden Vorlesungen statt.']).
+match([wo,ist,der,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50']).
+match([wo,finde,ich,den,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50']).
+match([wo,ist,der,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
+match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 
 
 % funktioniert nicht / FL 23.06.16
