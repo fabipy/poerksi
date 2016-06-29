@@ -11,8 +11,11 @@
 %person/2
 % Syntax: person(id,[[Nachname,Vorname,Geschlecht,Zusatz],[RaumNr],[Email],[Telefonnr.],[Bereich]])
 
-person(0,[[haeusermann,juerg,prof,dr],[raum,270],["juerg.haeusermann@uni-tuebingen.de"],["07071 29-77515"],
-			["Medienanalyse und Medienproduktion"]]).
+
+%--Profs------------------
+
+person(0,[[juerg,haeusermann,herr,prof,dr],[raum,270],["juerg.haeusermann@uni-tuebingen.de"],["07071 29-77515"],
+	  ["Medienanalyse und Medienproduktion"]]).
 person(1,[[claus,kleber,herr,prof,dr],[raum,209],["claus.kleber@uni-tuebingen.de"],["keine Angabe"],
 			["Jouranlistische Themen und Berufspraxis in Film und Fernsehen"]]).
 person(2,[[susanne,marschall,frau,prof,dr],[raum,210],["susanne.marschall@uni-tuebingen.de"],["07071 29-72354"],
@@ -25,35 +28,61 @@ person(5,[[tanja,thomas,frau,prof,dr],[raum,217],["tanja.thomas@uni-tuebingen.de
 			["Transformation der Medienkultur"]]).
 person(6,[[guido,zurstiege,herr,prof,dr],[raum,264],["guido.zurstiege@uni-tuebingen.de"],["07071 29-78435"],
 			["Empirische Medienforschung"]]).
-person(7,[[torsten,maurer,herr,dr],[raum,268],["torsten.maurer@uni-tuebingen.de"],["07071 29-72356"],
-			['Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und
-			Anrechnung von Studienleistungen']]).
-person(8,[[birgit,losch,frau],[raum,211],["birgit.losch@uni-tuebingen.de"],["07071 29-72352"],
-			["Administrative Verwaltung"]]).
-person(9,[[thomas,wilke,herr,dr],[raum,136],["thomas.wilke@uni-tuebingen.de"],["07071 29-72830"],
-			["Allgemeine Studienberatung"]]).
-person(10,[[pia,fruth,frau],[raum,269],["pia.fruth@uni-tuebingen.de"],["07071 29-72 413"],
-			["Zuständige für Praktikumsberatung und -anerkennung"]]).
-person(11,[[kurt,schneider],[raum,022],["kurt.schneider@uni-tuebingen.de"],["07071 29-77590"],
-			["Leiter des Zentrums für Medienkompetenz"]]).
+
 person(12,[[fachschaft,medienwissenschaft],[raum,140],["fachschaft@medienwissenschaft.uni-tuebingen.de"],["keine Angabe"],
 			["Vermittlung zwischen Dozenten und Studenten"]]).
 
-%Essen Name,Adresse
-essen('Cafeteria Unibibliothek in der Wilhelmstraße 32').
-essen('Cafeteria im Brechtbau in der Wilhelmstraße 50').
-essen('Mensa in der Wilhelmstraße 13').
-essen('Unkel in der Wilhelmstraße 17').
-essen('Bäckerei Gauker in der Nauklerstraße 31').
-essen('Bäckerei Keim in der Wilhelmstraße 20').
-essen('Asia-Imbiss Wok-In in der Wilhelmstraße 20').
-essen('REWE in der Mohlstraße 26').
+%----gesch�ftsf�hrung---------
+person(7,[[torsten,maurer,herr,dr],[raum,268],["torsten.maurer@uni-tuebingen.de"],["07071 29-72356"],
+			["Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und
+			Anrechnung von Studienleistungen"]]).
+person(9,[[thomas,wilke,herr,dr],[raum,136],["thomas.wilke@uni-tuebingen.de"],["07071 29-72830"],
+			["Allgemeine Studienberatung"]]).
+
+person(13,[[sabine,kieslich,frau,dr],[raum,212],["sabine.kiesliche@uni-tuebingen.de"],["07071 29-72346"],
+	   ['Betreuung der Studierenden der Inforamtik und Sportpublizistik']]).
+
+%-------zentrum f�r medienkompetenz------
+person(11,[[kurt,schneider,herr],[raum,022],["kurt.schneider@uni-tuebingen.de"],["07071 29-77590"],
+			["Leiter des Zentrums für Medienkompetenz"]]).
+
+%---------akademische mitarbeiter-----
+person(14,[[mandy,badermann,frau],[raum,267],["mandy.badermann@uni-tuebingen.de"],["07071 29-72361"],["Studienberatung BA Haupt- und Nebenfach"]]).
+person(15,[[rada,bieberstein,frau,dr],[raum,208],["rada.bierberstein@uni-tuebingen.de"],["07071 29-78444"],["Audiovisuelle Medien, Film und Fernsehen"]]).
+person(16,[[hannah,birr,frau],[raum,254],["hannah.birr@uni-tuebingen.de"],["07071 29-72349"],["Audivisuelle Medien, Film und Fersehen"]]).
+person(17,[[hanne,detel,frau],[raum,262],["hanne.detel@uni-tuebingen.de"],["07071 29-72363"],["Studienberatung BA Haupt- und Nebenfach und �ffentlichkeitsarbeit"]]).
+person(18,[[markus,feiks,herr],[raum,266],["markus.feiks@uni-tuebingen.de"],["07071 29-75681"],["Studienberatung BA Haupt- und Nebenfach"]]).
+person(19,[[erwin,feyersinger,herr,dr],[raum,208],["erwin.feyersinger@uni-tuebingen.de"],["07071 29-78444"],["Studienberatung MA"]]).
+person(10,[[pia,fruth,frau],[raum,269],["pia.fruth@uni-tuebingen.de"],["07071 29-72 413"],["Zuständige für Praktikumsberatung und -anerkennung"]]).
+person(20,[[ulrich,haegele,herr,dr],[raum,023],["ulrich.haegele@uni-tuebingen.de"],["07071 29-78443"],["Redaktion Radio Micro-Europa und Studienberatung BA"]]).
+person(21,[[kiron,patka,herr],[raum,269],["kiron.patka@uni-tuebingen.de"],["07071 29-75586"],["Studienberatung BA Haupt- und Nebenfach"]]).
+person(22,[[julian,scherer],[raum,247],["julian.scherer@uni-tuebingen.de"],["07071 29-76819"],["Fachkoordiantion Erasmus / Internationales"]]).
+person(23,[[miriam,stehling,frau,dr],[raum,218],["miriam.stehling@uni-tuebingen.de"],["07071 29-76817"],["Fachkoordiantion Erasmus /Internationales"]]).
+person(24,[[jan-noel,thon,herr,dr],[raum,255],["jan.thon@uni-tuebingen.de"],["07071 29-72814"],["Studienberatung BA Haupt- und Nebenfach"]]).
+person(25,[[meike,uhrig,frau,dr],[raum,254],["meike.uhrig@uni-tuebingen.de"],["07071 29-74282"],["Studienberatung BA Haupt- und Nebenfach und Mediathek"]]).
+person(26,[[anne,ulrich,frau,dr],[raum,290],["anne.ulrich@uni-tuebingen.de"],["07071 29-78523"],["Mitarbeiterin am Sonderforschungsbereich Bedrohte Ordnungen"]]).
+person(27,[[lukas,wilde,herr],[raum,255],["lukas.wilde@uni-tuebingen.de"],["07071 29-72351"],["Studienberatung BA Haupt- und Nebenfach"]]).
+
+%---gesch�ftszimmer----
+person(8,[[birgit,losch,frau],[raum,211],["birgit.losch@uni-tuebingen.de"],["07071 29-72352"],
+			["Administrative Verwaltung"]]).
+%-----sekretariate-----
+person(28,[[patrizia,ambrisi,frau],[raum,261],["sekretariat.poerksen@mewi.uni-tuebingen.de"],["07071 29-72366"],["Sekretariat Prof. P�rksen"]]).
+person(29,[[barbara,carl-mast,frau],[raum,216],["barbara.carl-mast@uni-tuebingen.de"],["07071 29-76818"],["Sekretariat Prof. Thomas"]]).
+person(30,[[karin,kießling,frau],[raum,257],["admin.sachs-hombach@mewi.uni-tuebingen.de"],["07071 29-72816"],["Sekretariat Prof. Sachs-Hombach"]]).
+person(31,[[ute,kleiber],[raum,271],["ute.kleiber@uni-tuebingen.de"],["07071 29-74262"],["Sekretariat Prof. Haeusermann"]]).
+person(32,[[anja,lambrecht],[raum,265],["anja.lambrecht@uni-tuebingen.de"],["07071 29-72359"],["Sekretariat Prof. Zurstiege"]]).
+person(33,[[judith,schaechterle],[raum,261],["sekretariat.poerksen@mewi.uni-tuebingen.de"],["07071 29-72366"],["Sekretariat Prof. P�rksen"]]).
+person(34,[[carolin,wiede],[raum,209],["carolin.wieder@uni-tuebingen.de"],["07071 29-74271"],["Sekretariat Prof. Marschall"]]).
 
 
-%begr�ssung
-guten(tag).
-guten(morgen).
-guten(abend).
+
+
+
+
+
+
+
 
 
 %! person_search/3
@@ -76,6 +105,13 @@ print_person_info(ID) :-
 	write("Email:"),tab(1),write(E),nl,
 	write("Telefon:"),tab(1),write(T),nl,
 	write("Interessiert sich fuer:"),tab(1),write(Z),nl.
+
+%print_list/2
+%prints any list with list element and new line
+print_list([],_).
+print_list([First|RestInputList], _) :-
+	write(First),nl,
+	print_list(RestInputList,First).
 
 %Basisstudium
 
@@ -105,6 +141,27 @@ bib('Brechtbaubibliothek',
     'Mo-Do 8.00-20.45   Fr 8.00-18.45   Sa 10.00-17.45   So 12.00-17.45').
 bib('Uni-Bibliothek',
     'Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
+
+
+
+
+
+%Essen Name,Adresse
+essen('Cafeteria Unibibliothek in der Wilhelmstraße 32').
+essen('Cafeteria im Brechtbau in der Wilhelmstraße 50').
+essen('Mensa in der Wilhelmstraße 13').
+essen('Unkel in der Wilhelmstraße 17').
+essen('Bäckerei Gauker in der Nauklerstraße 31').
+essen('Bäckerei Keim in der Wilhelmstraße 20').
+essen('Asia-Imbiss Wok-In in der Wilhelmstraße 20').
+essen('REWE in der Mohlstraße 26').
+
+
+%begr�ssung
+guten(tag).
+guten(morgen).
+guten(abend).
+
 
 %Dynamische Variablen
 
@@ -205,7 +262,8 @@ match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlen
 
 %essen
 %zwischenabstände fehlen noch
-match([wo,kann,_,essen,gehen],['Es ist wichtig, dass Sie ihr Gehirn fit halten und dann ist es sehr gut, wenn Sie schon nach Essensmöglichkeiten fragen. Hier finden Sie genügend Nervennahrung rund um den Brechtbau:',Y]):-bagof(X,essen(X),Y).
+match([wo,kann,_,essen,gehen],['Es ist wichtig, dass Sie ihr Gehirn fit halten und dann ist es sehr gut, wenn Sie schon nach Essensmöglichkeiten fragen.
+Hier finden Sie genügend Nervennahrung rund um den Brechtbau:']):- bagof(X,essen(X),Y), print_list(Y,_).
 
 
 %Info zur Bib
