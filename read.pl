@@ -20,7 +20,7 @@ get_chunk(SepChar,[OtherChar|RestCharList],[OtherChar|RestChunk],UnusedCharList)
 
 % String-Darstellung (Zahlenlisten) in Atome umwandeln
 strings_to_atoms([],[]).
-strings_to_atoms([X|Xs],[Y|Ys]) :- name(Y,X), strings_to_atoms(Xs,Ys).
+strings_to_atoms([X|Xs],[Y|Ys]) :- name(Z,X),downcase_atom(Z,Y),strings_to_atoms(Xs,Ys).
 
 % alles zusammen: ganzen Satz einlesen
 read_sentence(Sentence) :- read_string("\n",String), split_string(32,String,Words), strings_to_atoms(Words,Sentence).

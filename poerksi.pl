@@ -132,9 +132,9 @@ verpro(zweiten,' F4-II  Forschungsprojekt II').
 %Orte
 
 %bib/2 (Bibliothek,Öffnungszeiten)
-bib('Brechtbaubibliothek',
+bib(brechtbaubibliothek,
     'Mo-Do 8.00-20.45   Fr 8.00-18.45   Sa 10.00-17.45   So 12.00-17.45').
-bib('Uni-Bibliothek',
+bib('uni-bibliothek',
     'Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
 
 
@@ -156,7 +156,7 @@ essen('Asia-Imbiss Wok-In in der Wilhelmstraße 20').
 essen('REWE in der Mohlstraße 26').
 
 
-%begrï¿½ssung
+%begrüssung
 guten(tag).
 guten(morgen).
 guten(abend).
@@ -198,7 +198,7 @@ match([_,_,_,_,_,profil,X,_],['Im Profil',X,'müssen Sie folgende Veranstalgungen
 % Smalltalk
 match([hallo],['Ich bin Dr. Pörksi Ihr virtueller Assistent. Haben Sie eine Frage?']).
 match([guten,X],['Hallo, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
-Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']):-guten(X).
+Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']):- guten(X).
 match([hi],['Hallo, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 match([servus],['Hallo, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
@@ -212,7 +212,6 @@ match([wer,bist,du],['Es ist schön Sie kennenzulernen. Haben Sie denn auch Frage
 Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
 Aber genug philosophiert, wer Sind Sie denn? Wie ist Ihr Name?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
 match([wer,bist,du],['Habe ich das nicht schon erwähnt? Ich bin Dr. Pörksi und helfe Ihnen bei Ihren Fragen gerne weiter.']) :- not(name('Gast')).
-
 match([wer,bin,ich],['Wer Sie sind? Sie sind ein Hilfesuchender. Vielleicht ist Ihnen ja auch nur langweilig und anstatt zu lernen, unterhalten Sie sich lieber mit mir.
 Ersteres ist vollkommen in Ordnung. Letzteres könnte problematisch sein.']) :-  name('Gast').
 match([wer,bin,ich],['Ihr Name ist',X,'und ich vermute mal, Sie sind Student hier.
@@ -301,8 +300,9 @@ match([wer,betreut,_,projektstudium],['Fast überall! Sie wählen Ihren Betreuer, 
 
 %essen
 %zwischenabstände fehlen noch
-match([wo,kann,_,essen,gehen],['Es ist wichtig, dass Sie ihr Gehirn fit halten und dann ist es sehr gut, wenn Sie schon nach Essensmöglichkeiten fragen.
-Hier finden Sie genügend Nervennahrung rund um den Brechtbau:']):- bagof(X,essen(X),Y), print_list(Y,_).
+match([wo,kann,_,essen,gehen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Warten Sie, ich generiere Ihnen kurz mal eine Liste.'),nl,nl,print_list(Y,_),nl.
+match([wo,kann,_,_,essen,gehen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Aber das wissen Sie ja bestimmt selbst. 
+Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Rund um den Brechtbau können Sie aus folgenden Angeboten wählen.'),nl,nl,print_list(Y,_),nl.
 
 
 %Info zur Bib

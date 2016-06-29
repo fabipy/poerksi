@@ -3,7 +3,7 @@
 :- encoding(iso_latin_1).
 
 % start / exit the game
-pörksi :- prompt(_,'User:       '), read_sentence(Input), pörksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
+pörksi :- ansi_format([bold,bg(cyan)], 'Hi ich bin Pörksi. Habe dieses Textfeature zufällig gefunden kommt aber mega fett --> ~w', [needsToBeChanged]),nl,prompt(_,'User:       '), read_sentence(Input), pörksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
 pörksi([tschüss]) :- writeln('Dr.Pörksi: Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet.').
 
 
