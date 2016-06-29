@@ -274,8 +274,31 @@ match([wie,lange,dauert,das,studium],['Im Bachelor gibt es eine Regelstudienzeit
 match([wann,_,das,studium],['Das Studium der Medienwissenschaft können Sie jedes Wintersemester an der Eliteuniversität Tübingen beginnen.']).
 match([was,ist,der,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
 match([gibt,es,einen,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
+
+% Fragen zu Praktikum
 match([muss,ich,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlenswerte.
 	In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
+match([wann,muss,_,_,praktikum,_],['Es gibt ein Pflichtpraktikumvon 3 Monaten vorgesehen. Dieses k�nne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
+match([wie,lange,muss,ein,praktikum,_],['Es gibt ein Pflichtpraktikumvon 3 Monaten vorgesehen. Dieses k�nne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
+match([_,finde,ich,einen,praktikumsplatz],['In unserem Insitut gibt es eine Praktikumsberatung. Ihre Ansprechpartnerin ist Pia Fruth. Des weiteren gibt es Aushänge an einem Schwarzen Brett.']).
+match([wer,ist,der,ansprechpartner,fuer,prakikas],['Ansprechpartnerin f�r Praktkas ist Pia Fruth']).
+
+% Fragen zum Stundenplan
+match([wo,finde,ich,meinen,stundenplan],['Ihren Stundenplan finden und erstellen Sie auf Campus-Portal. Das ist ein elektronischen Vorlesungsverzeichnis mit Stundenplan und vielen weiteren Funktionen']).
+match([wo,kann,ich,_,stundenplan,_],['Ihren Stundenplan erstellen Sie selbst mithilfe des Modulhandbuchs und dem Campus-Portal']).
+match([welche,funktionen,hat,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktion
+	Onlinezugang zur Rüchmeldung
+	Bescheinigungsausdruck
+	Anschriftsänderung
+	Prüfungsanmeldung
+	Notenspiegel
+	und vieles mehr schau einfach mal vorbei unter http://campus.verwaltung.uni-tuebingen.de/index2.html']).
+
+% Fragen zum Projektstudium
+%Projektstudium
+match([was,ist,ein,projektstudium],['Im Modulhandbuch finden Sie dieses Modul unter dem Namen P1. Im Rahmen des Projektstudiums planen und realisieren die Sie eigenverantwortlich ein kleineres Medienprojekt bzw. Werkstück. Das Medium dieses Projekts ist dabei frei wählbar.']).
+match([wo,kann,ich,ein,projektstudium,machen],['Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
+match([wer,betreut,_,projektstudium],['Fast überall! Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
 
 %essen
 %zwischenabstände fehlen noch
@@ -285,6 +308,13 @@ Hier finden Sie genügend Nervennahrung rund um den Brechtbau:']):- bagof(X,esse
 
 %Info zur Bib
 match([wann,ist,die,X,geöffnet],['Die',X,hat,folgende,'Öffnungszeiten: ',Y]):- bib(X,Y).
+
+% Fragen zu Geb�uden
+match([wo,ist,der,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstra�e 50']).
+match([wo,finde,ich,den,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstra�e 50']).
+match([wo,ist,der,kupferbau],['Der Kupferbau ist in der Hölderlinstra�e 5. Hier finden Vorlesungen statt.']).
+match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstra�e 5. Hier finden Vorlesungen statt.']).
+
 
 % funktioniert nicht / FL 23.06.16
 %Info zu Personen
@@ -315,7 +345,11 @@ match([wo,_,_,_,aufdruck,für,_,studentenausweis,_,_],['Den Semesteraufdruck ihr
 match([wo,_,_,_,neuen,studentenausweis],['Einen neuen Studentenausweis erhalten Sie im Studentensekretariat(Wilhelmstraße 11). Aber passen Sie auf diesen gut auf! Besser als auf den letzten.']).
 match([ich,habe,meinen,studentenausweis,verloren],['Das ist natürlich nicht sonderlich optimal. Doch einen neuen erhalten Sie im Studentensekretariat(Wilhelmstraße 11)']).
 
+%Zitieren
+match([was,ist,apa,6],['APA steht f�r American Psychological Association. Es handelt sich hierbei um eine Zitierweise, die Sie im Laufe des ersten Semester lernen werden.']).
 
+% Hilfe
+match([wo,bekomme,ich,hilfe],['Wenn du nicht mehr weiterkommst, dann scheue dich nicht davor dir Hilfe zu suchen! Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden f�r Studierenden. Montags und Mittwochs von 21.00-1.00 Uhr unter der Nummer: 07071 8895440']).
 
 % ------------------------------------------------------------------------
 %     Sonderfälle

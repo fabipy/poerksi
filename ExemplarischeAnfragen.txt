@@ -1,4 +1,4 @@
-Exemplarische Anfragen Übersicht
+﻿Exemplarische Anfragen Übersicht
 
 SmallTalk 
 	Wie heißt du?
@@ -45,6 +45,7 @@ Allgemeines
 	- Wie sind die Öffnungszeiten der Brechtbau Bibliothek?
 	- Brauche ich Zusatzliteratur?
 	- Was ist APA 6th?
+	- Wo bekomme ich Hilfe: Nightline Tübingen
 
 Formales
 	Kommentare richtig platzieren
