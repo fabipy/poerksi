@@ -229,6 +229,7 @@ match([wie,viele,ects,punkte,_,man,fuer,die,X],['Die', X, gibt, Y]):-
 match([wie,viele,ects,punkte,_,man,fuer,die,Z],['Die', Z, gibt, Y]):-
 	vorlesung(Z,_,Y); seminar(Z,_,Y);lehrredaktion(Z,_,Y).
 
+
 %allgemeine Informationen
 match([was,_,ct],['c.t. ist die Abkürzung für lateinisch „cum tempore“, was im deutschen „mit Zeit“ bedeutet.
 10 Uhr c.t. bedeutet somit die Veranstaltung beginnt 15 Minuten später, also um 10:15 Uhr.']).
@@ -251,6 +252,10 @@ match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
 match([du,_],['Also bitte! Ich bin Professor und möchte gesiezt werden.']).
 match([sie,_],['Okay, dass macht es nicht viel besser.
 Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
+
+match([geil],['Fr�her haben wir noch gesagt super-affen-titten-geil.']).
+match([cool],['Ja echt knorke.']).
+
 
 %wdh
 match([du,wiederholst,dich],['Wiederholungen festigen neuerlenrtes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen.']).
