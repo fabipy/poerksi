@@ -14,7 +14,7 @@
 
 %--Profs------------------
 
-person(0,[[juerg,haeusermann,herr,prof,dr],[raum,270],["juerg.haeusermann@uni-tuebingen.de"],["07071 29-77515"],
+person(0,[[juerg,hÃ¤usermann,herr,prof,dr],[raum,270],["juerg.haeusermann@uni-tuebingen.de"],["07071 29-77515"],
 	  ["Medienanalyse und Medienproduktion"]]).
 person(1,[[claus,kleber,herr,prof,dr],[raum,209],["claus.kleber@uni-tuebingen.de"],["keine Angabe"],
 			["Jouranlistische Themen und Berufspraxis in Film und Fernsehen"]]).
@@ -22,29 +22,18 @@ person(2,[[susanne,marschall,frau,prof,dr],[raum,210],["susanne.marschall@uni-tu
 			["Audiovisuelle Medien, Film und Fernsehen"]]).
 person(3,[[klaus,"sachs-hombach",herr,prof,dr],[raum,256],["klaus.sachs-hombach@uni-tuebingen.de"],["07071 29-72815"],
 			["Medieninnovation und Medienwandel"]]).
-person(4,[[bernhard,poerksen,herr,prof,dr],[raum,260],["bernhard.poerksen@uni-tuebingen.de"],["07071 29-72798"],
-			["Kritischer Medienjournalismus"]]).
-person(5,[[tanja,thomas,frau,prof,dr],[raum,217],["tanja.thomas@uni-tuebingen.de"],["07071 29-76816"],
-			["Transformation der Medienkultur"]]).
-person(6,[[guido,zurstiege,herr,prof,dr],[raum,264],["guido.zurstiege@uni-tuebingen.de"],["07071 29-78435"],
-			["Empirische Medienforschung"]]).
-
-person(12,[[fachschaft,medienwissenschaft],[raum,140],["fachschaft@medienwissenschaft.uni-tuebingen.de"],["keine Angabe"],
-			["Vermittlung zwischen Dozenten und Studenten"]]).
+person(4,[[bernhard,poerksen,herr,prof,dr],[raum,260],["bernhard.poerksen@uni-tuebingen.de"],["07071 29-72798"],["Kritischer Medienjournalismus"]]).
+person(5,[[tanja,thomas,frau,prof,dr],[raum,217],["tanja.thomas@uni-tuebingen.de"],["07071 29-76816"],["Transformation der Medienkultur"]]).
+person(6,[[guido,zurstiege,herr,prof,dr],[raum,264],["guido.zurstiege@uni-tuebingen.de"],["07071 29-78435"],["Empirische Medienforschung"]]).
+person(12,[[fachschaft,medienwissenschaft],[raum,140],["fachschaft@medienwissenschaft.uni-tuebingen.de"],["keine Angabe"],["Vermittlung zwischen Dozenten und Studenten"]]).
 
 %----geschäftsführung---------
-person(7,[[torsten,maurer,herr,dr],[raum,268],["torsten.maurer@uni-tuebingen.de"],["07071 29-72356"],
-			["Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und
-			Anrechnung von Studienleistungen"]]).
-person(9,[[thomas,wilke,herr,dr],[raum,136],["thomas.wilke@uni-tuebingen.de"],["07071 29-72830"],
-			["Allgemeine Studienberatung"]]).
-
-person(13,[[sabine,kieslich,frau,dr],[raum,212],["sabine.kiesliche@uni-tuebingen.de"],["07071 29-72346"],
-	   ['Betreuung der Studierenden der Inforamtik und Sportpublizistik']]).
+person(7,[[torsten,maurer,herr,dr],[raum,268],["torsten.maurer@uni-tuebingen.de"],["07071 29-72356"],["Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und Anrechnung von Studienleistungen"]]).
+person(9,[[thomas,wilke,herr,dr],[raum,136],["thomas.wilke@uni-tuebingen.de"],["07071 29-72830"],["Allgemeine Studienberatung"]]).
+person(13,[[sabine,kieslich,frau,dr],[raum,212],["sabine.kiesliche@uni-tuebingen.de"],["07071 29-72346"],['Betreuung der Studierenden der Inforamtik und Sportpublizistik']]).
 
 %-------zentrum für medienkompetenz------
-person(11,[[kurt,schneider,herr],[raum,022],["kurt.schneider@uni-tuebingen.de"],["07071 29-77590"],
-			["Leiter des Zentrums fÃ¼r Medienkompetenz"]]).
+person(11,[[kurt,schneider,herr],[raum,022],["kurt.schneider@uni-tuebingen.de"],["07071 29-77590"],["Leiter des Zentrums fÃ¼r Medienkompetenz"]]).
 
 %---------akademische mitarbeiter-----
 person(14,[[mandy,badermann,frau],[raum,267],["mandy.badermann@uni-tuebingen.de"],["07071 29-72361"],["Studienberatung BA Haupt- und Nebenfach"]]).
@@ -76,8 +65,6 @@ person(33,[[judith,schaechterle],[raum,261],["sekretariat.poerksen@mewi.uni-tueb
 person(34,[[carolin,wiede],[raum,209],["carolin.wieder@uni-tuebingen.de"],["07071 29-74271"],["Sekretariat Prof. Marschall"]]).
 
 
-
-
 %! person_search/3
 %  searches for keyword in persons of the institute
 %  returns the list of found person + ID
@@ -99,12 +86,7 @@ print_person_info(ID) :-
 	write("Telefon:"),tab(1),write(T),nl,
 	write("Interessiert sich fuer:"),tab(1),write(Z),nl.
 
-%print_list/2
-%prints any list with list element and new line
-print_list([],_).
-print_list([First|RestInputList], _) :-
-	write(First),nl,
-	print_list(RestInputList,First).
+
 
 %Basisstudium
 
@@ -127,6 +109,27 @@ lehrredaktion('L5: Schreibtraining','L5','6 ECTS').
 %veranstaltung/3 (Name,Modul,ECTS)
 veranstaltung(Name,Modul,Etcspunkte) :- vorlesung(Name,Modul,Etcspunkte); seminar(Name,Modul,Etcspunkte);lehrredaktion(Name,Modul,Etcspunkte).
 
+
+%Veranstaltungen Profilbezogen verpro(profil,modul,name).
+verpro(eins,' G4-I  Programmierung digitaler Medien').
+verpro(eins,' G5-I  Gestaltung digitaler Medien').
+verpro(eins,' F3-I  Usability Engineering').
+verpro(eins,' F4-I  Internet-Technologien und Webentwicklung').
+verpro(ersten,' G4-I  Programmierung digitaler Medien' ).
+verpro(ersten,' G5-I  Gestaltung digitaler Medien').
+verpro(ersten,' F3-I  Usability Engineering').
+verpro(ersten,' F4-I  Internet-Technologien und Webentwicklung').
+verpro(zwei,' G4-II  Medienkonvergenz / Neue Medien').
+verpro(zwei,' G5-II  Praxisfelder der Medienkommunikation').
+verpro(zwei,' F3-II  Forschungsprojekt I').
+verpro(zwei,' F4-II  Forschungsprojekt II').
+verpro(zweiten,' G4-II  Medienkonvergenz / Neue Medien').
+verpro(zweiten,' G5-II  Praxisfelder der Medienkommunikation').
+verpro(zweiten,' F3-II  Forschungsprojekt I').
+verpro(zweiten,' F4-II  Forschungsprojekt II').
+
+
+
 %Orte
 
 %bib/2 (Bibliothek,Ã–ffnungszeiten)
@@ -136,6 +139,10 @@ bib('Uni-Bibliothek',
     'Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
 
 
+profil(eins,'auf der Konzeption digitaler Medien. Dabei wird besonders auf die Techniken und Entwicklungen in den digitalen Medien eingegangen. Die Studienangebote in diesem Profil setzen daher einen starken Akzent im Bereich der Medieninformatik. Im Rahmen dieses Profils können Sie sogar selbst Ihren eingenen Dr.Poerksi programmieren.').
+profil(ersten,'auf der Konzeption digitaler Medien. Dabei wird besonders auf die Techniken und Entwicklungen in den digitalen Medien eingegangen. Die Studienangebote in diesem Profil setzen daher einen starken Akzent im Bereich der Medieninformatik. Im Rahmen dieses Profils können Sie sogar selbst Ihren eingenen Dr.Poerksi programmieren.').
+profil(zwei,'auf den Praxisfeldern der Medienkommunikation. Dabei wird besonders auf aktuelle Trends und Entwicklungslinien im Journalismus, in der Werbung, in Public Relations und Unterhaltung eingegangen. Print- und Onlinemedien werden dabei ebenso berÃ¼cksichtigt wie HÃ¶rfunk, Film und Fernsehen.').
+profil(zweiten,'auf den Praxisfeldern der Medienkommunikation. Dabei wird besonders auf aktuelle Trends und Entwicklungslinien im Journalismus, in der Werbung, in Public Relations und Unterhaltung eingegangen. Print- und Onlinemedien werden dabei ebenso berÃ¼cksichtigt wie HÃ¶rfunk, Film und Fernsehen.').
 
 
 
@@ -156,6 +163,17 @@ guten(morgen).
 guten(abend).
 
 
+
+
+%print_list/2
+%prints any list with list element and new line
+print_list([],_).
+print_list([First|RestInputList], _) :-
+	write(First),nl,
+	print_list(RestInputList,First).
+
+
+
 %Dynamische Variablen
 
 :- dynamic name/1.
@@ -167,6 +185,12 @@ name('Gast').
 %-------------------------------------------------
 %    EingabemÃ¶glichkeiten zur Profilbestimmung
 %-------------------------------------------------
+match([was,_,_,_,profil,X],['Im Profil',X,'liegt der Schwerpunkt auf',Y]):-profil(X,Y).
+match([was,_,_,_,X,profil],['Im',X,'Profil liegt der Schwerpunkt auf',Y]):-profil(X,Y).
+match([_,_,_,_,_,X,profil,_],['Im',X,'Profil mÃ¼ssen Sie folgende Veranstalgungen belgen:',Z]):-bagof(Y,verpro(_,Y),Z).
+match([_,_,_,_,_,profil,X,_],['Im Profil',X,'mÃ¼ssen Sie folgende Veranstalgungen belgen:',Z]):-bagof(Y,verpro(_,Y),Z).
+
+
 
 %-------------------------------------------------
 %    Ein- und Ausgabe
@@ -269,6 +293,7 @@ match([wer,ist,X],["Was willst du noch wissen?"]) :- person_search(X,_,ID),print
 match([wie,_,die,email,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
 match([was,_,die,email,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
 match([wie,_,die,emailadresse,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
+match([wie,_,die,mailadresse,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
 match([wie,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
 match([wie,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
 match([was,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
@@ -305,7 +330,7 @@ match([sie,_],['Okay, dass macht es nicht viel besser.
 Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
 
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
-match([cool],['Ja echt knorke.']).
+match([cool],['Ja echt knorke. Möchtest du sonst noch etwas wissen?']).
 
 
 %wdh
