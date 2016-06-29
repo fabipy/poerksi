@@ -1,20 +1,20 @@
 % PROLOG
-
 :- include('read.pl'). % uses file read.pl
-
+:- encoding(iso_latin_1).
 
 % start / exit the game
-poerksi :- prompt(_,'User:       '), read_sentence(Input), poerksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
-poerksi(['tschüss']) :- writeln('Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet.').
+pörksi :- prompt(_,'User:       '), read_sentence(Input), pörksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
+pörksi([tschüss]) :- writeln('Dr.Pörksi: Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet.').
 
 
 % User-Input (after program is started)
-poerksi(Input) :-
-  write('Dr.Poerksi: '),
-  match(Input,Output), % match user input (define match in poerksi.pl)
+pörksi(Input) :-
+  write('Dr.Pörksi: '),
+  match(Input,Output), % match user input (define match in pörksi.pl)
   reply(Output),
+  nl,
   read_sentence(Input1),!,
-  poerksi(Input1).
+  pörksi(Input1).
 
 % Output after User-Input
 reply([Head|Tail]) :- write(user_output,Head), write(user_output,' '),

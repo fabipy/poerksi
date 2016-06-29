@@ -1,4 +1,5 @@
 % PROLOG
+:- encoding(iso_latin_1).
 
 % alle Zeichen einlesen bis Delimiter
 read_string(Delimiter,String) :- get0(C), name(Delimiter,[DelChar]), read_string(DelChar,C,String).
@@ -6,12 +7,12 @@ read_string(Delimiter,String) :- get0(C), name(Delimiter,[DelChar]), read_string
 read_string(DelChar,DelChar,[]) :- !.
 read_string(DelChar,C,[C|RestString]) :- get0(Cnew), read_string(DelChar,Cnew,RestString).
 
-% Liste trennen in WÃ¶rter
+% Liste trennen in Wörter
 split_string(_,[],[]).
 split_string(SepChar,CharList,[Chunk|SingleLists]) :- get_chunk(SepChar,CharList,Chunk,RestCharList),
                                                       split_string(SepChar,RestCharList,SingleLists).
 
-% einzelne WÃ¶rter erkennen
+% einzelne Wörter erkennen
 get_chunk(_,[],[],[]).
 get_chunk(SepChar,[SepChar|RestCharList],[],RestCharList) :- !.
 get_chunk(SepChar,[OtherChar|RestCharList],[OtherChar|RestChunk],UnusedCharList) :-
