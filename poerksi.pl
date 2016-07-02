@@ -156,14 +156,6 @@ essen('Asia-Imbiss Wok-In in der Wilhelmstraße 20').
 essen('REWE in der Mohlstraße 26').
 
 
-%begrüssung
-guten(tag).
-guten(morgen).
-guten(abend).
-
-
-
-
 %print_list/2
 %prints any list with list element and new line
 print_list([],_).
@@ -199,14 +191,20 @@ match([_,_,_,_,profil,X,_],['Im Profil',X,'müssen Sie folgende Veranstalgungen b
 
 % Smalltalk
 match([hallo],['Ich bin Dr. Pörksi Ihr virtueller Assistent. Haben Sie eine Frage?']).
-match([guten,X],['Hallo, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
-Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']):- guten(X).
-match([hi],['Hallo, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
+match([guten,X],['Ihnen auch einen schönen guten',X,'.','Mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
-match([servus],['Hallo, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
+match([hi],['Hey, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
-match([halli,hallo],['Hallo, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
+match([servus],['Grüezi, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
+match([halli,hallo],['Huhu, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
+Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
+
+match([ja|_],['Was meinst du?']).
+match([nein|_],['Was genau meinst du?']).
+match([danke|_],['Immer wieder gerne.']).
+match([_,dank],['Immer wieder gerne.']).
+match([dankeschön|_],['Gerne, Sie wissen ja wo Sie mich finden.']).
 
 match([was,machst,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
 match([was,machen,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
@@ -231,8 +229,8 @@ match([wie,heiße,ich],['Schön Sie kennen zu lernen',LastElement]) :- name('Gast'
 match([wie,heiße,ich],['Vergesslichkeit unter Studenten? Als ich so alt war wie Sie gab es so etwas noch nicht.
 Nun denken Sie mal stark nach, Ihr Name wird Ihnen schon wieder einfallen.']) :- not(name('Gast')).
 
-match([wie,geht,es,_],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
-match([wie,_],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt.']).
+match([wie,gehts|_],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt. Und Ihnen?']).
+match([wie,geht|_],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt. Und selbst?']).
 
 match([was,geht],['Leider nicht viel wenn man keine Beine hat.']).
 match([was,geht,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :- write('Normalerweise ist mir so ein Sprachgebrauch nicht geläufig, aber mir geht es prächtig. Und was geht bei Ihnen?'),nl,read_sentence(_).
