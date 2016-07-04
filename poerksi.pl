@@ -174,14 +174,11 @@ name('Gast').
 %Profilzugehörigkeit)
 
 
-
-
-
-
 %geht noch nicht richtig
-match([_,vorlesungen,_,_,_],['Hast du noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
-match([_,seminare,_,_,_],['Hast du noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Studiums besuchen:'),findall(Y,seminar(Y,_,_),X),print_list(X,_).
-
+match([_,vorlesungen|_],['Hast du noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
+match([_,seminare|_],['Hast du noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
+match([_,lehrredaktionen|_],['Hast du noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
+match([_,veranstaltungen|_],['Hast du noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_),X),print_list(X,_).
 
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
@@ -252,15 +249,7 @@ match([wie,_,das,wetter,_],['Am besten schauen Sie nach draußen oder Sie fragen 
 
 %-----------------------------------------------------------------------
 %Was kann man mit diesem Studium machen
-match([was,kann,_,später,_,_],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
-	Öffentlichkeitsarbeit,
-	(Fach)Journalismus,
-	Verlage,
-	Markt-und Medienforschung,
-	Medienkonzeption und -produktion
-	Medienmanagement,
-	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
-match([was,kann,_,später,_,_,_],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
+match([was,kann,_,später|_],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
 	Öffentlichkeitsarbeit,
 	(Fach)Journalismus,
 	Verlage,
