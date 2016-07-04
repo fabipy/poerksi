@@ -164,6 +164,22 @@ print_list([First|RestInputList], _) :-
 	print_list(RestInputList,First).
 
 
+fragee-->fw;aux.
+fw-->who.
+fw-->where.
+fw-->how.
+fw-->what.
+fw-->which.
+fw-->whose.
+fw-->when.
+fw-->why.
+aux-->do.
+aux-->did.
+aux-->should.
+aux-->were.
+aux-->was.
+
+
 
 %Dynamische Variablen
 
@@ -243,6 +259,16 @@ match([was,geht,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :
 match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
 
 match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber bei meiner Muttersprache. Das geht einfach schneller und ich kann dir mehr von meinem Wissen weiter geben.']).
+
+
+
+%gram-engl
+match([fragee|_],['I speak english very well. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber bei meiner Muttersprache. Das geht einfach schneller und ich kann dir mehr von meinem Wissen weiter geben.']).
+
+
+
+
+
 
 match([wie,_,das,wetter,_],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
 
