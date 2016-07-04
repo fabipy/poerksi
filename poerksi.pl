@@ -173,8 +173,16 @@ name('Gast').
 %Vorlesungsinformationen/3 (Vorlesungsname, Semesterbelegung,
 %Profilzugehörigkeit)
 
+
+
+
+
+
 %geht noch nicht richtig
-match([_,vorlesungen,_,_,_],['Sie sollten folgende Vorlesungen im Laufe Ihres Studiums besuchen:',X]):-bagof(Y,vorlesung(Y,_,_),X).
+match([_,vorlesungen,_,_,_],['Hast du noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
+match([_,seminare,_,_,_],['Hast du noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Studiums besuchen:'),findall(Y,seminar(Y,_,_),X),print_list(X,_).
+
+
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
