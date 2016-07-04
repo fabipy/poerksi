@@ -8,9 +8,8 @@ lastInput('No Last Input Yet').
 lastAnswer(['No Last Answer Yet.']).
 
 % start / exit the chatbot
-pörksi :- ansi_format([bg(yellow)], 'Hallo ich bin Dr. Pörksi. Gerne dürfen Sie mir so viele Fragen stellen, wie Sie nur möchten und ich werde versuchen diese zu beantworten. Denn für Fragen hinsichtlich der Universität oder der zu belgenden Vorlesungen stehe ich Ihnen gerne zur Seite. Aber auch allgemeinen Anliegen bezüglich des Studienalltags nehme ich mich gerne an.
-
-Habe dieses Textfeature zufällig gefunden kommt aber mega fett --> ~w', [needsToBeChanged]),nl,prompt(_,'User:       '), read_sentence(Input), pörksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
+pörksi :- ansi_format([bg(yellow)], 'Hallo ich bin Dr. Pörksi. Gerne dürfen Sie mir so viele Fragen stellen, wie Sie nur möchten und ich werde versuchen diese zu beantworten. Denn für Fragen hinsichtlich der Universität oder der zu belgenden Vorlesungen stehe ich Ihnen gerne zur Seite. Aber auch allgemeinen Anliegen bezüglich des Studienalltags nehme ich mich gerne an.'
+, []),nl,prompt(_,'User:       '), read_sentence(Input), pörksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
 % Programm beendet sich nach 'tschüss' (halt)
 pörksi([tschüss]) :- writeln('Dr.Pörksi: Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet.').
 
