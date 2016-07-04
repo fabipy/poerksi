@@ -93,7 +93,7 @@ print_person_info(ID) :-
 vorlesung('Einführung in die Medienwissenschaft I','G1','8 ECTS').
 vorlesung('Einführung in die Medienwissenschaft II','G2','8 ECTS').
 vorlesung('Forschung und Praxisfelder','G3','4 ECTS').
-vorlesung('Einfuehrung in die Methoden der Medienforschung','F1','8 ECTS').
+vorlesung('Einführung in die Methoden der Medienforschung','F1','8 ECTS').
 
 %seminar/3 (Titel,Modulbezeichnung,ECTS)
 seminar('Einführung in Theorien der Medienforschung','F2','8 ECTS').
