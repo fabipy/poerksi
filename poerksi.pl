@@ -195,7 +195,7 @@ match([_,_,_,_,profil,X,_],['Im Profil',X,'müssen Sie folgende Veranstalgungen b
 %-------------------------------------------------
 
 % Smalltalk
-match([hallo],['Ich bin Dr. Pörksi Ihr virtueller Assistent. Haben Sie eine Frage?']).
+match([hallo],['Hallo. Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
 match([guten,X],['Ihnen auch einen schönen guten',X,'.','Mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 match([hi],['Hey, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
@@ -210,6 +210,7 @@ match([nein|_],['Was genau meinst du?']).
 match([danke|_],['Immer wieder gerne.']).
 match([_,dank],['Immer wieder gerne.']).
 match([dankeschön|_],['Gerne, Sie wissen ja wo Sie mich finden.']).
+
 
 match([was,machst,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
 match([was,machen,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
