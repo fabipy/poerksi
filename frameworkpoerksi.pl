@@ -24,10 +24,10 @@ pörksi(Input) :-
 
 % positive answers on questions
 pörksi(Input) :-
-  (Input = [sehr,gut|_];Input = [gut|_];Input = [toll|_];Input = [spitze|_];Input = [super|_];Input = [schön|_];
-  Input = [klasse|_];Input = [genau|_];Input = [stimmt|_];Input = [ja|_];Input = [juhu|_];Input = [richtig|_]),
   lastAnswer(X),atomics_to_string(X,' ',L),split_string(L,'?','',QMark),last(QMark,Last), %check if last answer was a question 1/2
   Last = "", %check if last answer was a question 2/2
+  (Input = [sehr,gut|_];Input = [gut|_];Input = [toll|_];Input = [spitze|_];Input = [super|_];Input = [schön|_];
+  Input = [klasse|_];Input = [genau|_];Input = [stimmt|_];Input = [ja|_];Input = [juhu|_];Input = [richtig|_]),
   retract(lastInput(_)),assert(lastInput(Input)),
   retract(lastAnswer(_)),assert(lastAnswer(['Forget Last Answer.'])),
   Answers = ['Wunderbar.',
@@ -43,11 +43,11 @@ pörksi(Input) :-
 
 % negative answers on questions
 pörksi(Input) :-
+  lastAnswer(X),atomics_to_string(X,' ',L),split_string(L,'?','',QMark),last(QMark,Last), %check if last answer was a question 1/2
+  Last = "", %check if last answer was a question 2/2
   (Input = [nein|_];Input = [lüge|_];Input = [stimmt,nicht|_];Input = [egal|_];Input = [vergiss,es|_];Input = [quatsch|_];
   Input = [ne|_];Input = [nee|_];Input = [als,ob|_];Input = [ja,achwas|_];Input = [blabla|_];Input = [bla|_];Input = [nix|_];
   Input = [nichts|_];Input = [nö|_];Input = [nöö|_];Input = [nööö|_];Input = [nöööö|_]),
-  lastAnswer(X),atomics_to_string(X,' ',L),split_string(L,'?','',QMark),last(QMark,Last), %check if last answer was a question 1/2
-  Last = "", %check if last answer was a question 2/2
   retract(lastInput(_)),assert(lastInput(Input)),
   retract(lastAnswer(_)),assert(lastAnswer(['Forget Last Answer.'])),
   Answers = ['Dann halt nicht.','Hmm..','Wie auch immer...'],
