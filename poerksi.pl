@@ -191,10 +191,10 @@ name('Gast').
 
 
 %geht noch nicht richtig
-match([_,vorlesungen],['Hast du noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
-match([_,seminare],['Hast du noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
-match([_,lehrredaktionen],['Hast du noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
-match([_,veranstaltungen],['Hast du noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_),X),print_list(X,_).
+match([_,vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
+match([_,seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
+match([_,lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
+match([_,veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_),X),print_list(X,_).
 
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
@@ -225,13 +225,14 @@ match([servus],['Grüezi.']).
 match([guten,X],['Guten',X,'.']).
 match([gute,X],['Ich wünsche Ihnen auch eine gute',X]).
 
-%match([ja],['Was meinst du?']).
-%match([nein],['Was genau meinst du?']).
+%match([ja],['Was meinen Sie?']).
+%match([nein],['Was genau meinen Sie?']).
 match([danke],['Immer wieder gerne.']).
 match([_,dank],['Immer wieder gerne.']).
 match([dankeschön],['Gerne, Sie wissen ja wo Sie mich finden.']).
 
 match([sag,mal,was],['Was. Und jetzt?']).
+
 
 
 match([was,machst,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
@@ -250,7 +251,7 @@ Ersteres ist vollkommen in Ordnung. Letzteres könnte problematisch sein.']) :-  
 match([wer,bin,ich],['Ihr Name ist',X,'und ich vermute mal, Sie sind Student hier.
 Vielleicht sind Sie aber auch ein Professor, der sich als Student ausgibt?']) :- not(name('Gast')),name(X).
 
-match([ich,heiße,X],['Schön dich kennenzulernen',X,'Ein herzliches Willkommen unter uns Medienwissenschaftlern!']) :- name('Gast'),retract(name(_)), assert(name(X)).
+match([ich,heiße,X],['Schön Sie kennenzulernen',X,'Ein herzliches Willkommen unter uns Medienwissenschaftlern!']) :- name('Gast'),retract(name(_)), assert(name(X)).
 match([ich,heiße,X],['Dann werde ich Sie ab sofort',X,'nennen.']) :- not(name('Gast')),retract(name(_)),assert(name(X)).
 
 match([wie,heiße,ich],['Schön Sie kennen zu lernen',LastElement]) :- name('Gast'),write('Ich kenne Ihren Namen leider noch nicht. Wie heißen Sie denn?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
@@ -264,12 +265,12 @@ match([was,geht],['Leider nicht viel wenn man keine Beine hat.']).
 match([was,geht,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :- write('Normalerweise ist mir so ein Sprachgebrauch nicht geläufig, aber mir geht es prächtig. Und was geht bei Ihnen?'),nl,read_sentence(_).
 match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
 
-match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber bei meiner Muttersprache. Das geht einfach schneller und ich kann dir mehr von meinem Wissen weiter geben.']).
+match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber in meiner Muttersprache. Das geht einfach schneller und ich kann Ihnen mehr von meinem Wissen weiter geben.']).
 
 
 
 %gram-engl
-match([fragee|_],['I speak english very well. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber bei meiner Muttersprache. Das geht einfach schneller und ich kann dir mehr von meinem Wissen weiter geben.']).
+match([fragee|_],['I speak english very well. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber in meiner Muttersprache. Das geht einfach schneller und ich kann Ihnen mehr von meinem Wissen weiter geben.']).
 
 
 
@@ -369,7 +370,7 @@ match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5.
 % funktioniert nicht / FL 23.06.16
 %Info zu Personen
 
-match([wer,ist,X],["Was willst du noch wissen?"]) :- person_search(X,_,ID),print_person_info(ID).
+match([wer,ist,X],["Was wollen Sie noch wissen?"]) :- person_search(X,_,ID),print_person_info(ID).
 match([wie,_,die,email,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
 match([was,_,die,email,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
 match([wie,_,die,emailadresse,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
@@ -402,7 +403,7 @@ match([was,_,apa],['APA steht für American Psychological Association. Es handelt
 
 
 % Hilfe
-match([wo,_,_,hilfe],['Wenn du nicht mehr weiterkommst, dann scheue dich nicht davor dir Hilfe zu suchen! Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden für Studierenden. Montags und Mittwochs von 21.00-1.00 Uhr unter der Nummer: 07071 8895440']).
+match([wo,_,_,hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich nicht davor Hilfe zu suchen! Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden für Studierende. Sie erreichen diese immer Montag und Mittwoch von 21.00-1.00 Uhr unter der Nummer: 07071 8895440']).
 
 % ------------------------------------------------------------------------
 %     Sonderfälle
@@ -417,12 +418,12 @@ match([sie,_],['Okay, dass macht es nicht viel besser.
 Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
 
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
-match([cool],['Ja echt knorke. Möchtest du sonst noch etwas wissen?']).
+match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
 
 
 %wdh
-match([_,wiederholst,_],['Wiederholungen festigen neuerlenrtes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen.']).
-match([_,wiederholen,_],['Wiederholungen festigen neuerlenrtes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen.']).
+match([_,wiederholst,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen?']).
+match([_,wiederholen,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen?']).
 
 %empty input
 %match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht helfen.']).
