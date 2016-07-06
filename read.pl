@@ -10,7 +10,7 @@ read_string(DelChar,C,[C|RestString]) :- get0(Cnew), read_string(DelChar,Cnew,Re
 % Liste trennen in Wörter
 split_string(_,[],[]).
 split_string(SepChar,CharList,[Chunk|SingleLists]) :- get_chunk(SepChar,CharList,Chunk,RestCharList),
-                                                      split_string(SepChar,RestCharList,SingleLists).
+                                                      split_string(SepChar,RestCharList,SingleLists),!.
 
 % einzelne Wörter erkennen
 get_chunk(_,[],[],[]).
