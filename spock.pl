@@ -1,7 +1,5 @@
 
 
-:-include('frameworkpoerksi.pl').
-
 %-------------------------------------------------
 %    EasterEgg --- m�chtst du ein Spiel spielen
 %-------------------------------------------------
@@ -51,6 +49,6 @@ evaluate(X):-
     computer_choice(R),
     result(R, X).
 
+spiel :- read(X), evaluate(X).
 
-match([spielen],['Ok, in alter Nerd-Manier m�chte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen w�hlen Sie bitte eins der folgenden Objekte: Stein, Papier, Schere, Echse, Spock.']).
-match([X],[result(_,_)]):- read(X), evaluate(X).
+
