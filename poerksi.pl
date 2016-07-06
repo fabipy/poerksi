@@ -191,10 +191,10 @@ name('Gast').
 
 
 %geht noch nicht richtig
-match([_,vorlesungen|_],['Hast du noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
-match([_,seminare|_],['Hast du noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
-match([_,lehrredaktionen|_],['Hast du noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
-match([_,veranstaltungen|_],['Hast du noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_),X),print_list(X,_).
+match([_,vorlesungen],['Hast du noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
+match([_,seminare],['Hast du noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
+match([_,lehrredaktionen],['Hast du noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
+match([_,veranstaltungen],['Hast du noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_),X),print_list(X,_).
 
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
@@ -230,6 +230,8 @@ match([gute,X],['Ich wünsche Ihnen auch eine gute',X]).
 match([danke],['Immer wieder gerne.']).
 match([_,dank],['Immer wieder gerne.']).
 match([dankeschön],['Gerne, Sie wissen ja wo Sie mich finden.']).
+
+match([sag,mal,was],['Was. Und jetzt?']).
 
 
 match([was,machst,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
@@ -280,7 +282,7 @@ match([wie,_,das,wetter,_],['Am besten schauen Sie nach draußen oder Sie fragen 
 
 %-----------------------------------------------------------------------
 %Was kann man mit diesem Studium machen
-match([was,kann,_,später|_],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
+match([was,kann,_,später],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
 	Öffentlichkeitsarbeit,
 	(Fach)Journalismus,
 	Verlage,

@@ -33,17 +33,19 @@ pörksi(Input) :-
   findall(E,lastAnswer(E),List),last(List,X),atomics_to_string(X,' ',L),split_string(L,'?','',QMark),last(QMark,Last), %check if last answer was a question 1/2
   Last = "", %check if last answer was a question 2/2
   (Input = [sehr,gut|_];Input = [gut|_];Input = [toll|_];Input = [spitze|_];Input = [super|_];Input = [schön|_];
-  Input = [klasse|_];Input = [genau|_];Input = [stimmt|_];Input = [ja|_];Input = [okay|_];Input = [juhu|_];Input = [richtig|_]),
+  Input = [klasse|_];Input = [genau|_];Input = [stimmt|_];Input = [ja|_];Input = [okay|_];Input = [haha|_];
+  Input = [witzig|_];Input = [sehr,witzig|_];Input = [juhu|_];Input = [richtig|_]),
   retract(lastInput(_)),assert(lastInput(Input)),
   retractall(lastAnswer(_)),assert(lastAnswer(['Forgotten Last Answer.'])),
   Answers = 
   ['Wunderbar.',
   'Sehr schön.',
   'Toll.',
-  'Finde ich klasse.',
-  'Okay :)'],
+  'Haha!',
+  ':)'],
   random_permutation(Answers,Random_Answers), Random_Answers = [Random|_],
   write(Random),
+  retract(poerksi(_)),assert(poerksi('Dr.Pörksi: ')),
   nl,
   read_sentence(Input1),!,
   pörksi(Input1).
@@ -63,6 +65,7 @@ pörksi(Input) :-
   'Wie auch immer...'],
   random_permutation(Answers,Random_Answers), Random_Answers = [Random|_],
   write(Random),
+  retract(poerksi(_)),assert(poerksi('Dr.Pörksi: ')),
   nl,
   read_sentence(Input1),!,
   pörksi(Input1).
