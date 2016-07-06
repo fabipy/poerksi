@@ -189,8 +189,6 @@ name('Gast').
 %Vorlesungsinformationen/3 (Vorlesungsname, Semesterbelegung,
 %Profilzugehörigkeit)
 
-
-%geht noch nicht richtig
 match([_,vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
 match([_,seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
 match([_,lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
@@ -201,10 +199,10 @@ match([_,veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Ve
 %-------------------------------------------------
 match([was,_,_,_,profil,X],['Im Profil',X,'liegt der Schwerpunkt auf',Y]):-profil(X,Y).
 match([was,_,_,_,X,profil],['Im',X,'Profil liegt der Schwerpunkt auf',Y]):-profil(X,Y).
-match([_,_,_,_,X,profil,_],['Im',X,'Profil müssen Sie folgende Veranstalgungen belgen:',Z]):-bagof(Y,verpro(_,Y),Z).
-match([_,_,_,_,profil,X,_],['Im Profil',X,'müssen Sie folgende Veranstalgungen belgen:',Z]):-bagof(Y,verpro(_,Y),Z).
 
-
+%diese beiden gehen nicht, bei erneuter Eingabe kommt eine Fehlermeldung FL 6.7.16
+%match([_,_,_,_,X,profil,_],['Im',X,'Profil müssen Sie folgende Veranstalgungen belgen:',Z]):-bagof(Y,verpro(_,Y),Z).
+%match([_,_,_,_,profil,X,_],['Im Profil',X,'müssen Sie folgende Veranstalgungen belgen:',Z]):-bagof(Y,verpro(_,Y),Z).
 
 %-------------------------------------------------
 %    Ein- und Ausgabe
@@ -222,8 +220,8 @@ match([_,_,_,_,profil,X,_],['Im Profil',X,'müssen Sie folgende Veranstalgungen b
 match([hallo],['Hallo.']).
 match([hi],['Hey.']).
 match([servus],['Grüezi.']).
-match([guten,X],['Guten',X,'.']).
-match([gute,X],['Ich wünsche Ihnen auch eine gute',X]).
+match([guten,X],['Guten',X,'auch.']).
+match([gute,_],["Ebenso. Machen Sie's gut."]).
 
 %match([ja],['Was meinen Sie?']).
 %match([nein],['Was genau meinen Sie?']).
@@ -233,14 +231,8 @@ match([dankeschön],['Gerne, Sie wissen ja wo Sie mich finden.']).
 
 match([sag,mal,was],['Was. Und jetzt?']).
 
-
-
 match([was,machst,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
-match([was,machen,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
-match([was,machst,_,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
 match([was,machen,_,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
-
-
 
 match([wer,bist,du],['Es ist schön Sie kennenzulernen. Haben Sie denn auch Fragen an mich mitgebracht',LastElement,'?']) :- name('Gast'),write('Ich bin eine künstliche Intelligenz, die ratlosen Studenten weiterhelfen soll. Mich gibt es aber noch gar nicht so lange hier am Institut.
 Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
@@ -272,14 +264,7 @@ match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazitä
 %gram-engl
 match([fragee|_],['I speak english very well. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber in meiner Muttersprache. Das geht einfach schneller und ich kann Ihnen mehr von meinem Wissen weiter geben.']).
 
-
-
-
-
-
 match([wie,_,das,wetter,_],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
-
-
 
 %-----------------------------------------------------------------------
 %Was kann man mit diesem Studium machen
@@ -311,30 +296,23 @@ match([welche,_,habe,_,nach,dem,studium],['Durch dieses sehr empfehlenswerte Stu
 
 % --------------------------------------------------------------------------
 % Allgemeine Infos zum Studium
-match([wie,viele,semester,_,_,_],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
-match([wie,lange,dauert,das,studium],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
+match([wie,viele,semester],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
+match([wie,lange,dauert],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
 match([wann,_,das,studium],['Das Studium der Medienwissenschaft können Sie jedes Wintersemester an der Eliteuniversität Tübingen beginnen.']).
 match([was,ist,der,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
 match([gibt,es,einen,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
 
 % Fragen zu Praktikum
 match([muss,_,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlenswerte.
-	In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
-match([wann,_,_,_,praktikum,_],['Es gibt ein Pflichtpraktikumvon 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
-match([wie,lange,muss,ein,praktikum,_],['Es gibt ein Pflichtpraktikumvon 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
-match([_,finde,ich,einen,praktikumsplatz],['In unserem Insitut gibt es eine Praktikumsberatung. Ihre Ansprechpartnerin ist Pia Fruth. Des weiteren gibt es Aushänge an einem Schwarzen Brett.']).
+In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
+match([wann,_,_,_,praktikum,_],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
+match([wie,lange,muss,ein,praktikum,_],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
+match([_,finde,ich,einen,praktikumsplatz],['In unserem Insitut gibt es eine Praktikumsberatung. Ihre Ansprechpartnerin ist Pia Fruth. Des weiteren gibt es Aushänge am Schwarzen Brett.']).
 match([wer,_,_,ansprechpartner,für,prakikas],['Ansprechpartnerin für Praktkas ist Pia Fruth']).
 
 % Fragen zum Stundenplan
-match([wo,finde,_,_,stundenplan],['Ihren Stundenplan finden und erstellen Sie auf Campus-Portal. Das ist ein elektronischen Vorlesungsverzeichnis mit Stundenplan und vielen weiteren Funktionen']).
+match([wo,finde,_,_,stundenplan],['Ihren Stundenplan finden und erstellen Sie auf Campus-Portal. Das ist ein elektronischen Vorlesungsverzeichnis mit Stundenplan und vielen weiteren Funktionen.']).
 match([wo,_,_,_,stundenplan,_],['Ihren Stundenplan erstellen Sie selbst mithilfe des Modulhandbuchs und dem Campus-Portal']).
-match([_,_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktion
-	Onlinezugang zur Rüchmeldung
-	Bescheinigungsausdruck
-	Anschriftsänderung
-	Prüfungsanmeldung
-	Notenspiegel
-	und vieles mehr schau einfach mal vorbei unter http://campus.verwaltung.uni-tuebingen.de/index2.html']).
 match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktion
 	Onlinezugang zur Rüchmeldung
 	Bescheinigungsausdruck
@@ -348,7 +326,8 @@ match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktio
 %Projektstudium
 match([was,ist,_,projektstudium],['Im Modulhandbuch finden Sie dieses Modul unter dem Namen P1. Im Rahmen des Projektstudiums planen und realisieren die Sie eigenverantwortlich ein kleineres Medienprojekt bzw. Werkstück. Das Medium dieses Projekts ist dabei frei wählbar.']).
 match([wo,_,_,_,projektstudium,_],['Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
-match([wer,betreut,_,projektstudium],['Fast überall! Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
+match([wer,betreut,_,projektstudium],['Das können Sie selber wählen. 
+Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
 
 %essen
 %zwischenabstände fehlen noch
@@ -361,8 +340,8 @@ Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenn
 match([wann,_,_,X,geöffnet],['Die',X,hat,folgende,'Öffnungszeiten: ',Y]):- bib(X,Y).
 
 % Fragen zu Gebäuden
-match([wo,ist,der,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50']).
-match([wo,finde,ich,den,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50']).
+match([wo,ist,der,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
+match([wo,finde,ich,den,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
 match([wo,ist,der,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 
@@ -371,20 +350,22 @@ match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5.
 %Info zu Personen
 
 match([wer,ist,X],["Was wollen Sie noch wissen?"]) :- person_search(X,_,ID),print_person_info(ID).
-match([wie,_,die,email,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
-match([was,_,die,email,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
-match([wie,_,die,emailadresse,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
-match([wie,_,die,mailadresse,von,X],Email) :- person_search(X,[_,_,Email,_,_],_).
-match([wie,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
-match([wie,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
-match([was,_,die,telefonnummer,von,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
-match([wo,finde,ich,X],Raum) :- person_search(X,[_,Raum,_,_,_],_).
+match([wie,_,die,email,von,_,X],Email) :- person_search(X,[_,_,Email,_,_],_).
+match([was,_,die,email,von,_,X],Email) :- person_search(X,[_,_,Email,_,_],_).
+match([wie,_,die,emailadresse,von,_,X],Email) :- person_search(X,[_,_,Email,_,_],_).
+match([wie,_,die,mailadresse,von,_,X],Email) :- person_search(X,[_,_,Email,_,_],_).
+match([wie,_,die,telefonnummer,von,_,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
+match([was,_,die,telefonnummer,von,_,X],Tel) :- person_search(X,[_,_,_,Tel,_],_).
+match([wo,finde,ich,_,X],Raum) :- person_search(X,[_,Raum,_,_,_],_).
 
 %Informationen zu Vorlesungen und Seminaren
-match([wie,viele,ects,punkte,_,man,für,die,X],['Die', X, gibt, Y]):-
-	vorlesung(_,X,Y);seminar(_,X,Y);lehrredaktion(_,X,Y).
-match([wie,viele,ects,punkte,_,man,für,die,Z],['Die', Z, gibt, Y]):-
-	vorlesung(Z,_,Y); seminar(Z,_,Y);lehrredaktion(Z,_,Y).
+
+%gibt ein kleines problem mit der anfrage, muss gefixt werden
+%6.7.16 / FL
+%match([wie,viele,ects,punkte,_,man,für,die,X],['Die', X, gibt, Y]):-
+%	vorlesung(_,X,Y);seminar(_,X,Y);lehrredaktion(_,X,Y).
+%match([wie,viele,ects,punkte,_,man,für,die,Z],['Die', Z, gibt, Y]):-
+%	vorlesung(Z,_,Y); seminar(Z,_,Y);lehrredaktion(Z,_,Y).
 
 
 %allgemeine Informationen
