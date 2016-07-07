@@ -85,6 +85,13 @@ print_person_info(ID) :-
 	write("Telefon:"),tab(1),write(T),nl,
 	write("Interessiert sich für:"),tab(1),write(Z),nl.
 
+prof('Herr Prof. Dr. Jürg,Häusermann').
+prof('Herr Prof. Dr. Claus Kleber').
+prof('Frau Prof. Dr. Susanne Marschall').
+prof('Herr Prof. Dr. Klaus Sachs-Hombach').
+prof('Herr Prof. Dr. Bernhard Pörksen').
+prof('Frau Prof. Dr. Tanja,Thomas').
+prof('Herr Prof. Dr. Guido Zurstiege').
 
 
 %Basisstudium
@@ -106,7 +113,7 @@ lehrredaktion('L4: Film und Fernsehen','L4','6 ECTS').
 lehrredaktion('L5: Schreibtraining','L5','6 ECTS').
 
 %veranstaltung/3 (Name,Modul,ECTS)
-veranstaltung(Name,Modul,Etcspunkte) :- vorlesung(Name,Modul,Etcspunkte); seminar(Name,Modul,Etcspunkte);lehrredaktion(Name,Modul,Etcspunkte).
+veranstaltung(Name,Modul,Ectspunkte) :- vorlesung(Name,Modul,Ectspunkte); seminar(Name,Modul,Ectspunkte);lehrredaktion(Name,Modul,Ectspunkte).
 
 
 %Veranstaltungen Profilbezogen verpro(profil,modul,name).
@@ -186,6 +193,16 @@ aux-->was.
 :- dynamic name/1.
 name('Gast').
 
+% Infos zu Professoren
+match([welche,profs,gibt,es],['Folgende Professoren lehren in Tübingen in der Medienwissenschaft:',Bag]) :- bagof(X,prof(X),Bag).
+match([welche,professoren,gibt,es],['Folgende Professoren lehren in Tübingen in der Medienwissenschaft:',Bag]) :- bagof(X,prof(X),Bag).
+match([welche,professoren,gibt,es,_,_,_],['Folgende Professoren lehren in Tübingen in der Medienwissenschaft:',Bag]) :- bagof(X,prof(X),Bag).
+
+%Infos sprechstunden
+match([wann,hat,X,sprechstunde],['Leider bin ich nicht allwissend. Da sich die Termine für die Sprechstunden von Semster unterscheiden kann ich leider nicht sagen, wann',X,'seine Sprechstunde hat.']).
+match([wann,hat,X,_,sprechstunde],['Leider bin ich nicht allwissend. Da sich die Termine für die Sprechstunden von Semster unterscheiden kann ich leider nicht sagen, wann',X,'seine Sprechstunde hat.']).
+match([wann,kann,_,bei,X,_,_,sprechstunde],['Leider bin ich nicht allwissend. Da sich die Termine für die Sprechstunden von Semster unterscheiden kann ich leider nicht sagen, wann',X,'seine Sprechstunde hat.']).
+
 %Vorlesungsinformationen/3 (Vorlesungsname, Semesterbelegung,
 %Profilzugehörigkeit)
 
@@ -193,7 +210,11 @@ match([_,vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten fol
 match([_,seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
 match([_,lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
 match([_,veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_),X),print_list(X,_).
+match([wer,unterrichtet,_],['Es unterscheidet sich sehr von Semster zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
+match([wer,macht,_],['Es unterscheidet sich sehr von Semster zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
+match([wann,findet,X,_],['Es unterscheidet sich sehr von Semester zu Semester wann',X,'stattfindet.']).
 
+match([welche,veranstaltungsarten,gibt,es],['An unserer Universität können Sie an Vorlesungen,Seminare und Lehrredaktionen teilnehmen.']).
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
@@ -264,6 +285,7 @@ match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazitä
 %gram-engl
 match([fragee|_],['I speak english very well. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber in meiner Muttersprache. Das geht einfach schneller und ich kann Ihnen mehr von meinem Wissen weiter geben.']).
 
+match([wie,_,das,wetter],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
 match([wie,_,das,wetter,_],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
 
 %-----------------------------------------------------------------------
@@ -334,7 +356,7 @@ Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarb
 match([wo,kann,_,essen,gehen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Warten Sie, ich generiere Ihnen kurz mal eine Liste.'),nl,nl,print_list(Y,_),nl.
 match([wo,kann,_,_,essen,gehen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Aber das wissen Sie ja bestimmt selbst.
 Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Rund um den Brechtbau können Sie aus folgenden Angeboten wählen.'),nl,nl,print_list(Y,_),nl.
-
+match([was,gibt,es,in,der,mensa],['Was es in der Mensa gibt kann ich leider nicht beantworten, weil das Angebot täglich wechselt.']).
 
 %Info zur Bib
 match([wann,_,_,X,geöffnet],['Die',X,hat,folgende,'Öffnungszeiten: ',Y]):- bib(X,Y).
@@ -345,6 +367,12 @@ match([wo,finde,ich,den,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen
 match([wo,ist,der,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 
+%Fragen zum Raum
+match([wo,ist,raum,X],['Raum',X,'befindet sich im Brechtbau. Kommen Sie doch einfach vorbei!']).
+match([wo,ist,der,raum,X],['Raum',X,'befindet sich im Brechtbau. Kommen Sie doch einfach vorbei!']).
+match([wo,befindet,sich,der,raum,X],['Raum',X,'befindet sich im Brechtbau. Kommen Sie doch einfach vorbei!']).
+match([wo,befindet,sich,raum,X],['Raum',X,'befindet sich im Brechtbau. Kommen Sie doch einfach vorbei!']).
+match([in,welchem,gebäude,ist,raum,X],['Raum',X,'befindet sich im Brechtbau. Kommen Sie doch einfach vorbei!']).
 
 % funktioniert nicht / FL 23.06.16
 %Info zu Personen
@@ -367,6 +395,8 @@ match([wo,finde,ich,_,X],Raum) :- person_search(X,[_,Raum,_,_,_],_).
 %match([wie,viele,ects,punkte,_,man,für,die,Z],['Die', Z, gibt, Y]):-
 %	vorlesung(Z,_,Y); seminar(Z,_,Y);lehrredaktion(Z,_,Y).
 
+match([wie,viele,ects,punkte,brauche,ich],['Wenn Sie Medienwissenschaft im Hauptfach studiert benötigen Sie 120 Ectspunkte und im Nebenfach brauchen Sie 60 Ectspunkte.']).
+match([wie,viele,ects,punkte,braucht,man],['Wenn Sie Medienwissenschaft im Hauptfach studiert benötigen Sie du 120 Ectspunkte und im Nebenfach brauchen Sie 60 Ectspunkte.']).
 
 %allgemeine Informationen
 match([was,_,ct],['c.t. ist die Abkürzung für lateinisch "cum tempore", was im deutschen "mit Zeit" bedeutet.
@@ -401,6 +431,19 @@ Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
 match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
 
+% Fragen zum Pörksi
+match([wie,alt,_,_],['Es gibt mich erst seit Juni 2016!']).
+match([wer,hat,_,programmieren],['Ich würde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts erschaffen.']).
+match([wer,hat,_,gemacht],['Ich würde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts erschaffen.']).
+
+%Fragen zum beenden
+match([wie,beende,ich,_],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([wie,kann,ich,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([wie,beende,man,_],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([wie,kann,man,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
+
+%Wie viele Fragen kannst du beeantworten
+match([wie,viele,fragen,kannst,du,beantworten],['Das hängt ganz von deine Fragen ab.']).
 
 %wdh
 match([_,wiederholst,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen?']).
