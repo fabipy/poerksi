@@ -673,7 +673,11 @@ match([X,_,raum],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching
 match([X,raum],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_room(ID,Raum).
 match([raumnummer,_,X],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_room(ID,Raum).
 
-%Informationen zu Vorlesungen und Seminaren
+%EasterEggs
+match([frage,nach,dem,leben],['42, ist doch klar!']).
+match([antwort,auf,alles],['42, ist doch klar!']).
+match([the,universe,and,everything],['42, ist doch klar!']).
+
 
 %gibt ein kleines problem mit der anfrage, muss gefixt werden
 %6.7.16 / FL
