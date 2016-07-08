@@ -27,35 +27,35 @@ person(0,[['Herr Prof. Dr. Jürg,Häusermann'],
 		  ["juerg.haeusermann@uni-tuebingen.de"],
 		  ["07071 29-77515"],
 		  ["Medienanalyse und Medienproduktion"]]).
-		  
+
 person(1,[['Herr Prof. Dr. Claus Kleber'],
 		  [claus,kleber],
 		  [209],
 		  ["claus.kleber@uni-tuebingen.de"],
 		  ["keine Angabe"],
 		  ["Jouranlistische Themen und Berufspraxis in Film und Fernsehen"]]).
-		  
+
 person(2,[['Frau Prof. Dr. Susanne Marschall'],
 		  [susanne,marschall],
 		  [210],
 		  ["susanne.marschall@uni-tuebingen.de"],
 		  ["07071 29-72354"],
 		  ["Audiovisuelle Medien, Film und Fernsehen"]]).
-		  
+
 person(3,[['Herr Prof. Dr. Klaus Sachs-Hombach'],
 		  [klaus,sachs-hombach],
 		  [256],
 		  ["klaus.sachs-hombach@uni-tuebingen.de"],
 		  ["07071 29-72815"],
 		  ["Medieninnovation und Medienwandel"]]).
-		  
+
 person(4,[['Herr Prof. Dr. Bernhard Pörksen'],
 		  [bernhard,pörksen],
 		  [260],
 		  ["bernhard.poerksen@uni-tuebingen.de"],
 		  ["07071 29-72798"],
 		  ["Kritischer Medienjournalismus"]]).
-		  
+
 person(5,[
 		  ['Frau Prof. Dr. Tanja Thomas'],
 		  [tanja,thomas],
@@ -63,21 +63,21 @@ person(5,[
 		  ["tanja.thomas@uni-tuebingen.de"],
 		  ["07071 29-76816"],
 		  ["Transformation der Medienkultur"]]).
-		  
+
 person(6,[['Herr Prof. Dr. Guido Zurstiege'],
 		  [guido,zurstiege],
 		  [264],
 		  ["guido.zurstiege@uni-tuebingen.de"],
 		  ["07071 29-78435"],
 		  ["Empirische Medienforschung"]]).
-		  
+
 person(12,[['Fachschaft Medienwissenschaft'],
 		  [fachschaft,medienwissenschaft],
 		  [140],
 		  ["fachschaft@medienwissenschaft.uni-tuebingen.de"],
 		  ["keine Angabe"],
 		  ["Vermittlung zwischen Dozenten und Studenten"]]).
-		  
+
 
 %----geschäftsführung---------
 person(7,[['Herr Dr. Torsten Maurer'],
@@ -86,14 +86,14 @@ person(7,[['Herr Dr. Torsten Maurer'],
 		  ["torsten.maurer@uni-tuebingen.de"],
 		  ["07071 29-72356"],
 		  ["Medieninhalts-, Mediennutzungs- und Medienwirkungsforschung, sowie Studienberatung und Anrechnung von Studienleistungen"]]).
-		  
+
 person(9,[['Herr Dr. Thomas Wilke'],
 		  [thomas,wilke],
 		  [136],
 		  ["thomas.wilke@uni-tuebingen.de"],
 		  ["07071 29-72830"],
 		  ["Allgemeine Studienberatung"]]).
-		  
+
 person(13,[['Frau Dr. Sabine Kieslich'],
 		  [sabine,kieslich],
 		  [212],
@@ -108,7 +108,7 @@ person(11,[['Herr Kurt Schneider'],
 		  ["kurt.schneider@uni-tuebingen.de"],
 		  ["07071 29-77590"],
 		  ["Leiter des Zentrums für Medienkompetenz"]]).
-		  
+
 
 %---------akademische mitarbeiter-----
 person(14,[['Frau Mandy Badermann'],
@@ -117,105 +117,105 @@ person(14,[['Frau Mandy Badermann'],
 		  ["mandy.badermann@uni-tuebingen.de"],
 		  ["07071 29-72361"],
 		  ["Studienberatung BA Haupt- und Nebenfach"]]).
-		  
+
 person(15,[['Frau Rada Bieberstein'],
 		  [rada,bieberstein],
 		  [208],
 		  ["rada.bierberstein@uni-tuebingen.de"],
 		  ["07071 29-78444"],
 		  ["Audiovisuelle Medien, Film und Fernsehen"]]).
-		  
+
 person(16,[['Frau Hannah Birr'],
 		  [hannah,birr],
 		  [254],
 		  ["hannah.birr@uni-tuebingen.de"],
 		  ["07071 29-72349"],
 		  ["Audivisuelle Medien, Film und Fersehen"]]).
-		  
+
 person(17,[['Frau Hanne Detel'],
 		  [hanne,detel],
 		  [262],
 		  ["hanne.detel@uni-tuebingen.de"],
 		  ["07071 29-72363"],
 		  ["Studienberatung BA Haupt- und Nebenfach und Öffentlichkeitsarbeit"]]).
-		  
+
 person(18,[['Herr Markus Feiks'],
 		  [markus,feiks],
 		  [266],
 		  ["markus.feiks@uni-tuebingen.de"],
 		  ["07071 29-75681"],
 		  ["Studienberatung BA Haupt- und Nebenfach"]]).
-		  
+
 person(19,[['Herr Dr. Erwin Feyersinger'],
 		  [erwin,feyersinger],
 		  [208],
 		  ["erwin.feyersinger@uni-tuebingen.de"],
 		  ["07071 29-78444"],
 		  ["Studienberatung MA"]]).
-		  
+
 person(10,[['Frau Pia Fruth'],
 		  [pia,fruth],
 		  [269],
 		  ["pia.fruth@uni-tuebingen.de"],
 		  ["07071 29-72 413"],
 		  ["Zuständige für Praktikumsberatung und -anerkennung"]]).
-		  
+
 person(20,[['Herr Dr. Ulrich Hägele'],
 		  [ulrich,hägele],
 		  [023],
 		  ["ulrich.haegele@uni-tuebingen.de"],
 		  ["07071 29-78443"],
 		  ["Redaktion Radio Micro-Europa und Studienberatung BA"]]).
-		  
+
 person(21,[['Herr Kiron Patka'],
 		  [kiron,patka],
 		  [269],
 		  ["kiron.patka@uni-tuebingen.de"],
 		  ["07071 29-75586"],
 		  ["Studienberatung BA Haupt- und Nebenfach"]]).
-		  
+
 person(22,[['Herr Julian Scherer'],
 		  [julian,scherer],
 		  [247],
 		  ["julian.scherer@uni-tuebingen.de"],
 		  ["07071 29-76819"],
 		  ["Fachkoordiantion Erasmus / Internationales"]]).
-		  
+
 person(23,[['Frau Dr. Miriam Stehling'],
 		  [miriam,stehling],
 		  [218],
 		  ["miriam.stehling@uni-tuebingen.de"],
 		  ["07071 29-76817"],
 		  ["Fachkoordiantion Erasmus /Internationales"]]).
-		  
+
 person(24,[['Herr Dr. Jan-Nöel Thon'],
 		  [jan-nöel,thon],
 		  [255],
 		  ["jan.thon@uni-tuebingen.de"],
 		  ["07071 29-72814"],
 		  ["Studienberatung BA Haupt- und Nebenfach"]]).
-		  
+
 person(25,[['Frau Dr. Meike Uhrig'],
 		  [meike,uhrig],
 		  [254],
 		  ["meike.uhrig@uni-tuebingen.de"],
 		  ["07071 29-74282"],
 		  ["Studienberatung BA Haupt- und Nebenfach und Mediathek"]]).
-		  
+
 person(26,[['Frau Dr. Anne Ulrich'],
 		  [anne,ulrich],
 		  [290],
 		  ["anne.ulrich@uni-tuebingen.de"],
 		  ["07071 29-78523"],
 		  ["Mitarbeiterin am Sonderforschungsbereich Bedrohte Ordnungen"]]).
-		  
+
 person(27,[['Herr Lukas Wilde'],
 		  [lukas,wilde],
 		  [255],
 		  ["lukas.wilde@uni-tuebingen.de"],
 		  ["07071 29-72351"],
 		  ["Studienberatung BA Haupt- und Nebenfach"]]).
-		  
+
 
 %---geschäftszimmer----
 person(8,[['Frau Birgit Losch'],
@@ -224,8 +224,8 @@ person(8,[['Frau Birgit Losch'],
 		  ["birgit.losch@uni-tuebingen.de"],
 		  ["07071 29-72352"],
 		  ["Administrative Verwaltung"]]).
-			
-			
+
+
 %-----sekretariate-----
 person(28,[['Frau Patrizia Ambrisi'],
 		  [patrizia,ambrisi],
@@ -233,49 +233,49 @@ person(28,[['Frau Patrizia Ambrisi'],
 		  ["sekretariat.poerksen@mewi.uni-tuebingen.de"],
 		  ["07071 29-72366"],
 		  ["Sekretariat Prof. Pörksen"]]).
-		  
+
 person(29,[['Frau Barbara Carl-Mast'],
 		  [barbara,carl,mast,'carl-mast'],
 		  [216],
 		  ["barbara.carl-mast@uni-tuebingen.de"],
 		  ["07071 29-76818"],
 		  ["Sekretariat Prof. Thomas"]]).
-		  
+
 person(30,[['Frau Karin Kießling'],
 		  [karin,kießling],
 		  [257],
 		  ["admin.sachs-hombach@mewi.uni-tuebingen.de"],
 		  ["07071 29-72816"],
 		  ["Sekretariat Prof. Sachs-Hombach"]]).
-		  
+
 person(31,[['Frau Ute Kleiber'],
 		  [ute,kleiber],
 		  [271],
 		  ["ute.kleiber@uni-tuebingen.de"],
 		  ["07071 29-74262"],
 		  ["Sekretariat Prof. Häusermann"]]).
-		  
+
 person(32,[['Frau Anja Lambrecht'],
 		  [anja,lambrecht],
 		  [265],
 		  ["anja.lambrecht@uni-tuebingen.de"],
 		  ["07071 29-72359"],
 		  ["Sekretariat Prof. Zurstiege"]]).
-		  
+
 person(33,[['Frau Judith Schächterle'],
 		  [judith,schächterle],
 		  [261],
 		  ["sekretariat.poerksen@mewi.uni-tuebingen.de"],
 		  ["07071 29-72366"],
 		  ["Sekretariat Prof. Pörksen"]]).
-		  
+
 person(34,[['Frau Carolin Wiede'],
 		  [carolin,wiede],
 		  [209],
 		  ["carolin.wieder@uni-tuebingen.de"],
 		  ["07071 29-74271"],
 		  ["Sekretariat Prof. Marschall"]]).
-		  
+
 person(-1,[['null'],
 		  [_],
 		  [],
@@ -302,8 +302,8 @@ person_name_search(Search,ID) :-
 elaborate_name_matching(Input,NewID) :-   person_name_search(Input,ID),get_person_room(ID,Raum),get_id_by_room(Raum,NewID),!;
 								          person_name_search(Input,ID),lastInput(L),nextto(Input,Y,L),person_name_search(Y,ID2),ID >= 0,ID=ID2,get_person_room(ID,Raum),get_id_by_room(Raum,NewID),!;
 								          person_name_search(Input,ID),lastInput(L),nextto(Input,Y,L),person_name_search(Y,ID2),ID >= 0, ID2 = -1,get_person_room(ID,Raum),get_id_by_room(Raum,NewID),!;
-								          person_name_search(Input,ID),lastInput(L),nextto(Input,Y,L),person_name_search(Y,ID2),ID = -1, ID2 >= 0,get_person_room(ID2,Raum),get_id_by_room(Raum,NewID),!.	
-	
+								          person_name_search(Input,ID),lastInput(L),nextto(Input,Y,L),person_name_search(Y,ID2),ID = -1, ID2 >= 0,get_person_room(ID2,Raum),get_id_by_room(Raum,NewID),!.
+
 %! print_person_info/1
 %  returns infos about person
 
@@ -314,22 +314,22 @@ print_person_info(ID) :-
 	write("Email:"),tab(1),write(E),nl,
 	write("Telefon:"),tab(1),write(T),nl,
 	write("Bereich/Aufgabe:"),tab(1),write(Z),nl.
-	
+
 get_id_by_room(Raum,ID) :-
 	person(ID,[_,_,[Raum],_,_,_]).
-	
+
 get_person_name(ID,Name) :-
 	person(ID,[[Name],_,_,_,_,_]).
-	
+
 get_person_room(ID,Raum) :-
 	person(ID,[_,_,[Raum],_,_,_]).
-	
+
 get_person_mail(ID,Mail) :-
 	person(ID,[_,_,_,[Mail],_,_]).
-	
+
 get_person_phone(ID,Tel) :-
 	person(ID,[_,_,_,_,[Tel],_]).
-	
+
 get_person_job(ID,Job) :-
 	person(ID,[_,_,_,_,_,[Job]]).
 
@@ -337,20 +337,20 @@ get_person_job(ID,Job) :-
 %Basisstudium
 
 %vorlesung/3 (Titel,Modulbezeichnung,ECTS)
-vorlesung('Einführung in die Medienwissenschaft I','G1','8 ECTS').
-vorlesung('Einführung in die Medienwissenschaft II','G2','8 ECTS').
-vorlesung('Forschung und Praxisfelder','G3','4 ECTS').
-vorlesung('Einführung in die Methoden der Medienforschung','F1','8 ECTS').
+vorlesung('Einführung in die Medienwissenschaft I',g1,'8 ECTS').
+vorlesung('Einführung in die Medienwissenschaft II',g2,'8 ECTS').
+vorlesung('Forschung und Praxisfelder',g3,'4 ECTS').
+vorlesung('Einführung in die Methoden der Medienforschung',f1,'8 ECTS').
 
 %seminar/3 (Titel,Modulbezeichnung,ECTS)
-seminar('Einführung in Theorien der Medienforschung','F2','8 ECTS').
+seminar('Einführung in Theorien der Medienforschung',f2,'8 ECTS').
 
 %lehrredaktion/3 (Titel,Modulbezeichnung,ECTS)
-lehrredaktion('L1: Print & Onlinemedien','L1','6 ECTS').
-lehrredaktion('L2: Hörfunk','L2','6 ECTS').
-lehrredaktion('L3: Hypermediasysteme','L3','6 ECTS').
-lehrredaktion('L4: Film und Fernsehen','L4','6 ECTS').
-lehrredaktion('L5: Schreibtraining','L5','6 ECTS').
+lehrredaktion('Print & Onlinemedien',l1,'6 ECTS').
+lehrredaktion('Hörfunk',l2,'6 ECTS').
+lehrredaktion('Hypermediasysteme',l3,'6 ECTS').
+lehrredaktion('Film und Fernsehen',l4,'6 ECTS').
+lehrredaktion('Schreibtraining',l5,'6 ECTS').
 
 %veranstaltung/3 (Name,Modul,ECTS)
 veranstaltung(Name,Modul,Ectspunkte) :- vorlesung(Name,Modul,Ectspunkte); seminar(Name,Modul,Ectspunkte);lehrredaktion(Name,Modul,Ectspunkte).
@@ -381,7 +381,7 @@ verpro(zweiten,' F4-II  Forschungsprojekt II').
 %bib/2 (Bibliothek,Öffnungszeiten)
 bib(brechtbaubibliothek,
     'Mo-Do 8.00-20.45   Fr 8.00-18.45   Sa 10.00-17.45   So 12.00-17.45').
-	bib(brechtbaubib,
+bib(brechtbaubib,
     'Mo-Do 8.00-20.45   Fr 8.00-18.45   Sa 10.00-17.45   So 12.00-17.45').
 bib('unibibliothek',
     'Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
@@ -415,30 +415,13 @@ print_list([First|RestInputList], _) :-
 	print_list(RestInputList,First).
 
 
-fragee-->fw;aux.
-fw-->who.
-fw-->where.
-fw-->how.
-fw-->what.
-fw-->which.
-fw-->whose.
-fw-->when.
-fw-->why.
-aux-->do.
-aux-->did.
-aux-->should.
-aux-->were.
-aux-->was.
-
-
-
 %Dynamische Variablen
 
 :- dynamic name/1.
 name('Gast').
 
 % Infos zu Professoren
-match([welche,profs,gibt,es],['Ich glaube das waren alle. 
+match([welche,profs,gibt,es],['Ich glaube das waren alle.
 Halt! Da habe ich doch glatt einen vergessen... Ist doch klar, mich selbst.']) :- write('Folgende Professoren lehren in Tübingen am Institut für Medienwissenschaft:'),nl,findall(X,prof(_,X),L),print_list(L,_).
 match([welche,professoren,gibt,es],['Ich hoffe ich konnte Ihnen weiterhelfen.']) :- write('Folgende Professoren lehren in Tübingen am Institut für Medienwissenschaft:'),nl,findall(X,prof(_,X),L),print_list(L,_).
 
@@ -502,7 +485,7 @@ match([was,machen,_],['Studenten und allerlei Personen beraten, die meine Hilfe 
 
 match([wer,bist,du],['Es ist schön Sie kennenzulernen. Haben Sie denn auch Fragen an mich mitgebracht',Merge,'oder irgendein anderes Anliegen?']) :- name('Gast'),write('Ich bin eine künstliche Intelligenz, die ratlosen Studenten weiterhelfen soll. Mich gibt es aber noch gar nicht so lange hier am Institut.
 Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
-Aber genug philosophiert, wer Sind Sie denn? 
+Aber genug philosophiert, wer Sind Sie denn?
 Wie ist denn Ihr Name?'),nl,read_sentence(X),last(X,LastElement),atom_chars(LastElement,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge),retract(name(_)),assert(name(Merge)).
 match([wer,bist,du],['Habe ich das nicht schon erwähnt? Ich bin Dr. Pörksi und helfe Ihnen bei Ihren Fragen gerne weiter.']) :- not(name('Gast')).
 match([wer,bin,ich],['Wer Sie sind? Sie sind ein Hilfesuchender. Vielleicht ist Ihnen ja auch nur langweilig und anstatt zu lernen, unterhalten Sie sich lieber mit mir.
@@ -551,7 +534,7 @@ match([was,bringt,_,studium],['Durch dieses sehr empfehlenswerte Studium werden 
 	Medienkonzeption und -produktion
 	Medienmanagement,
 	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
-match([welche,_,habe,_,nach,dem,studium],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
+match([nach,dem,studium],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
 	Öffentlichkeitsarbeit,
 	(Fach)Journalismus,
 	Verlage,
@@ -568,6 +551,9 @@ match([wie,lange,dauert],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semes
 match([wann,_,das,studium],['Das Studium der Medienwissenschaft können Sie jedes Wintersemester an der Eliteuniversität Tübingen beginnen.']).
 match([was,ist,der,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
 match([gibt,es,einen,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
+match([anwesenheitspflicht],['Grundsätzlich ist das von Veranstaltung zu Veranstaltung unterschiedlich. Aber im besten Falle verpassen Sie nichts, denn das Feld der Medienwissenschaft ist eifach zu interessant um etwas zu verpassen.']).
+match([anwesend,sein],['Grundsätzlich ist das von Veranstaltung zu Veranstaltung unterschiedlich. Aber im besten Falle verpassen Sie nichts, denn das Feld der Medienwissenschaft ist eifach zu interessant um etwas zu verpassen.']).
+match([studentensekretariat],['Das Studentensekretariat finden Sie in der Wilhelmstraße 11. Dort wird Ihnen Montags 13.00 Uhr - 15.00 Uhr und Dienstags bis Freitags 08.30 Uhr - 11.30 Uhr gerne jemand weiter helfen.']).
 
 % Fragen zu Praktikum
 match([muss,_,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlenswerte.
@@ -587,13 +573,14 @@ match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktio
 	Prüfungsanmeldung
 	Notenspiegel
 	und vieles mehr schau einfach mal vorbei unter http://campus.verwaltung.uni-tuebingen.de/index2.html']).
-
+match([stunden],['Das finden Sie über Campus heraus. Unter http://campus.verwaltung.uni-tuebingen.de/index2.html können Sie mit Ihren Zugangsdaten sich einfach Ihren Studnenplan erstellen']).
+match([semesterferien],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
 
 % Fragen zum Projektstudium
 %Projektstudium
 match([was,ist,_,projektstudium],['Im Modulhandbuch finden Sie dieses Modul unter dem Namen P1. Im Rahmen des Projektstudiums planen und realisieren die Sie eigenverantwortlich ein kleineres Medienprojekt bzw. Werkstück. Das Medium dieses Projekts ist dabei frei wählbar.']).
 match([wo,_,_,_,projektstudium,_],['Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
-match([wer,betreut,_,projektstudium],['Das können Sie selber wählen. 
+match([wer,betreut,_,projektstudium],['Das können Sie selber wählen.
 Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
 
 %essen
@@ -682,10 +669,10 @@ match([the,universe,and,everything],['42, ist doch klar!']).
 
 %gibt ein kleines problem mit der anfrage, muss gefixt werden
 %6.7.16 / FL
-%match([wie,viele,ects,punkte,_,man,für,die,X],['Die', X, gibt, Y]):-
-%	vorlesung(_,X,Y);seminar(_,X,Y);lehrredaktion(_,X,Y).
-%match([wie,viele,ects,punkte,_,man,für,die,Z],['Die', Z, gibt, Y]):-
-%	vorlesung(Z,_,Y); seminar(Z,_,Y);lehrredaktion(Z,_,Y).
+match([ects,punkte,_,_,für,die,X],['Für die', Z, 'gibt es', Y]):-
+	lehrredaktion(Z,X,Y);vorlesung(Z,X,Y);seminar(Z,X,Y).
+%match([ects,punkte,_,_,für,die,Z],[die, X,Z, gibt, Y]):-
+%	lehrredaktion(Z,X,Y);vorlesung(Z,X,Y);seminar(Z,X,Y).
 
 match([wie,viele,ects,punkte,brauche,ich],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
 match([wie,viele,ects,punkte,braucht,man],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).

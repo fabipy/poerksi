@@ -8,7 +8,7 @@ lastInput('No Last Input Yet').
 lastAnswer(['No Last Answer Yet.']).
 
 :- dynamic poerksi/1.
-poerksi('Dr.Pörksi: ').
+poerksi('Dr.Pörksi:  ').
 
 % start / exit the chatbot
 pörksi :- ansi_format([bg(yellow)], 'Hallo ich bin Dr. Pörksi. Gerne dürfen Sie mir so viele Fragen stellen, wie Sie nur möchten und ich werde versuchen diese zu beantworten. Denn für Fragen hinsichtlich der Universität oder der zu belgenden Vorlesungen stehe ich Ihnen gerne zur Seite. Aber auch allgemeinen Anliegen bezüglich des Studienalltags nehme ich mich gerne an.'
@@ -25,7 +25,7 @@ pörksi(Input) :-
   write('Dr.Pörksi: Jetzt fangen Sie aber an sich zu wiederholen. Vielleicht gibt es ja noch etwas dass Sie wissen möchten?'),
   retractall(lastAnswer(_)),assert(lastAnswer(['Jetzt fangen Sie aber an sich zu wiederholen. Vielleicht gibt es ja noch etwas dass Sie wissen möchten?'])),
   nl,read_sentence(Input1),!,pörksi(Input1).
- 
+
 % positive answers on questions
 pörksi(Input) :-
   poerksi(Z),write(Z),
@@ -37,7 +37,7 @@ pörksi(Input) :-
   Input = [witzig|_];Input = [sehr,witzig|_];Input = [juhu|_];Input = [richtig|_]),
   retract(lastInput(_)),assert(lastInput(Input)),
   retractall(lastAnswer(_)),assert(lastAnswer(['Forgotten Last Answer.'])),
-  Answers = 
+  Answers =
   ['Wunderbar.',
   'Sehr schön.',
   'Toll.',
@@ -60,7 +60,7 @@ pörksi(Input) :-
   Input = [soso|_];Input = [nöööö|_]),
   retract(lastInput(_)),assert(lastInput(Input)),
   retractall(lastAnswer(_)),assert(lastAnswer(['Forgotten Last Answer.'])),
-  Answers = 
+  Answers =
   ['Aha',
   'Hmm..',
   'Soso..',
@@ -76,8 +76,8 @@ pörksi(Input) :-
 pörksi(Input) :-
   retract(lastInput(_)),assert(lastInput(Input)),
   ntuples(Input,_,0).
-  
-ntuples([],_,_) :- 
+
+ntuples([],_,_) :-
 	retract(poerksi(_)),assert(poerksi('Dr.Pörksi: ')),
 	nl,
 	read_sentence(Input1),!,
@@ -95,10 +95,10 @@ ntuples(List,OtherList,Pos) :-
 	NewPos =< Length,
 	ntuples(List,NewList,NewPos),!.
 
-ntuples(List,_,_) :-	
+ntuples(List,_,_) :-
 	List = [_|T],
 	ntuples(T,[],0).
-  
+
 % Output after User-Input
 reply([Head|Tail]) :- write(user_output,Head), write(user_output,' '),
 	               reply(Tail).
