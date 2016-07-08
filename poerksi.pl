@@ -712,8 +712,8 @@ match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind
 match([arschloch],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']).
 match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
 match([du,_],['Also bitte! Ich bin Professor und möchte gesiezt werden.']).
-match([sie,_],['Okay, dass macht es nicht viel besser.
-Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
+%match([sie,_],['Okay, dass macht es nicht viel besser.
+%Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
 
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
 match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
