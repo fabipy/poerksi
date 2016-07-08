@@ -678,6 +678,7 @@ match([frage,nach,dem,leben],['42, ist doch klar!']).
 match([antwort,auf,alles],['42, ist doch klar!']).
 match([the,universe,and,everything],['42, ist doch klar!']).
 
+%Informationen zu Vorlesungen und Seminaren
 
 %gibt ein kleines problem mit der anfrage, muss gefixt werden
 %6.7.16 / FL
