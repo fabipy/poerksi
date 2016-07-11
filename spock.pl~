@@ -3,34 +3,32 @@
 %-------------------------------------------------
 %    EasterEgg --- möchtst du ein Spiel spielen
 %-------------------------------------------------
-
-weapon --> [stein].
-weapon --> [papier].
-weapon --> [schere].
-weapon --> [echse].
-weapon --> [spock].
-stein --> [stein].
-papier --> [papier].
-schere --> [schere].
-echse --> [echse].
-spock --> [spock].
+weapon(stein).
+weapon(papier).
+weapon(schere).
+weapon(echse).
+weapon(spock).
 
 %Ausführungen win/2
-win --> schere, papier.         % schere cuts papier
-win --> schere, echse.        % schere decapitates echse
-win --> stein, echse.            % stein crushes echse
-win --> stein, schere.          % stein crushes scissor
-win --> papier, stein.	       % papier covers stein
-win --> papier, spock.	       % papier disproves Spock
-win --> echse, papier.           % echse eats papier
-win --> echse, spock.           % echse poisons Spock
-win --> spock, stein.	       % Spock vaporizes stein
-win --> spock, schere.          % Spock smashes schere
+win(schere, papier).         % Scissors cuts paper
+win(schere, echse).        % scissors decapitates lizard
+
+win(stein, echse).            % rock crushes lizard
+win(stein, scissors).          % rock crushes scissor
+
+win(papier, stein).	       % paper covers rock
+win(paper, spock).	       % paper disproves Spock
+
+win(echse, papier).           % lizzard eats paper
+win(esche, spock).           % lizard poisons Spock
+
+win(spock, stein).	       % Spock vaporizes rock
+win(spock, schere).          % Spock smashes scissors
 
 
 %computer_choice/1
 computer_choice(R):-
-    random_member(R, [schere, papier, stein, echse, spock]),
+    random_member(R, [scissors, paper, rock, lizard, spock]),
     write('Dr.Pörksis Wahl: '),
     writeln(R).
 
@@ -46,7 +44,7 @@ result(X,R):- win(R,X),
 %evaluate/1
 %und play/0 mit read/1
 evaluate(X):-
-    not(weapon([X])),
+    not(weapon(X)),
     write('Dieses Objekt können Sie leider nicht nehmen.'),nl,
     spielen.
 
@@ -54,6 +52,6 @@ evaluate(X):-
     computer_choice(R),
     result(R, X).
 
-spiel :- read(X), evaluate(X).
+spielen :- read(X), evaluate(X).
 
 
