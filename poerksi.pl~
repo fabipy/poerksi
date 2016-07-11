@@ -1,5 +1,6 @@
 % PROLOG
 :- include('frameworkpoerksi.pl').
+:- include('spock.pl').
 :- encoding(iso_latin_1).
 
 %---------------------------------------
@@ -467,11 +468,14 @@ match([was,_,_,_,X,profil],['Im',X,'Profil liegt der Schwerpunkt auf',Y]):-profi
 %match([servus],['Grüezi, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 %Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 
-match([hallo],['Hallo lieber Nutzer.']).
-match([hi],['Hey.']).
+match([hallo],['Hallo lieber Nutzer.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
+match([hi],['Hey.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
 match([servus],['Grüezi und Hallo.']).
 match([guten,X],['Ihnen auch einen guten',X,'.']).
 match([gute,_],["Ebenso. Machen Sie's gut."]).
+
+match([haha],["Hahaha."]).
+match([hahaha],["Sehr witzig."]).
 
 %match([ja],['Was meinen Sie?']).
 %match([nein],['Was genau meinen Sie?']).
@@ -558,10 +562,14 @@ match([anwesend,sein],['Grundsätzlich ist das von Veranstaltung zu Veranstaltung
 match([studentensekretariat],['Das Studentensekretariat finden Sie in der Wilhelmstraße 11. Dort wird Ihnen Montags 13.00 Uhr - 15.00 Uhr und Dienstags bis Freitags 08.30 Uhr - 11.30 Uhr gerne jemand weiter helfen.']).
 
 % Fragen zu Praktikum
-match([muss,_,ein,praktikum,_],['Ja ein Praktikum ist auf jeden Fall empfehlenswerte.
+match([soll,_,_,praktikum,machen],['Ja ein Praktikum ist auf jeden Fall empfehlenswert.
 In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
-match([wann,_,_,_,praktikum,_],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
-match([wie,lange,muss,ein,praktikum,_],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
+match([muss,_,_,praktikum,machen],['Ja ein Praktikum ist auf jeden Fall empfehlenswert.
+In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
+match([kann,_,_,praktikum,machen],['Ja ein Praktikum ist auf jeden Fall empfehlenswert.
+In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
+match([wann,_,_,_,praktikum],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
+match([wie,lange,_,ein,praktikum],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
 match([_,finde,ich,einen,praktikumsplatz],['In unserem Insitut gibt es eine Praktikumsberatung. Ihre Ansprechpartnerin ist Pia Fruth. Des weiteren gibt es Aushänge am Schwarzen Brett.']).
 match([wer,_,_,ansprechpartner,für,prakikas],['Ansprechpartnerin für Praktkas ist Pia Fruth']).
 
@@ -643,6 +651,11 @@ match([emailadresse,von,X],['Die Email von',Name,'lautet',Email]) :- elaborate_n
 match([X,emailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
 match([X,_,emailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
 
+match([mailadresse,von,X],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
+match([X,mailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
+match([X,_,mailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
+
+
 match([telefonnummer,von,X],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
 match([X,telefonnummer],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
 match([X,_,telefonnummer],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
@@ -701,6 +714,10 @@ match([wo,_,_,hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich n
 %     Sonderfälle
 % ------------------------------------------------------------------------
 
+
+%Spiel
+match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier mï¿½chte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wï¿½"), spielen.
+
 % Beleidigungen
 match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für ein Studium der Medienwissenschaft geeignet.']).
 match([arschloch],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']).
@@ -718,11 +735,9 @@ match([wer,hat,_,programmiert],['Ich wurde von drei Medienwissenschaftstudierend
 match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 
 %Fragen zum beenden
-match([wie,beende,ich,_],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,kann,_,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,beendet,man,_],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,kann,_,_,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,beendet,_],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([beende],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([beendet],['Du beendest mich durch die Eingabe: "tschüss"']).
 
 %Wie viele Fragen kannst du beeantworten
 match([wie,viele,fragen,kannst,du,beantworten],['Das hängt ganz von Ihren Fragen ab.']).

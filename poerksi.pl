@@ -1,5 +1,6 @@
 % PROLOG
 :- include('frameworkpoerksi.pl').
+:- include('spock.pl').
 :- encoding(iso_latin_1).
 
 %---------------------------------------
@@ -650,6 +651,11 @@ match([emailadresse,von,X],['Die Email von',Name,'lautet',Email]) :- elaborate_n
 match([X,emailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
 match([X,_,emailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
 
+match([mailadresse,von,X],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
+match([X,mailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
+match([X,_,mailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
+
+
 match([telefonnummer,von,X],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
 match([X,telefonnummer],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
 match([X,_,telefonnummer],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
@@ -708,6 +714,10 @@ match([wo,_,_,hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich n
 %     Sonderfälle
 % ------------------------------------------------------------------------
 
+
+%Spiel
+match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: Stein, Papier, Schere, Echse, Spock."), spielen.
+
 % Beleidigungen
 match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für ein Studium der Medienwissenschaft geeignet.']).
 match([arschloch],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']).
@@ -725,11 +735,9 @@ match([wer,hat,_,programmiert],['Ich wurde von drei Medienwissenschaftstudierend
 match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 
 %Fragen zum beenden
-match([wie,beende,ich,_],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,kann,_,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,beendet,man,_],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,kann,_,_,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,beendet,_],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([beende],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([beendet],['Du beendest mich durch die Eingabe: "tschüss"']).
 
 %Wie viele Fragen kannst du beeantworten
 match([wie,viele,fragen,kannst,du,beantworten],['Das hängt ganz von Ihren Fragen ab.']).
