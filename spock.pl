@@ -33,11 +33,14 @@ computer_choice(R):-
     writeln(R).
 
 %result/2
-result(X,X):- write('Gleichstand. Glück gehabt.  Versuchen Sie es noch einmal.').
+result(X,X):- ansi_format([bg(yellow)], 'Gleichstand. Glück gehabt.
+Versuchen Sie es noch einmal.', []),nl.
 result(X,R):- win(X,R),
-	write('Sie haben gewonnen!  Mal sehen, ob das für Sie so weiter geht!').
+	ansi_format([bg(yellow)], 'Sie haben gewonnen!
+	Mal sehen, ob das für Sie so weiter geht!', []).
 result(X,R):- win(R,X),
-	write('Sie haben leider verloren!  Das leider ist hier ausschließlich eine höflich Floskel meinerseits!').
+	ansi_format([bg(yellow)],'Sie haben leider verloren!
+	Das leider ist hier ausschließlich eine höflich Floskel meinerseits!', []).
 
 
 %2c+d

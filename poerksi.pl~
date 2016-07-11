@@ -716,7 +716,7 @@ match([wo,_,_,hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich n
 
 
 %Spiel
-match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier mï¿½chte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wï¿½"), spielen.
+match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: Stein, Papier, Schere, Echse, Spock. Und beenden Sie Ihre Eingabe mit einem Punkt."), nl, spielen.
 
 % Beleidigungen
 match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für ein Studium der Medienwissenschaft geeignet.']).
@@ -752,5 +752,16 @@ match([_,wiederholen,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viel
 match([],[]).
 
 % last resort (if user's input can't be matched otherwise)
-% match(_E,X) :- Answers = [['Wussten Sie, dass es mich erst seit Juni 2016 gibt? Es kommt mir so vor als wäre es gestern gewesen.'],['Erzählen Sie mehr.'],['Haben Sie vielleicht noch andere Fragen?'],['Es ist schön sich mit jemanden zu unterhalten.'],['Vielleicht haben Sie ja noch ein dringlicheres Anliegen?'],['Vielleicht haben Sie ja noch ein wichtigeres Anliegen?'],['An Ihrer Ausdrucksweise müssen Sie noch etwas feilen. Versuchen Sie es doch ein wenig studentischer.']], random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+% match(_E,X) :- Answers = [['Wussten Sie, dass es mich erst seit Juni
+% 2016 gibt? Es kommt mir so vor als wäre es gestern
+% gewesen.'],['Erzählen Sie mehr.'],['Haben Sie vielleicht noch andere
+% Fragen?'],['Es ist schön sich mit jemanden zu
+% unterhalten.'],['Vielleicht haben Sie ja noch ein dringlicheres
+% Anliegen?'],['Vielleicht haben Sie ja noch ein wichtigeres
+% Anliegen?'],['An Ihrer Ausdrucksweise müssen Sie noch etwas feilen.
+% Versuchen Sie es doch ein wenig studentischer.'],['Ja das ist
+% eine gute Anfrage. Aber bevor ich mich dieser annehmen möchte können
+% wir ja ein Spielchen spielen. Sie starten es mit der Eingabe
+% spielen']], random_permutation(Answers,Random_Answers), Random_Answers
+% = [X|_].
 match(_,[]).
