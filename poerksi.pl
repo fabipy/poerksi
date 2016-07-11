@@ -337,24 +337,26 @@ get_person_job(ID,Job) :-
 
 %Basisstudium
 
-%vorlesung/3 (Titel,Modulbezeichnung,ECTS)
-vorlesung('Einführung in die Medienwissenschaft I',g1,'8 ECTS').
-vorlesung('Einführung in die Medienwissenschaft II',g2,'8 ECTS').
-vorlesung('Forschung und Praxisfelder',g3,'4 ECTS').
-vorlesung('Einführung in die Methoden der Medienforschung',f1,'8 ECTS').
+%vorlesung/3 (Titel,ECTS,Modulbezeichnung,Kürzel)
+vorlesung('G1 - Einführung in die Medienwissenschaft I',8,[einführung,in,die,medienwissenschaft,i],g1).
+vorlesung('G2 - Einführung in die Medienwissenschaft II',8,[einführung,in,die,medienwissenschaft,ii],g2).
+vorlesung('G3 - Forschung und Praxisfelder',4,[forschung,und,praxisfelder],g3).
+vorlesung('F1 - Einführung in die Methoden der Medienforschung',8,[einführung,in,die,methoden,der,medienforschung],f1).
 
-%seminar/3 (Titel,Modulbezeichnung,ECTS)
-seminar('Einführung in Theorien der Medienforschung',f2,'8 ECTS').
+%seminar/3 (Titel,ECTS,Modulbezeichnung,Kürzel)
+seminar('F2 - Einführung in die Theorien der Medienforschung',8,[einführung,in,die,theorien,der,medienforschung],f2).
 
-%lehrredaktion/3 (Titel,Modulbezeichnung,ECTS)
-lehrredaktion('Print & Onlinemedien',l1,'6 ECTS').
-lehrredaktion('Hörfunk',l2,'6 ECTS').
-lehrredaktion('Hypermediasysteme',l3,'6 ECTS').
-lehrredaktion('Film und Fernsehen',l4,'6 ECTS').
-lehrredaktion('Schreibtraining',l5,'6 ECTS').
+%lehrredaktion/3 (Titel,ECTS,Modulbezeichnung,Kürzel)
+lehrredaktion('L1 - Print & Onlinemedien',6,[print,und,onlinemedien],l1).
+lehrredaktion('L2 - Hörfunk',6,[hörfunk],l2).
+lehrredaktion('L3 - Hypermediasysteme',6,[hypermediasysteme],l3).
+lehrredaktion('L4 - Film und Fernsehen',6,[film,und,fernsehen],l4).
+lehrredaktion('L5 - Schreibtraining',6,[schreibtraining],l5).
 
-%veranstaltung/3 (Name,Modul,ECTS)
-veranstaltung(Name,Modul,Ectspunkte) :- vorlesung(Name,Modul,Ectspunkte); seminar(Name,Modul,Ectspunkte);lehrredaktion(Name,Modul,Ectspunkte).
+%veranstaltung/3 (Titel,ECTS,Modulbezeichnung,Kürzel)
+veranstaltung(Titel,ECTS,Modulbezeichnung,Kürzel) :- vorlesung(Titel,ECTS,Modulbezeichnung,Kürzel);
+													 seminar(Titel,ECTS,Modulbezeichnung,Kürzel);
+													 lehrredaktion(Titel,ECTS,Modulbezeichnung,Kürzel).
 
 
 %Veranstaltungen Profilbezogen verpro(profil,modul,name).
@@ -438,7 +440,7 @@ match([wann,kann,_,bei,_,X,_,_,sprechstunde],['Leider bin ich nicht allwissend. 
 match([_,vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
 match([_,seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
 match([_,lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
-match([_,veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_),X),print_list(X,_).
+match([_,veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_,_),X),print_list(X,_).
 match([wer,unterrichtet],['Es unterscheidet sich sehr von Semester zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
 match([wer,macht],['Es unterscheidet sich sehr von Semester zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
 match([wann,findet,_,_],['Es unterscheidet sich immer sehr von Semester zu Semester, daher kann ich die Frage leider nicht beantworten.']).
@@ -682,12 +684,15 @@ match([the,universe,and,everything],['42, ist doch klar!']).
 
 %Informationen zu Vorlesungen und Seminaren
 
+match([ects,punkte,_,_,für,die,X],['Für die',Z,'gibt es',Y]):-
+	lehrredaktion(Z,X,Y);vorlesung(Z,X,Y);seminar(Z,X,Y).
+	
 %gibt ein kleines problem mit der anfrage, muss gefixt werden
 %6.7.16 / FL
-match([ects,punkte,_,_,für,die,X],['Für die', Z, 'gibt es', Y]):-
-	lehrredaktion(Z,X,Y);vorlesung(Z,X,Y);seminar(Z,X,Y).
-%match([ects,punkte,_,_,für,die,Z],[die, X,Z, gibt, Y]):-
-%	lehrredaktion(Z,X,Y);vorlesung(Z,X,Y);seminar(Z,X,Y).
+%match([ects,punkte,_,_,für,Modulbezeichnung],[Titel,'gibt',ECTS,'ECTS Punkte']):-
+%	veranstaltung(Titel,ECTS,Modulbezeichnung,_).
+%match([ects,punkte,_,_,für,Z],[Z,'gibt',Y]):-
+%	lehrredaktion(Z,_,Y);vorlesung(Z,_,Y);seminar(Z,_,Y).
 
 match([wie,viele,ects,punkte,brauche,ich],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
 match([wie,viele,ects,punkte,braucht,man],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
