@@ -473,6 +473,9 @@ match([servus],['Grüezi und Hallo.']).
 match([guten,X],['Ihnen auch einen guten',X,'.']).
 match([gute,_],["Ebenso. Machen Sie's gut."]).
 
+match([haha],["Hahaha."]).
+match([hahaha],["Sehr witzig."]).
+
 %match([ja],['Was meinen Sie?']).
 %match([nein],['Was genau meinen Sie?']).
 match([danke],['Immer wieder gerne.']).
