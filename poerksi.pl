@@ -441,8 +441,9 @@ match([_,veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Ve
 match([wer,unterrichtet],['Es unterscheidet sich sehr von Semester zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
 match([wer,macht],['Es unterscheidet sich sehr von Semester zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
 match([wann,findet,_,_],['Es unterscheidet sich immer sehr von Semester zu Semester, daher kann ich die Frage leider nicht beantworten.']).
-
 match([welche,veranstaltungsarten],['An unserer Universität können Sie an Vorlesungen,Seminare und Lehrredaktionen teilnehmen.']).
+
+match([nebenfach,_],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
@@ -466,10 +467,10 @@ match([was,_,_,_,X,profil],['Im',X,'Profil liegt der Schwerpunkt auf',Y]):-profi
 %match([servus],['Grüezi, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
 %Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
 
-match([hallo],['Hallo.']).
-match([hi],['Hey.']).
-match([servus],['Grüezi.']).
-match([guten,X],['Guten',X,'auch.']).
+match([hallo],['Hallo lieber Nutzer.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
+match([hi],['Hey.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
+match([servus],['Grüezi und Hallo.']).
+match([guten,X],['Ihnen auch einen guten',X,'.']).
 match([gute,_],["Ebenso. Machen Sie's gut."]).
 
 %match([ja],['Was meinen Sie?']).
@@ -487,9 +488,12 @@ match([wer,bist,du],['Es ist schön Sie kennenzulernen. Haben Sie denn auch Frage
 Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
 Aber genug philosophiert, wer Sind Sie denn?
 Wie ist denn Ihr Name?'),nl,read_sentence(X),last(X,LastElement),atom_chars(LastElement,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge),retract(name(_)),assert(name(Merge)).
+
 match([wer,bist,du],['Habe ich das nicht schon erwähnt? Ich bin Dr. Pörksi und helfe Ihnen bei Ihren Fragen gerne weiter.']) :- not(name('Gast')).
+
 match([wer,bin,ich],['Wer Sie sind? Sie sind ein Hilfesuchender. Vielleicht ist Ihnen ja auch nur langweilig und anstatt zu lernen, unterhalten Sie sich lieber mit mir.
 Ersteres ist vollkommen in Ordnung. Letzteres könnte problematisch sein.']) :-  name('Gast').
+
 match([wer,bin,ich],['Ihr Name ist',X,'und ich vermute mal, Sie sind Student hier.
 Vielleicht sind Sie aber auch ein Professor, der sich als Student ausgibt?']) :- not(name('Gast')),name(X).
 
@@ -497,6 +501,7 @@ match([ich,heiße,X],['Schön Sie kennenzulernen',Merge,'und ein herzliches Willko
 match([ich,heiße,X],['Dann werde ich Sie ab sofort',Merge,'nennen.']) :- not(name('Gast')),atom_chars(X,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge),retract(name(_)),assert(name(Merge)).
 
 match([wie,heiße,ich],['Schön Sie kennen zu lernen',LastElement]) :- name('Gast'),write('Ich kenne Ihren Namen leider noch nicht. Wie heißen Sie denn?'),nl,read_sentence(X),last(X,LastElement),retract(name(_)),assert(name(LastElement)).
+
 match([wie,heiße,ich],['Vergesslichkeit unter Studenten? Als ich so alt war wie Sie gab es so etwas noch nicht.
 Nun denken Sie mal stark nach, Ihr Name wird Ihnen schon wieder einfallen.']) :- not(name('Gast')).
 
@@ -504,15 +509,12 @@ match([wie,gehts],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener
 match([wie,geht,es,_],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt. Und selbst?']).
 
 match([was,geht],['Leider nicht viel wenn man keine Beine hat.']).
+
 match([was,geht,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :- write('Normalerweise ist mir so ein Sprachgebrauch nicht geläufig, aber mir geht es prächtig. Und was geht bei Ihnen?'),nl,read_sentence(_).
 match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
 
 match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber in meiner Muttersprache. Das geht einfach schneller und ich kann Ihnen mehr von meinem Wissen weiter geben.']).
 
-
-
-%gram-engl
-match([fragee|_],['I speak english very well. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber in meiner Muttersprache. Das geht einfach schneller und ich kann Ihnen mehr von meinem Wissen weiter geben.']).
 
 match([wie,_,das,wetter],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
 
@@ -717,9 +719,10 @@ match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im
 
 %Fragen zum beenden
 match([wie,beende,ich,_],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,kann,ich,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([wie,kann,_,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
 match([wie,beendet,man,_],['Du beendest mich durch die Eingabe: "tschüss"']).
-match([wie,kann,man,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([wie,kann,_,_,_,beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([wie,beendet,_],['Du beendest mich durch die Eingabe: "tschüss"']).
 
 %Wie viele Fragen kannst du beeantworten
 match([wie,viele,fragen,kannst,du,beantworten],['Das hängt ganz von Ihren Fragen ab.']).
