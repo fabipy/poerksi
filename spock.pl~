@@ -28,9 +28,7 @@ win(spock, schere).          % Spock smashes scissors
 
 %computer_choice/1
 computer_choice(R):-
-	findall(X,weapon(X),L),
-    random_permutation(L,Random),
-    Random=[R|_],
+    random_member(R, [schere, papier, stein, echse, spock]),
     write('Dr.Pörksis Wahl: '),
     writeln(R).
 
