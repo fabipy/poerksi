@@ -389,6 +389,7 @@ beleid --> [spasti].
 beleid -->[depp].
 beleid -->[penner].
 beleid -->[arsch].
+beleid -->[hurensohn].
 beleid -->[arschloch].
 beleid -->[knalltüte].
 beleid -->[lappen].
@@ -569,6 +570,14 @@ match([was,bringt,_,studium],['Durch dieses sehr empfehlenswerte Studium werden 
 	Medienkonzeption und -produktion
 	Medienmanagement,
 	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
+match([abschluss,anfangen],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
+	Öffentlichkeitsarbeit,
+	(Fach)Journalismus,
+	Verlage,
+	Markt-und Medienforschung,
+	Medienkonzeption und -produktion
+	Medienmanagement,
+	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
 match([nach,dem,studium],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
 	Öffentlichkeitsarbeit,
 	(Fach)Journalismus,
@@ -643,7 +652,51 @@ match([wo,ist,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und s
 match([wo,ist,der,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([wo,befindet,sich,der,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([wo,befindet,sich,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
-match([in,welchem,gebäude,ist,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
+match([in,welchem,gebäude,ist,raum,X],['Dazu gehen sie einfachHallo ich bin Dr. Pörksi. Gerne dürfen Sie mir so viele Fragen stellen, wie Sie nur möchten und ich werde versuchen diese zu beantworten. Denn für Fragen hinsichtlich der Universität oder der zu belgenden Vorlesungen stehe ich Ihnen gerne zur Seite. Aber auch allgemeinen Anliegen bezüglich des Studienalltags nehme ich mich gerne an.
+User:       hallo
+Dr.Pörksi:  Hallo lieber Nutzer.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.
+User:       was unterrichten sie
+Dr.Pörksi:
+User:       wer sind sie eigentlich
+Dr.Pörksi:
+User:       wer sind sie
+Dr.Pörksi:
+User:       wer bist du
+Dr.Pörksi: Ich bin eine künstliche Intelligenz, die ratlosen Studenten weiterhelfen soll. Mich gibt es aber noch gar nicht so lange hier am Institut.
+Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
+Aber genug philosophiert, wer Sind Sie denn?
+Wie ist denn Ihr Name?
+User:       blah
+Es ist schön Sie kennenzulernen. Haben Sie denn auch Fragen an mich mitgebracht Blah oder irgendein anderes Anliegen?
+User:       welche professoren gibt es
+Dr.Pörksi: Folgende Professoren lehren in Tübingen am Institut für Medienwissenschaft:
+Herr Prof. Dr. Jürg,Häusermann
+Herr Prof. Dr. Claus Kleber
+Frau Prof. Dr. Susanne Marschall
+Herr Prof. Dr. Klaus Sachs-Hombach
+Herr Prof. Dr. Bernhard Pörksen
+Frau Prof. Dr. Tanja,Thomas
+Herr Prof. Dr. Guido Zurstiege
+Ich hoffe ich konnte Ihnen weiterhelfen.
+User:       wie lautet die email adresse von bernhard pörksen
+Dr.Pörksi:
+User:       wie lautet die email adresse von pörksen
+Dr.Pörksi:
+User:       email von pörksen
+Dr.Pörksi: Die Email von Herr Prof. Dr. Bernhard Pörksen lautet bernhard.poerksen@uni-tuebingen.de
+User:       telefonnummer von tanja thomas
+Dr.Pörksi: Die Telefonnumer von Frau Prof. Dr. Tanja Thomas lautet 07071 29-76816
+User:       wer ist claus kleber
+Dr.Pörksi: Name: Herr Prof. Dr. Claus Kleber
+Raum: 209
+Email: claus.kleber@uni-tuebingen.de
+Telefon: keine Angabe
+Bereich/Aufgabe: Jouranlistische Themen und Berufspraxis in Film und Fernsehen
+Was wollen Sie noch wissen?
+User:       wie kann man das gespräch beenden
+Dr.Pörksi: Du beendest mich durch die Eingabe: "tschüss"
+User:       tschüss
+Dr.Pörksi: Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet. in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 
 match([wo,ist,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
 match([wo,ist,der,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
@@ -762,6 +815,7 @@ match(Input,['Also bitte! Ich bin Professor und möchte gesiezt
 werden.']):-beleidigung(Input,[]).
 match(Input,['Okay, dass macht es nicht viel besser.Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']):-beleidigungf(Input,[]).
 match([sie,wissen,nicht],['Das tut mir leid, wenn ich nicht alle Ihre Fragen beantworten kann. Vielleicht versuchen Sie es mit einer anderen Frage.']).
+match([damit,kann,ich,nichts,anfangen],['Mhh ich hoffe, ich bin bei Ihrer nächsten Eingabe etwas hilfreicher. Was möchten Sie denn noch wissen?']).
 
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
 match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
