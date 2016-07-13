@@ -369,8 +369,8 @@ anrede -->[du,bist].
 anredef -->[sie].
 anredef -->[sie,sind].
 beleid -->[idiot].
-beleid --> [spast].
-beleid --> [spasti].
+beleid -->[spast].
+beleid -->[spasti].
 beleid -->[depp].
 beleid -->[penner].
 beleid -->[arsch].
@@ -381,7 +381,7 @@ beleid -->[lappen].
 beleid -->[bescheuert].
 beleid -->[dumm].
 artikel --> [ein].
-
+artikel --> [eine].
 
 
 zufallsantwort('Wussten Sie, dass es mich erst seit Juni
@@ -472,11 +472,15 @@ match([wann,hat,_,X,sprechstunde],['Leider bin ich nicht allwissend. Da sich die
 match([wann,kann,_,bei,X,_,_,sprechstunde],['Leider bin ich nicht allwissend. Da sich die Termine für die Sprechstunden von Semester zu Semester unterscheiden kann ich Ihnen leider nicht sagen, wann',Name,'seine Sprechstunde hat.'])  :- person_name_search(X,ID),get_person_name(ID,Name).
 match([wann,kann,_,bei,_,X,_,_,sprechstunde],['Leider bin ich nicht allwissend. Da sich die Termine für die Sprechstunden von Semester zu Semester unterscheiden kann ich Ihnen leider nicht sagen, wann',Name,'seine Sprechstunde hat.'])  :- person_name_search(X,ID),get_person_name(ID,Name).
 
+
+%-----------------------------------------------------------------
 %Vorlesungsinformationen/3 (Vorlesungsname, Semesterbelegung,
-match([_,vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
-match([_,seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
-match([_,lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
-match([_,veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_,_),X),print_list(X,_).
+%-----------------------------------------------------------------
+match([vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_,_),X),print_list(X,_).
+match([seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_,_),X),print_list(X,_).
+match([lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_,_),X),print_list(X,_).
+match([veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_,_),X),print_list(X,_).
+
 match([wer,unterrichtet],['Es unterscheidet sich sehr von Semester zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
 match([wer,macht],['Es unterscheidet sich sehr von Semester zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
 match([wann,findet,_,_],['Es unterscheidet sich immer sehr von Semester zu Semester, daher kann ich die Frage leider nicht beantworten.']).
@@ -489,8 +493,8 @@ match([nebenfach,_],['In Tübingen können Sie allerlei Studiengänge als Nebenfach
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
 match([welche,profile],['Sie können das Profil Eins: Konzeption digitaler Medien oder das Profil Zwei: Praxisfelder der Medienkommunikation wählen. Eines der Beiden werden Sie dann ab dem dritten Semester belegen.']).
-match([profil,X],['Denn im Profil',X,' liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(_,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
-match([X,profil],['Denn im',X,'Profil liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(_,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
+match([profil,X],['Denn im Profil',X,' liegt der Schwerpunkt auf',Y]):-profil(X,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
+match([X,profil],['Denn im',X,'Profil liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(X,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
 
 %-------------------------------------------------
 %    Smaltalk
@@ -703,7 +707,7 @@ match([in,welchem,gebäude,ist,raum,X],['Welcher Raum soll das sein? Tut mir leid
 %---------------------------------
 %Info zu Personen
 %---------------------------------
-match([wer,leitet,institut],['Bei uns leitet jeder. Auch Sie, wenn Sie sich bemühen.']).
+match([wer,leitet,_,institut],['Bei uns leitet jeder. Auch Sie, wenn Sie sich bemühen.']).
 match([wer,ist,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
 match([infos,zu,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
 match([info,zu,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
@@ -767,15 +771,11 @@ match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Sc
 % Informationen zu Vorlesungen und Seminaren
 % ----------------------------------------------------
 
-match([ects,punkte,_,_,für,die,X],['Für die',Z,'gibt es',Y]):-
-	lehrredaktion(Z,X,Y);vorlesung(Z,X,Y);seminar(Z,X,Y).
+% match([ects,punkte,_,_,für,die,Y],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+%	lehrredaktion(Z,X,Y,_);vorlesung(Z,X,Y,_);seminar(Z,X,Y,_).
+match([ects,punkte,_,_,für,die,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
 
-%gibt ein kleines problem mit der anfrage, muss gefixt werden
-%6.7.16 / FL
-%match([ects,punkte,_,_,für,Modulbezeichnung],[Titel,'gibt',ECTS,'ECTS Punkte']):-
-%	veranstaltung(Titel,ECTS,Modulbezeichnung,_).
-%match([ects,punkte,_,_,für,Z],[Z,'gibt',Y]):-
-%	lehrredaktion(Z,_,Y);vorlesung(Z,_,Y);seminar(Z,_,Y).
 
 match([wie,viele,ects,punkte,brauche,ich],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
 match([wie,viele,ects,punkte,braucht,man],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
@@ -841,7 +841,6 @@ match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
 % ----------------------------------------------------
 % Fragen zu Pörksi
 % ----------------------------------------------------
-match([wie,alt,_,_],['Es gibt mich erst seit Juni 2016!']).
 match([wer,hat,_,programmiert],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([du,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
@@ -849,6 +848,7 @@ match([sie,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nic
 match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([alt],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
+match([alter],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
 match([rauchen],['Rauchen ist nicht besonders gesund. Ich hoffe, das wissen Sie. Ich für meinen Teil rauche nicht.']).
 match([glauben,sie,an,gott],['In meinem Univerum gibt es drei Schöpfer. Die sollten Sie mal kennenlernen. Aber ob sie wirklich auch Götter sind kann ich Ihnen nicht sagen']).
 match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
