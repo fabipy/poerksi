@@ -378,12 +378,20 @@ verpro(zweiten,' F3-II  Forschungsprojekt I').
 verpro(zweiten,' F4-II  Forschungsprojekt II').
 
 
-beleidigung(idiot).
-beleidigung(depp).
-beleidigung(arsch).
-beleidigung(arschloch).
-beleidigung(knalltüte).
-beleidigung(lappen).
+
+beleidigung --> anrede,beleid.
+beleidigungf --> anredef,beleid.
+anrede -->[du].
+anredef -->[sie].
+beleid -->[idiot].
+beleid --> [spast].
+beleid --> [spasti].
+beleid -->[depp].
+beleid -->[penner].
+beleid -->[arsch].
+beleid -->[arschloch].
+beleid -->[knalltüte].
+beleid -->[lappen].
 
 
 
@@ -486,17 +494,9 @@ match([was,_,_,_,X,profil],['Im',X,'Profil liegt der Schwerpunkt auf',Y]):-profi
 %-------------------------------------------------
 
 % Smalltalk
-%match([hallo],['Hallo. Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
-%match([guten,X],['Ihnen auch einen schönen guten',X,'.','Mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
-%Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
-%match([hi],['Hey, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
-%Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
-%match([servus],['Grüezi, mein Name ist Dr. Pörksi und ich bin der virtuelle Studi-Ratgeber des Instituts für Medienwissenschaft.
-%Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen.']).
-
 match([hallo],['Hallo lieber Nutzer.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
 match([hi],['Hey.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
-match([servus],['Grüezi und Hallo.']).
+match([servus],['Grüezi und Hallo.Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen. Jedoch klappt das auf Hochdeutsch besser.']).
 match([guten,X],['Ihnen auch einen guten',X,'.']).
 match([gute,_],["Ebenso. Machen Sie's gut."]).
 
@@ -520,6 +520,7 @@ Aber genug philosophiert, wer Sind Sie denn?
 Wie ist denn Ihr Name?'),nl,read_sentence(X),last(X,LastElement),atom_chars(LastElement,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge),retract(name(_)),assert(name(Merge)).
 
 match([wer,bist,du],['Habe ich das nicht schon erwähnt? Ich bin Dr. Pörksi und helfe Ihnen bei Ihren Fragen gerne weiter.']) :- not(name('Gast')).
+match([wer,ist,dr,pörksi],['Habe ich das nicht schon erwähnt? Ich bin Dr. Pörksi und helfe Ihnen bei Ihren Fragen gerne weiter.']) :- not(name('Gast')).
 
 match([wer,bin,ich],['Wer Sie sind? Sie sind ein Hilfesuchender. Vielleicht ist Ihnen ja auch nur langweilig und anstatt zu lernen, unterhalten Sie sich lieber mit mir.
 Ersteres ist vollkommen in Ordnung. Letzteres könnte problematisch sein.']) :-  name('Gast').
@@ -539,6 +540,8 @@ match([wie,gehts],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener
 match([wie,geht,es,_],['Mir geht es sehr gut. Schließlich bin ich ja ein angesehener Professor, der sich in den unterschiedlichsten Medienbereichen bestens auskennt. Und selbst?']).
 
 match([was,geht],['Leider nicht viel wenn man keine Beine hat.']).
+match([was,läuft],['Leider nicht viel wenn man keine Beine hat.']).
+match([was,läuft,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :- write('Normalerweise ist mir so ein Sprachgebrauch nicht geläufig, aber mir geht es prächtig. Und was geht bei Ihnen?'),nl,read_sentence(_).
 
 match([was,geht,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :- write('Normalerweise ist mir so ein Sprachgebrauch nicht geläufig, aber mir geht es prächtig. Und was geht bei Ihnen?'),nl,read_sentence(_).
 match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
@@ -656,6 +659,8 @@ match([in,welchem,gebäude,ist,raum,X],['Welcher Raum soll das sein? Tut mir leid
 
 %Info zu Personen
 
+match([wer,leitet,institut],['Bei uns leitet jeder. Auch Sie, wenn Sie sich bemühen.']).
+
 match([wer,ist,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
 match([infos,zu,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
 match([info,zu,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
@@ -737,24 +742,25 @@ match([was,_,apa],['APA steht für American Psychological Association. Es handelt
 
 
 % Hilfe
-match([wo,_,_,hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich nicht davor Hilfe zu suchen! Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden für Studierende. Sie erreichen diese immer Montag und Mittwoch von 21.00-1.00 Uhr unter der Nummer: 07071 8895440']).
+match([hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich nicht davor Hilfe zu suchen! Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden für Studierende. Sie erreichen diese immer Montag und Mittwoch von 21.00-1.00 Uhr unter der Nummer: 07071 8895440']).
 
 % ------------------------------------------------------------------------
 %     Sonderfälle
 % ------------------------------------------------------------------------
-
-
+match([lieblingskollege],['Ich mag alle Menschen, auch meine Kollegen.']).
+match([was,halten,sie,von],['Ich schlage vor, dass Sie sich selbst ein Bild machen, denn ich möchte nicht, dass Ihre Erwartungen nicht erfüllt werden.']).
+match([macht,man,in],['Nicht so voreilig, das wirst du schon noch erleben.']).
 %Spiel
 match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: Stein, Papier, Schere, Echse, Spock. Und beenden Sie Ihre Eingabe mit einem Punkt."), nl, spielen.
 
 % Beleidigungen
 match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für ein Studium der Medienwissenschaft geeignet.']).
-match([X],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']):-beleidigung(X).
+match([Input],['Es ist mir ein Rätsel wie so ein minderbemitteltes
+Wesen wie Sie das Abitur geschafft hat.']):-beleid(Input,[]).
 match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
-match([du,X],['Also bitte! Ich bin Professor und möchte gesiezt
- %werden.']):-beleidigung(X).
-match([sie,X],['Okay, dass macht es nicht viel besser.
-Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']):-beleidigung(X).
+match(Input,['Also bitte! Ich bin Professor und möchte gesiezt
+werden.']):-beleidigung(Input,[]).
+match(Input,['Okay, dass macht es nicht viel besser.Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']):-beleidigungf(Input,[]).
 match([sie,wissen,nicht],['Das tut mir leid, wenn ich nicht alle Ihre Fragen beantworten kann. Vielleicht versuchen Sie es mit einer anderen Frage.']).
 
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
@@ -769,6 +775,9 @@ match([sie,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nic
 match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([alt],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
+match([rauchen],['Rauchen ist nicht besonders gesund. Ich hoffe, das wissen Sie. Ich für meinen Teil rauche nicht.']).
+match([glauben,sie,an,gott],['In meinem Univerum gibt es drei Schöpfer. Die sollten Sie mal kennenlernen. Aber ob sie wirklich auch Götter sind kann ich Ihnen nicht sagen']).
+match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
 
 %Fragen zum beenden
 match([beende],['Du beendest mich durch die Eingabe: "tschüss"']).
@@ -787,9 +796,9 @@ match([_,wiederholen,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viel
 %match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht helfen.']).
 match([],[]).
 % last resort (if user's input can't be matched otherwise)
-match(_E,R) :-findall(Y,zufallsantwort(Y),L),
-	random_permutation(L,Random),
-	Random=[R|_],
-	writeln(R).
+%match(_E,R) :-findall(Y,zufallsantwort(Y),L),
+	%random_permutation(L,Random),
+	%Random=[R|_],
+	%writeln(R).
 
 match(_,[]).
