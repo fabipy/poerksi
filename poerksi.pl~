@@ -354,35 +354,20 @@ lehrredaktion('L4 - Film und Fernsehen',6,[film,und,fernsehen],l4).
 lehrredaktion('L5 - Schreibtraining',6,[schreibtraining],l5).
 
 %veranstaltung/3 (Titel,ECTS,Modulbezeichnung,Kürzel)
-veranstaltung(Titel,ECTS,Modulbezeichnung,Kürzel) :- vorlesung(Titel,ECTS,Modulbezeichnung,Kürzel);
-													 seminar(Titel,ECTS,Modulbezeichnung,Kürzel);
-													 lehrredaktion(Titel,ECTS,Modulbezeichnung,Kürzel).
+veranstaltung(Titel,ECTS,Modulbezeichnung,Kürzel) :- vorlesung(Titel,ECTS,Modulbezeichnung,Kürzel);seminar(Titel,ECTS,Modulbezeichnung,Kürzel); lehrredaktion(Titel,ECTS,Modulbezeichnung,Kürzel).
 
 
-%Veranstaltungen Profilbezogen verpro(profil,modul,name).
-verpro(eins,' G4-I  Programmierung digitaler Medien').
-verpro(eins,' G5-I  Gestaltung digitaler Medien').
-verpro(eins,' F3-I  Usability Engineering').
-verpro(eins,' F4-I  Internet-Technologien und Webentwicklung').
-verpro(ersten,' G4-I  Programmierung digitaler Medien' ).
-verpro(ersten,' G5-I  Gestaltung digitaler Medien').
-verpro(ersten,' F3-I  Usability Engineering').
-verpro(ersten,' F4-I  Internet-Technologien und Webentwicklung').
-verpro(zwei,' G4-II  Medienkonvergenz / Neue Medien').
-verpro(zwei,' G5-II  Praxisfelder der Medienkommunikation').
-verpro(zwei,' F3-II  Forschungsprojekt I').
-verpro(zwei,' F4-II  Forschungsprojekt II').
-verpro(zweiten,' G4-II  Medienkonvergenz / Neue Medien').
-verpro(zweiten,' G5-II  Praxisfelder der Medienkommunikation').
-verpro(zweiten,' F3-II  Forschungsprojekt I').
-verpro(zweiten,' F4-II  Forschungsprojekt II').
-
-
-
+% --------------------------------
+% DCG
+% -----------------------
 beleidigung --> anrede,beleid.
+beleidigung --> anrede,artikel,beleid.
 beleidigungf --> anredef,beleid.
+beleidigungf --> anrede,artikel,beleid.
 anrede -->[du].
+anrede -->[du,bist].
 anredef -->[sie].
+anredef -->[sie,sind].
 beleid -->[idiot].
 beleid --> [spast].
 beleid --> [spasti].
@@ -393,7 +378,9 @@ beleid -->[hurensohn].
 beleid -->[arschloch].
 beleid -->[knalltüte].
 beleid -->[lappen].
-
+beleid -->[bescheuert].
+beleid -->[dumm].
+artikel --> [ein].
 
 
 
@@ -429,6 +416,24 @@ profil(eins,'auf der Konzeption digitaler Medien. Dabei wird besonders auf die T
 profil(ersten,'auf der Konzeption digitaler Medien. Dabei wird besonders auf die Techniken und Entwicklungen in den digitalen Medien eingegangen. Die Studienangebote in diesem Profil setzen daher einen starken Akzent im Bereich der Medieninformatik. Im Rahmen dieses Profils können Sie sogar selbst Ihren eingenen Dr.Pörksi programmieren.').
 profil(zwei,'auf den Praxisfeldern der Medienkommunikation. Dabei wird besonders auf aktuelle Trends und Entwicklungslinien im Journalismus, in der Werbung, in Public Relations und Unterhaltung eingegangen. Print- und Onlinemedien werden dabei ebenso berücksichtigt wie Hörfunk, Film und Fernsehen.').
 profil(zweiten,'auf den Praxisfeldern der Medienkommunikation. Dabei wird besonders auf aktuelle Trends und Entwicklungslinien im Journalismus, in der Werbung, in Public Relations und Unterhaltung eingegangen. Print- und Onlinemedien werden dabei ebenso berücksichtigt wie Hörfunk, Film und Fernsehen.').
+
+%Veranstaltungen Profilbezogen verpro(profil,modul,name).
+verpro(eins,' G4-I  Programmierung digitaler Medien').
+verpro(eins,' G5-I  Gestaltung digitaler Medien').
+verpro(eins,' F3-I  Usability Engineering').
+verpro(eins,' F4-I  Internet-Technologien und Webentwicklung').
+verpro(ersten,' G4-I  Programmierung digitaler Medien' ).
+verpro(ersten,' G5-I  Gestaltung digitaler Medien').
+verpro(ersten,' F3-I  Usability Engineering').
+verpro(ersten,' F4-I  Internet-Technologien und Webentwicklung').
+verpro(zwei,' G4-II  Medienkonvergenz / Neue Medien').
+verpro(zwei,' G5-II  Praxisfelder der Medienkommunikation').
+verpro(zwei,' F3-II  Forschungsprojekt I').
+verpro(zwei,' F4-II  Forschungsprojekt II').
+verpro(zweiten,' G4-II  Medienkonvergenz / Neue Medien').
+verpro(zweiten,' G5-II  Praxisfelder der Medienkommunikation').
+verpro(zweiten,' F3-II  Forschungsprojekt I').
+verpro(zweiten,' F4-II  Forschungsprojekt II').
 
 
 
@@ -468,8 +473,6 @@ match([wann,kann,_,bei,X,_,_,sprechstunde],['Leider bin ich nicht allwissend. Da
 match([wann,kann,_,bei,_,X,_,_,sprechstunde],['Leider bin ich nicht allwissend. Da sich die Termine für die Sprechstunden von Semester zu Semester unterscheiden kann ich Ihnen leider nicht sagen, wann',Name,'seine Sprechstunde hat.'])  :- person_name_search(X,ID),get_person_name(ID,Name).
 
 %Vorlesungsinformationen/3 (Vorlesungsname, Semesterbelegung,
-%Profilzugehörigkeit)
-
 match([_,vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten folgende Vorlesungen im Laufe Ihres Grundstudiums besuchen:'),nl,findall(Y,vorlesung(Y,_,_),X),print_list(X,_).
 match([_,seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_),X),print_list(X,_).
 match([_,lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_),X),print_list(X,_).
@@ -480,21 +483,19 @@ match([wann,findet,_,_],['Es unterscheidet sich immer sehr von Semester zu Semes
 match([welche,veranstaltungsarten],['An unserer Universität können Sie an Vorlesungen,Seminare und Lehrredaktionen teilnehmen.']).
 
 match([nebenfach,_],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
+
+
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
-match([was,_,_,_,profil,X],['Im Profil',X,'liegt der Schwerpunkt auf',Y]):-profil(X,Y).
-match([was,_,_,_,X,profil],['Im',X,'Profil liegt der Schwerpunkt auf',Y]):-profil(X,Y).
-
-%diese beiden gehen nicht, bei erneuter Eingabe kommt eine Fehlermeldung FL 6.7.16
-%match([_,_,_,_,X,profil,_],['Im',X,'Profil müssen Sie folgende Veranstalgungen belgen:',Z]):-bagof(Y,verpro(_,Y),Z).
-%match([_,_,_,_,profil,X,_],['Im Profil',X,'müssen Sie folgende Veranstalgungen belgen:',Z]):-bagof(Y,verpro(_,Y),Z).
+match([welche,profile],['Sie können das Profil Eins: Konzeption digitaler Medien oder das Profil Zwei: Praxisfelder der Medienkommunikation wählen. Eines der Beiden werden Sie dann ab dem dritten Semester belegen.']).
+match([profil,X],['Denn im Profil',X,' liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(_,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
+match([X,profil],['Denn im',X,'Profil liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(_,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
 
 %-------------------------------------------------
-%    Ein- und Ausgabe
+%    Smaltalk
 %-------------------------------------------------
 
-% Smalltalk
 match([hallo],['Hallo lieber Nutzer.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
 match([hi],['Hey.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.']).
 match([servus],['Grüezi und Hallo.Stellen Sie mir einfach Ihre Fragen und ich werde versuchen Ihnen dabei zu helfen. Jedoch klappt das auf Hochdeutsch besser.']).
@@ -552,8 +553,10 @@ match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazitä
 
 match([wie,_,das,wetter],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
 
-%-----------------------------------------------------------------------
+
+%----------------------------------------------------------
 %Was kann man mit diesem Studium machen
+%----------------------------------------------------------
 match([was,kann,_,später],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
 	Öffentlichkeitsarbeit,
 	(Fach)Journalismus,
@@ -590,6 +593,8 @@ match([nach,dem,studium],['Durch dieses sehr empfehlenswerte Studium werden Sie 
 
 % --------------------------------------------------------------------------
 % Allgemeine Infos zum Studium
+% -----------------------------
+
 match([wie,viele,semester],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
 match([wie,lange,dauert],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
 match([wann,_,das,studium],['Das Studium der Medienwissenschaft können Sie jedes Wintersemester an der Eliteuniversität Tübingen beginnen.']).
@@ -599,7 +604,11 @@ match([anwesenheitspflicht],['Grundsätzlich ist das von Veranstaltung zu Veranst
 match([anwesend,sein],['Grundsätzlich ist das von Veranstaltung zu Veranstaltung unterschiedlich. Aber im besten Falle verpassen Sie nichts, denn das Feld der Medienwissenschaft ist eifach zu interessant um etwas zu verpassen.']).
 match([studentensekretariat],['Das Studentensekretariat finden Sie in der Wilhelmstraße 11. Dort wird Ihnen Montags 13.00 Uhr - 15.00 Uhr und Dienstags bis Freitags 08.30 Uhr - 11.30 Uhr gerne jemand weiter helfen.']).
 
+
+% -----------------------------
 % Fragen zu Praktikum
+% -----------------------------
+
 match([soll,_,_,praktikum,machen],['Ja ein Praktikum ist auf jeden Fall empfehlenswert.
 In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
 match([muss,_,_,praktikum,machen],['Ja ein Praktikum ist auf jeden Fall empfehlenswert.
@@ -611,7 +620,11 @@ match([wie,lange,_,ein,praktikum],['Es gibt ein Pflichtpraktikum von 3 Monaten v
 match([_,finde,ich,einen,praktikumsplatz],['In unserem Insitut gibt es eine Praktikumsberatung. Ihre Ansprechpartnerin ist Pia Fruth. Des weiteren gibt es Aushänge am Schwarzen Brett.']).
 match([wer,_,_,ansprechpartner,für,prakikas],['Ansprechpartnerin für Praktkas ist Pia Fruth']).
 
+
+% -----------------------------
 % Fragen zum Stundenplan
+% -----------------------------
+
 match([wo,finde,_,_,stundenplan],['Ihren Stundenplan finden und erstellen Sie auf Campus-Portal. Das ist ein elektronischen Vorlesungsverzeichnis mit Stundenplan und vielen weiteren Funktionen.']).
 match([wo,_,_,_,stundenplan,_],['Ihren Stundenplan erstellen Sie selbst mithilfe des Modulhandbuchs und dem Campus-Portal']).
 match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktion
@@ -624,9 +637,15 @@ match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktio
 match([stunden],['Das finden Sie über Campus heraus. Unter http://campus.verwaltung.uni-tuebingen.de/index2.html können Sie mit Ihren Zugangsdaten sich einfach Ihren Studnenplan erstellen']).
 match([semesterferien],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
 
+
+% -----------------------------
 % Fragen zum Projektstudium
-%Projektstudium
-match([was,ist,_,projektstudium],['Im Modulhandbuch finden Sie dieses Modul unter dem Namen P1. Im Rahmen des Projektstudiums planen und realisieren die Sie eigenverantwortlich ein kleineres Medienprojekt bzw. Werkstück. Das Medium dieses Projekts ist dabei frei wählbar.']).
+% -----------------------------
+match([was,ist,_,projektstudium],['Im Modulhandbuch
+% finden Sie dieses Modul unter dem Namen P1. Im Rahmen des
+% Projektstudiums planen und realisieren die Sie eigenverantwortlich ein
+% kleineres Medienprojekt bzw. Werkstück. Das Medium dieses Projekts ist
+% dabei frei wählbar.']).
 match([wo,_,_,_,projektstudium,_],['Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
 match([wer,betreut,_,projektstudium],['Das können Sie selber wählen.
 Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarbeiterstamm hauptamtlicher Lehrender der Medienwissenschaft.']).
@@ -638,65 +657,33 @@ match([wo,kann,_,_,essen],['Als Student ist es wichtig viel und gesund zu essen.
 Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Rund um den Brechtbau können Sie aus folgenden Angeboten wählen.'),nl,nl,print_list(Y,_),nl.
 match([was,gibt,es,in,der,mensa],['Was es in der Mensa gibt kann ich leider nicht beantworten, weil das Angebot täglich wechselt.']).
 
+
+%---------------------------------
 %Info zur Bib
+%---------------------------------
 match([wann,_,_,X,_],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y),atom_chars(X,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge).
 
+
+%---------------------------------
 % Fragen zu Gebäuden
+% ---------------------------------
+
 match([wo,ist,der,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
 match([wo,finde,ich,den,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
 match([wo,ist,der,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 
+
+
+%---------------------------------
 %Fragen zum Raum
+%---------------------------------
+
 match([wo,ist,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([wo,ist,der,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([wo,befindet,sich,der,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([wo,befindet,sich,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
-match([in,welchem,gebäude,ist,raum,X],['Dazu gehen sie einfachHallo ich bin Dr. Pörksi. Gerne dürfen Sie mir so viele Fragen stellen, wie Sie nur möchten und ich werde versuchen diese zu beantworten. Denn für Fragen hinsichtlich der Universität oder der zu belgenden Vorlesungen stehe ich Ihnen gerne zur Seite. Aber auch allgemeinen Anliegen bezüglich des Studienalltags nehme ich mich gerne an.
-User:       hallo
-Dr.Pörksi:  Hallo lieber Nutzer.Es freut mich jemanden gegenüber zu haben. Und da ich mich am Liebsten mit Kommunikation beschäftige können Sie mir ja gleich mal eine Frage stellen.
-User:       was unterrichten sie
-Dr.Pörksi:
-User:       wer sind sie eigentlich
-Dr.Pörksi:
-User:       wer sind sie
-Dr.Pörksi:
-User:       wer bist du
-Dr.Pörksi: Ich bin eine künstliche Intelligenz, die ratlosen Studenten weiterhelfen soll. Mich gibt es aber noch gar nicht so lange hier am Institut.
-Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
-Aber genug philosophiert, wer Sind Sie denn?
-Wie ist denn Ihr Name?
-User:       blah
-Es ist schön Sie kennenzulernen. Haben Sie denn auch Fragen an mich mitgebracht Blah oder irgendein anderes Anliegen?
-User:       welche professoren gibt es
-Dr.Pörksi: Folgende Professoren lehren in Tübingen am Institut für Medienwissenschaft:
-Herr Prof. Dr. Jürg,Häusermann
-Herr Prof. Dr. Claus Kleber
-Frau Prof. Dr. Susanne Marschall
-Herr Prof. Dr. Klaus Sachs-Hombach
-Herr Prof. Dr. Bernhard Pörksen
-Frau Prof. Dr. Tanja,Thomas
-Herr Prof. Dr. Guido Zurstiege
-Ich hoffe ich konnte Ihnen weiterhelfen.
-User:       wie lautet die email adresse von bernhard pörksen
-Dr.Pörksi:
-User:       wie lautet die email adresse von pörksen
-Dr.Pörksi:
-User:       email von pörksen
-Dr.Pörksi: Die Email von Herr Prof. Dr. Bernhard Pörksen lautet bernhard.poerksen@uni-tuebingen.de
-User:       telefonnummer von tanja thomas
-Dr.Pörksi: Die Telefonnumer von Frau Prof. Dr. Tanja Thomas lautet 07071 29-76816
-User:       wer ist claus kleber
-Dr.Pörksi: Name: Herr Prof. Dr. Claus Kleber
-Raum: 209
-Email: claus.kleber@uni-tuebingen.de
-Telefon: keine Angabe
-Bereich/Aufgabe: Jouranlistische Themen und Berufspraxis in Film und Fernsehen
-Was wollen Sie noch wissen?
-User:       wie kann man das gespräch beenden
-Dr.Pörksi: Du beendest mich durch die Eingabe: "tschüss"
-User:       tschüss
-Dr.Pörksi: Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet. in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
+match([in,welchem,gebäude,ist,raum,X],['Dazu gehen sie einfach in den',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 
 match([wo,ist,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
 match([wo,ist,der,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
@@ -710,10 +697,13 @@ match([wo,befindet,sich,der,raum,X],['Welcher Raum soll das sein? Tut mir leid d
 match([wo,befindet,sich,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
 match([in,welchem,gebäude,ist,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
 
+
+
+
+%---------------------------------
 %Info zu Personen
-
+%---------------------------------
 match([wer,leitet,institut],['Bei uns leitet jeder. Auch Sie, wenn Sie sich bemühen.']).
-
 match([wer,ist,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
 match([infos,zu,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
 match([info,zu,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
@@ -759,12 +749,23 @@ match([X,_,raum],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching
 match([X,raum],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_room(ID,Raum).
 match([raumnummer,_,X],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_room(ID,Raum).
 
-%EasterEggs
+
+% -------------------------------------------------------------------
+% EasterEggs
+% -------------------------------------------------------------------
 match([frage,nach,dem,leben],['42, ist doch klar!']).
 match([antwort,auf,alles],['42, ist doch klar!']).
 match([the,universe,and,everything],['42, ist doch klar!']).
 
-%Informationen zu Vorlesungen und Seminaren
+% ----------------------------------------------------
+% Spiel
+% ----------------------------------------------------
+match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: Stein, Papier, Schere, Echse, Spock. Und beenden Sie Ihre Eingabe mit einem Punkt."), nl, spielen.
+
+
+% ----------------------------------------------------
+% Informationen zu Vorlesungen und Seminaren
+% ----------------------------------------------------
 
 match([ects,punkte,_,_,für,die,X],['Für die',Z,'gibt es',Y]):-
 	lehrredaktion(Z,X,Y);vorlesung(Z,X,Y);seminar(Z,X,Y).
@@ -779,7 +780,12 @@ match([ects,punkte,_,_,für,die,X],['Für die',Z,'gibt es',Y]):-
 match([wie,viele,ects,punkte,brauche,ich],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
 match([wie,viele,ects,punkte,braucht,man],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
 
+
+
+% ----------------------------------------------------
 %allgemeine Informationen
+% ----------------------------------------------------
+
 match([was,_,ct],['c.t. ist die Abkürzung für lateinisch "cum tempore", was im deutschen "mit Zeit" bedeutet.
 10 Uhr c.t. bedeutet somit die Veranstaltung beginnt 15 Minuten später, also um 10:15 Uhr.']).
 match([was,_,st],['s.t. ist die Abkürzung für lateinisch "sine tempore", was im deutschen "ohne Zeit" bedeutet.
@@ -788,13 +794,19 @@ match([wo,_,_,_,aufdruck,für,_,studentenausweis,_,_],['Den Semesteraufdruck ihre
 match([wo,_,_,_,neuen,studentenausweis],['Einen neuen Studentenausweis erhalten Sie im Studentensekretariat(Wilhelmstraße 11). Aber passen Sie auf diesen gut auf! Besser als auf den letzten.']).
 match([studentenausweis,verloren],['Das ist natürlich nicht sonderlich optimal. Doch einen neuen erhalten Sie im Studentensekretariat(Wilhelmstraße 11)']).
 
-%Zitieren
+
+% ----------------------------------------------------
+% Zitieren
+% ----------------------------------------------------
+
 match([was,_,apa,6],['APA steht für American Psychological Association. Es handelt sich hierbei um eine Zitierweise, die Sie im Laufe des ersten Semester lernen werden.']).
 match([was,_,apa],['APA steht für American Psychological Association. Es handelt sich hierbei um eine Zitierweise, die Sie im Laufe des ersten Semester lernen werden.']).
 
 
-
+% ----------------------------------------------------
 % Hilfe
+% ----------------------------------------------------
+
 match([hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich nicht davor Hilfe zu suchen! Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden für Studierende. Sie erreichen diese immer Montag und Mittwoch von 21.00-1.00 Uhr unter der Nummer: 07071 8895440']).
 
 % ------------------------------------------------------------------------
@@ -803,10 +815,13 @@ match([hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich nicht da
 match([lieblingskollege],['Ich mag alle Menschen, auch meine Kollegen.']).
 match([was,halten,sie,von],['Ich schlage vor, dass Sie sich selbst ein Bild machen, denn ich möchte nicht, dass Ihre Erwartungen nicht erfüllt werden.']).
 match([macht,man,in],['Nicht so voreilig, das wirst du schon noch erleben.']).
-%Spiel
-match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: Stein, Papier, Schere, Echse, Spock. Und beenden Sie Ihre Eingabe mit einem Punkt."), nl, spielen.
 
+
+
+
+% ----------------------------------------------------
 % Beleidigungen
+% ----------------------------------------------------
 match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für ein Studium der Medienwissenschaft geeignet.']).
 match([Input],['Es ist mir ein Rätsel wie so ein minderbemitteltes
 Wesen wie Sie das Abitur geschafft hat.']):-beleid(Input,[]).
@@ -820,7 +835,12 @@ match([damit,kann,ich,nichts,anfangen],['Mhh ich hoffe, ich bin bei Ihrer nächst
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
 match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
 
-% Fragen zum Pörksi
+
+
+
+% ----------------------------------------------------
+% Fragen zu Pörksi
+% ----------------------------------------------------
 match([wie,alt,_,_],['Es gibt mich erst seit Juni 2016!']).
 match([wer,hat,_,programmiert],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
@@ -833,7 +853,10 @@ match([rauchen],['Rauchen ist nicht besonders gesund. Ich hoffe, das wissen Sie.
 match([glauben,sie,an,gott],['In meinem Univerum gibt es drei Schöpfer. Die sollten Sie mal kennenlernen. Aber ob sie wirklich auch Götter sind kann ich Ihnen nicht sagen']).
 match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
 
+
+% ----------------------------------------------------
 %Fragen zum beenden
+% ----------------------------------------------------
 match([beende],['Du beendest mich durch die Eingabe: "tschüss"']).
 match([beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
 match([beendet],['Du beendest mich durch die Eingabe: "tschüss"']).
