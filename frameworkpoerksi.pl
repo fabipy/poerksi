@@ -11,10 +11,10 @@ lastAnswer(['No Last Answer Yet.']).
 poerksi('Dr.Pörksi:  ').
 
 % start / exit the chatbot
-pörksi :- ansi_format([bg(yellow)], 'Hallo ich bin Dr. Pörksi. Gerne dürfen Sie mir so viele Fragen stellen, wie Sie nur möchten und ich werde versuchen diese zu beantworten. Denn für Fragen hinsichtlich der Universität oder der zu belgenden Vorlesungen stehe ich Ihnen gerne zur Seite. Aber auch allgemeinen Anliegen bezüglich des Studienalltags nehme ich mich gerne an.'
+pörksi :- ansi_format([bg(yellow)], 'Hallo ich bin Dr. Pörksi. Gerne dürfen Sie mir so viele Fragen stellen, wie Sie nur möchten und ich werde versuchen diese zu beantworten. Denn für Fragen hinsichtlich der Universität oder der zu belegenden Vorlesungen stehe ich Ihnen gerne zur Seite. Aber auch allgemeinen Anliegen bezüglich des Studienalltags nehme ich mich gerne an.'
 , []),nl,prompt(_,'User:       '), read_sentence(Input), pörksi(Input),!. %mit Prompt |: durch > ersetzt bei der Eingabeaufforderung
 % Programm beendet sich nach 'tschüss' (halt)
-pörksi([tschüss]) :- writeln('Dr.Pörksi: Ich hoffe ich konnte dir helfen. Viel Spaß beim studieren! Und du weißt ja, falls du Fragen hast, wo man mich findet.').
+pörksi([tschüss]) :- writeln('Dr.Pörksi: Ich hoffe ich konnte Ihnen helfen. Viel Spaß beim studieren! Und Sie wissen ja, falls Sie Fragen haben, wo man mich findet.').
 
 
 % User-Input (after program is started)

@@ -357,29 +357,50 @@ lehrredaktion('L5 - Schreibtraining',6,[schreibtraining],l5).
 veranstaltung(Titel,ECTS,Modulbezeichnung,Kürzel) :- vorlesung(Titel,ECTS,Modulbezeichnung,Kürzel);seminar(Titel,ECTS,Modulbezeichnung,Kürzel); lehrredaktion(Titel,ECTS,Modulbezeichnung,Kürzel).
 
 
+
+veranstaltungects('G1 - Einführung in die Medienwissenschaft I - 8 ECTS').
+veranstaltungects('G2 - Einführung in die Medienwissenschaft II - 8 ECTS').
+veranstaltungects('G3 - Forschung und Praxisfelder - 4 ECTS').
+veranstaltungects('F1 - Einführung in die Methoden der Medienforschung - 8 ECTS').
+veranstaltungects('F2 - Einführung in die Theorien der Medienforschung - 8 ECTS').
+veranstaltungects('L1 - Print & Onlinemedien - 6 ECTS').
+veranstaltungects('L2 - Hörfunk - 6 ECTS').
+veranstaltungects('L3 - Hypermediasysteme - 6 ECTS').
+veranstaltungects('L4 - Film und Fernsehen - 6 ECTS').
+veranstaltungects('L5 - Schreibtraining - 6 ECTS').
+
+
+
 % --------------------------------
 % DCG
 % --------------------------------
 beleidigung --> anrede,beleid.
+beleidigung --> beleid.
 beleidigung --> anrede,artikel,beleid.
 beleidigungf --> anredef,beleid.
 beleidigungf --> anrede,artikel,beleid.
 anrede -->[du].
 anrede -->[du,bist].
+anrede -->[bist,du].
 anredef -->[sie].
 anredef -->[sie,sind].
+anredef -->[sind,sie].
 beleid -->[idiot].
 beleid -->[spast].
 beleid -->[spasti].
 beleid -->[depp].
 beleid -->[penner].
 beleid -->[arsch].
+beleid -->[hure].
 beleid -->[hurensohn].
 beleid -->[arschloch].
 beleid -->[knalltüte].
 beleid -->[lappen].
 beleid -->[bescheuert].
 beleid -->[dumm].
+beleid -->[blöd].
+beleid -->[nerven].
+beleid -->[behindert].
 artikel --> [ein].
 artikel --> [eine].
 
@@ -409,6 +430,8 @@ bib(brechtbaubib,
 bib('unibibliothek',
     'Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
 bib('unibib',
+    'Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
+bib('bib',
     'Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
 
 %Profil/2
@@ -455,6 +478,10 @@ print_list([First|RestInputList], _) :-
 	write(First),nl,
 	print_list(RestInputList,First).
 
+sinne(sehen).
+sinne(hören).
+sinne(riechen).
+
 
 %Dynamische Variablen
 
@@ -464,7 +491,7 @@ name('Gast').
 % Infos zu Professoren
 match([welche,profs,gibt,es],['Ich glaube das waren alle.
 Halt! Da habe ich doch glatt einen vergessen... Ist doch klar, mich selbst.']) :- write('Folgende Professoren lehren in Tübingen am Institut für Medienwissenschaft:'),nl,findall(X,prof(_,X),L),print_list(L,_).
-match([welche,professoren,gibt,es],['Ich hoffe ich konnte Ihnen weiterhelfen.']) :- write('Folgende Professoren lehren in Tübingen am Institut für Medienwissenschaft:'),nl,findall(X,prof(_,X),L),print_list(L,_).
+match([professoren],['Ich hoffe ich konnte Ihnen weiterhelfen.']) :- write('Folgende Professoren lehren in Tübingen am Institut für Medienwissenschaft:'),nl,findall(X,prof(_,X),L),print_list(L,_).
 
 %Infos sprechstunden
 match([wann,hat,X,sprechstunde],['Leider bin ich nicht allwissend. Da sich die Termine für die Sprechstunden von Semester zu Semester unterscheiden kann ich Ihnen leider nicht sagen, wann',Name,'seine Sprechstunde hat.']) :- person_name_search(X,ID),get_person_name(ID,Name).
@@ -486,7 +513,8 @@ match([wer,macht],['Es unterscheidet sich sehr von Semester zu Semester welcher 
 match([wann,findet,_,_],['Es unterscheidet sich immer sehr von Semester zu Semester, daher kann ich die Frage leider nicht beantworten.']).
 match([welche,veranstaltungsarten],['An unserer Universität können Sie an Vorlesungen,Seminare und Lehrredaktionen teilnehmen.']).
 
-match([nebenfach,_],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
+match([nebenfach],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
+match([nebenfächer],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
 
 
 %-------------------------------------------------
@@ -553,9 +581,13 @@ match([was,geht,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :
 match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
 
 match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber in meiner Muttersprache. Das geht einfach schneller und ich kann Ihnen mehr von meinem Wissen weiter geben.']).
+match([_,duzen],['Gerne würde ich gesiezt werden.']).
+match([warum,duzt],['Das ist einfach etwas förmlicher. Gewöhnen Sie sich dran. Das wird im Studium nämlich zu Ihrem Alltag gehören.']).
 
 
 match([wie,_,das,wetter],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
+match([freund,sein],['Warum nicht. Schließlich ist man als Chatbot meist etwas alleine.']).
+match([wie,viele,studenten],['Puh das sind ganz schön viele! Lassen Sie mich erst einmal zählen 1...2...3..4...... Überlegen Sie sich doch schon einmal Ihre nächste Frage.']).
 
 
 %----------------------------------------------------------
@@ -622,7 +654,7 @@ In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtp
 match([wann,_,_,_,praktikum],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
 match([wie,lange,_,ein,praktikum],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
 match([_,finde,ich,einen,praktikumsplatz],['In unserem Insitut gibt es eine Praktikumsberatung. Ihre Ansprechpartnerin ist Pia Fruth. Des weiteren gibt es Aushänge am Schwarzen Brett.']).
-match([wer,_,_,ansprechpartner,für,prakikas],['Ansprechpartnerin für Praktkas ist Pia Fruth']).
+match([wer,_,_,ansprechpartner,für,prakika],['Ansprechpartnerin für Prakitka ist Pia Fruth']).
 
 
 % -----------------------------
@@ -640,6 +672,14 @@ match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktio
 	und vieles mehr schau einfach mal vorbei unter http://campus.verwaltung.uni-tuebingen.de/index2.html']).
 match([stunden],['Das finden Sie über Campus heraus. Unter http://campus.verwaltung.uni-tuebingen.de/index2.html können Sie mit Ihren Zugangsdaten sich einfach Ihren Studnenplan erstellen']).
 match([semesterferien],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
+match([semesterbeginn],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
+match([wann,beginnt,das,semester],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
+match([wann,fängt,das,semester,an],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
+match([semesterende],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
+match([semester,zu,ende],['Wenn Sie sich jetzt schon nach dem Semesterende sehnen dann sollten Sie sich Gedanken machen oder hier vorbeischauen: https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
+match([wann,_,_,klausuren],['Normalerweise am Ende des Semesters. Doch je nach Veranstaltung können auch andere Leistungen angefordert werden.']).
+
+
 
 
 % -----------------------------
@@ -672,12 +712,18 @@ match([wann,_,_,X,_],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y)
 % Fragen zu Gebäuden
 % ---------------------------------
 
-match([wo,ist,der,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
-match([wo,finde,ich,den,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
-match([wo,ist,der,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
-match([wo,finde,ich,den,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
+match([wo,_,_,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
+match([wo,_,_,_,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
+match([wo,_,_,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
+match([wo,_,_,_,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
+match([wo,_,_,mensa],['In der Wilhelmstraße 13']).
+match([toiletten],['Toiletten finden Sie in jedem universitären Gebäude. Im Brechtbau gibt es in jedem Stockwerk eine in anderen Gebäuden sind sie ausgeschildert. Das finden Sie schon.']).
+match([aufzug],['Barrierefreiheit soll auch im Studium gegeben sein. Daher finden sich in sogut wie allen universitären ein oder mehrere Aufzüge.']).
+match([aufzüge],['Barrierefreiheit soll auch im Studium gegeben sein. Daher finden sich in sogut wie allen universitären ein oder mehrere Aufzüge.']).
 
-
+%Kosten fehlen noch
+match([kopierer],['Kopierer finden Sie in so gut wie allen universitären Gebäuden. Aber vergessen Sie nicht Ihren Studentenausweis, denn damit können Sie bezahlen.']).
+match([kopieren],['Kopierer finden Sie in so gut wie allen universitären Gebäuden. Aber vergessen Sie nicht Ihren Studentenausweis, denn damit können Sie bezahlen.']).
 
 %---------------------------------
 %Fragen zum Raum
@@ -701,6 +747,8 @@ match([wo,befindet,sich,der,raum,X],['Welcher Raum soll das sein? Tut mir leid d
 match([wo,befindet,sich,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
 match([in,welchem,gebäude,ist,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
 
+match([wo,findet,_,statt],['Je nach Semester und Stundenplan ist das unterschiedlich. Die meisten Vorlesungen im ersten Semester finden aber im Kupferbau oder dem Brechtbau statt.']).
+match([wo,findet,_,_,statt],['Je nach Semester und Stundenplan ist das unterschiedlich. Die meisten Vorlesungen im ersten Semester finden aber im Kupferbau oder dem Brechtbau statt.']).
 
 
 
@@ -733,6 +781,11 @@ match([mailadresse,von,X],['Die Email von',Name,'lautet',Email]) :- elaborate_na
 match([X,mailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
 match([X,_,mailadresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
 
+match([deine,mailadresse],['Du brauchst meine Mailadresse gar nicht, du kannst doch direkt hier mit mir schreiben. Und jetzt wieder zum Sie']).
+match([ihre,mailadresse],['Du brauchst meine Mailadresse gar nicht, du kannst doch direkt hier mit mir schreiben.']).
+match([deine,emailadresse],['Du brauchst meine Mailadresse gar nicht, du kannst doch direkt hier mit mir schreiben. Und jetzt wieder zum Sie']).
+match([ihre,emailadresse],['Du brauchst meine Mailadresse gar nicht, du kannst doch direkt hier mit mir schreiben.']).
+
 
 match([telefonnummer,von,X],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
 match([X,telefonnummer],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
@@ -759,32 +812,33 @@ match([raumnummer,_,X],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_ma
 % -------------------------------------------------------------------
 match([frage,nach,dem,leben],['42, ist doch klar!']).
 match([antwort,auf,alles],['42, ist doch klar!']).
+match([antwort,auf,die,frage,nach,dem,universum],['42, ist doch klar!']).
 match([the,universe,and,everything],['42, ist doch klar!']).
 
 % ----------------------------------------------------
 % Spiel
 % ----------------------------------------------------
-match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: Stein, Papier, Schere, Echse, Spock. Und beenden Sie Ihre Eingabe mit einem Punkt."), nl, spielen.
+match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: stein, papier, schere, echse, spock. Achten Sie auf die Kleinschreibung und beenden Sie Ihre Eingabe mit einem Punkt."), nl, spielen.
 
 
 % ----------------------------------------------------
 % Informationen zu Vorlesungen und Seminaren
 % ----------------------------------------------------
 
-match([ects,punkte,_,_,für,die,Y],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
-	lehrredaktion(Z,X,Y,_);vorlesung(Z,X,Y,_);seminar(Z,X,Y,_).
+% match([ects,punkte,_,_,für,die,Y],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+%	lehrredaktion(Z,X,Y,_);vorlesung(Z,X,Y,_);seminar(Z,X,Y,_).
 match([ects,punkte,_,_,für,die,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,punkte,_,_,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
 	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
 
 
-%gibt ein kleines problem mit der anfrage, muss gefixt werden
-%6.7.16 / FL
-% match([ects,punkte,_,_,für,Modulbezeichnung],[Titel,'gibt',ECTS,'ECTS Punkte']):-veranstaltung(Titel,ECTS,Modulbezeichnung,_).
-%match([ects,punkte,_,_,für,Z],[Z,'gibt',Y]):-
-%	lehrredaktion(Z,_,Y);vorlesung(Z,_,Y);seminar(Z,_,Y).
+match([ects,verteilung],['Was möchten Sie noch wissen?']):-write('Hier sehen Sie die enstprechenden Vorlesungen und die ECTS Punkte fürs Grundstudium:'),nl,findall(X,veranstaltungects(X),B),print_list(B,_).
+match([verteilung,ects],['Was möchten Sie noch wissen?']):-write('Hier sehen Sie die enstprechenden Vorlesungen und die ECTS Punkte fürs Grundstudium:'),nl,findall(X,veranstaltungects(X),B),print_list(B,_).
 
-match([wie,viele,ects,punkte,brauche,ich],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
-match([wie,viele,ects,punkte,braucht,man],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
+
+match([wie,viele,ects,punkte,brauche],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
+match([wie,viele,ects,punkte,braucht],['Wenn Sie Medienwissenschaft als Hauptfach studieren benötigen Sie 120 ECTS Punkte und als Nebenfach 60 ECTS Punkte.']).
 
 
 
@@ -799,7 +853,7 @@ match([was,_,st],['s.t. ist die Abkürzung für lateinisch "sine tempore", was im 
 match([wo,_,_,_,aufdruck,für,_,studentenausweis,_,_],['Den Semesteraufdruck ihres Studentenausweis können Sie im Studentensekretariat (Wilhelmstraße 11), in der Universitätsbibliothek (Wilhelmstraße 32) sowie auf der Morgenstelle aktualisieren.']).
 match([wo,_,_,_,neuen,studentenausweis],['Einen neuen Studentenausweis erhalten Sie im Studentensekretariat(Wilhelmstraße 11). Aber passen Sie auf diesen gut auf! Besser als auf den letzten.']).
 match([studentenausweis,verloren],['Das ist natürlich nicht sonderlich optimal. Doch einen neuen erhalten Sie im Studentensekretariat(Wilhelmstraße 11)']).
-
+match(['w-lan'],['Funktionierendes W-LAN ist heutzutage ein Muss für jede Universität, also keine Sorge auch in Tübingen können Sie PokemonGO spielen.']).
 
 % ----------------------------------------------------
 % Zitieren
@@ -820,7 +874,14 @@ match([hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich nicht da
 % ------------------------------------------------------------------------
 match([lieblingskollege],['Ich mag alle Menschen, auch meine Kollegen.']).
 match([was,halten,sie,von],['Ich schlage vor, dass Sie sich selbst ein Bild machen, denn ich möchte nicht, dass Ihre Erwartungen nicht erfüllt werden.']).
+match([mögen,sie],['Da bin ich mir selbst noch nicht so sicher.']).
 match([macht,man,in],['Nicht so voreilig, das wirst du schon noch erleben.']).
+match([bus],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
+match([busse],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
+match([bushaltestelle],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
+match([bahn],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Lockführer bin müssen Sie sich wohl direkt bei naldo direkt erkundigen.']).
+match([züge],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Lockführer bin müssen Sie sich wohl direkt beim naldo direkt erkundigen.']).
+match([barfuß],['Auch wenn ich keine Füße habe empfehle ich Ihnen doch gutes Schuhwerk zu tragen.']).
 
 
 
@@ -830,7 +891,7 @@ match([macht,man,in],['Nicht so voreilig, das wirst du schon noch erleben.']).
 % ----------------------------------------------------
 match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für ein Studium der Medienwissenschaft geeignet.']).
 match([Input],['Es ist mir ein Rätsel wie so ein minderbemitteltes
-Wesen wie Sie das Abitur geschafft hat.']):-beleid(Input,[]).
+Wesen wie Sie das Abitur geschafft hat.']):-beleidigung(Input,[]).
 match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
 match(Input,['Also bitte! Ich bin Professor und möchte gesiezt
 werden.']):-beleidigung(Input,[]).
@@ -838,11 +899,12 @@ match(Input,['Okay, dass macht es nicht viel besser.Vielleicht stellen Sie mir l
 match([sie,wissen,nicht],['Das tut mir leid, wenn ich nicht alle Ihre Fragen beantworten kann. Vielleicht versuchen Sie es mit einer anderen Frage.']).
 match([damit,kann,ich,nichts,anfangen],['Mhh ich hoffe, ich bin bei Ihrer nächsten Eingabe etwas hilfreicher. Was möchten Sie denn noch wissen?']).
 
+%-----------------------
+match([text,gelb],['Dies dient einfach zur Herforhebung. Aber Sie haben bestimmt noch ein wichtigeres Anliegen.']).
+match([gelber,text],['Dies dient einfach zur Herforhebung. Aber Sie haben bestimmt noch ein wichtigeres Anliegen.']).
+
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
 match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
-
-
-
 
 % ----------------------------------------------------
 % Fragen zu Pörksi
@@ -852,13 +914,20 @@ match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im
 match([du,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
 match([sie,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
 match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
+match([eltern],['Eltern habe ich keine aber dafür habe ich drei liebevolle Entwickler.']).
+match([vater],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
+match([mutter],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
+match([willst,du,mich,heiraten],['Ist das in Deutschland schon erlaubt? Ich glaube nicht. Aber wir können gerne Freunde sein.']).
 match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([alt],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
 match([alter],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
 match([rauchen],['Rauchen ist nicht besonders gesund. Ich hoffe, das wissen Sie. Ich für meinen Teil rauche nicht.']).
 match([glauben,sie,an,gott],['In meinem Univerum gibt es drei Schöpfer. Die sollten Sie mal kennenlernen. Aber ob sie wirklich auch Götter sind kann ich Ihnen nicht sagen']).
 match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
-
+match([wo,wohnst,du],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+match([wo,wohnen,sie],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+match([langweilig],['Langeweile ist manchmal sehr wichtig um erst auf neue Ideen zu kommen.']).
+match([mich,X],['Nein ich kann Sie leider nicht',X,'.']):-sinne(X).
 
 % ----------------------------------------------------
 %Fragen zum beenden
@@ -866,6 +935,7 @@ match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
 match([beende],['Du beendest mich durch die Eingabe: "tschüss"']).
 match([beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
 match([beendet],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([ausschalten],['Du beendest mich durch die Eingabe: "tschüss"']).
 
 %Wie viele Fragen kannst du beeantworten
 match([wie,viele,fragen,kannst,du,beantworten],['Das hängt ganz von Ihren Fragen ab.']).

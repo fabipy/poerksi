@@ -8,7 +8,7 @@ lastInput('No Last Input Yet').
 lastAnswer(['No Last Answer Yet.']).
 
 :- dynamic poerksi/1.
-poerksi(_):-ansi_format([bg(yellow)],'Dr.Pörksi:  ',[]).
+poerksi('Dr.Pörksi:  ').
 
 % start / exit the chatbot
 pörksi :- ansi_format([bg(yellow)], 'Hallo ich bin Dr. Pörksi. Gerne dürfen Sie mir so viele Fragen stellen, wie Sie nur möchten und ich werde versuchen diese zu beantworten. Denn für Fragen hinsichtlich der Universität oder der zu belgenden Vorlesungen stehe ich Ihnen gerne zur Seite. Aber auch allgemeinen Anliegen bezüglich des Studienalltags nehme ich mich gerne an.'
