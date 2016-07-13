@@ -378,6 +378,30 @@ verpro(zweiten,' F3-II  Forschungsprojekt I').
 verpro(zweiten,' F4-II  Forschungsprojekt II').
 
 
+beleidigung(idiot).
+beleidigung(depp).
+beleidigung(arsch).
+beleidigung(arschloch).
+beleidigung(knalltüte).
+beleidigung(lappen).
+
+
+
+
+zufallsantwort('Wussten Sie, dass es mich erst seit Juni
+ 2016 gibt? Es kommt mir so vor als wäre es gestern
+ gewesen.').
+zufallsantwort('Erzählen Sie mehr.').
+zufallsantwort('Haben Sie vielleicht noch andere Fragen?').
+zufallsantwort('Es ist schön sich mit jemanden zu unterhalten.').
+zufallsantwort('Vielleicht haben Sie ja noch ein dringlicheres Anliegen?').
+zufallsantwort('Vielleicht haben Sie ja noch ein wichtigeres Anliegen?').
+zufallsantwort('An Ihrer Ausdrucksweise müssen Sie noch etwas feilen.
+ Versuchen Sie es doch ein wenig studentischer.').
+zufallsantwort('Ja das ist eine gute Anfrage. Aber bevor ich mich dieser annehmen möchte können wir ja ein Spielchen spielen. Sie starten es mit der Eingabe
+ SPIELEN').
+
+
 
 %Orte
 
@@ -686,7 +710,7 @@ match([the,universe,and,everything],['42, ist doch klar!']).
 
 match([ects,punkte,_,_,für,die,X],['Für die',Z,'gibt es',Y]):-
 	lehrredaktion(Z,X,Y);vorlesung(Z,X,Y);seminar(Z,X,Y).
-	
+
 %gibt ein kleines problem mit der anfrage, muss gefixt werden
 %6.7.16 / FL
 %match([ects,punkte,_,_,für,Modulbezeichnung],[Titel,'gibt',ECTS,'ECTS Punkte']):-
@@ -704,7 +728,7 @@ match([was,_,st],['s.t. ist die Abkürzung für lateinisch "sine tempore", was im 
 10 Uhr s.t. bedeutet somit die Veranstaltung beginnt um 10:00 Uhr']).
 match([wo,_,_,_,aufdruck,für,_,studentenausweis,_,_],['Den Semesteraufdruck ihres Studentenausweis können Sie im Studentensekretariat (Wilhelmstraße 11), in der Universitätsbibliothek (Wilhelmstraße 32) sowie auf der Morgenstelle aktualisieren.']).
 match([wo,_,_,_,neuen,studentenausweis],['Einen neuen Studentenausweis erhalten Sie im Studentensekretariat(Wilhelmstraße 11). Aber passen Sie auf diesen gut auf! Besser als auf den letzten.']).
-match([ich,habe,meinen,studentenausweis,verloren],['Das ist natürlich nicht sonderlich optimal. Doch einen neuen erhalten Sie im Studentensekretariat(Wilhelmstraße 11)']).
+match([studentenausweis,verloren],['Das ist natürlich nicht sonderlich optimal. Doch einen neuen erhalten Sie im Studentensekretariat(Wilhelmstraße 11)']).
 
 %Zitieren
 match([was,_,apa,6],['APA steht für American Psychological Association. Es handelt sich hierbei um eine Zitierweise, die Sie im Laufe des ersten Semester lernen werden.']).
@@ -725,11 +749,13 @@ match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Sc
 
 % Beleidigungen
 match([fick,dich],['So eine Ausdrucksweise verbitte ich mir. Ich glaube Sie sind nicht für ein Studium der Medienwissenschaft geeignet.']).
-match([arschloch],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']).
+match([X],['Es ist mir ein Rätsel wie so ein minderbemitteltes Wesen wie Sie das Abitur geschafft hat.']):-beleidigung(X).
 match([wichser],['Dies ist nicht der Ort für Beleidigungen.']).
-match([du,_],['Also bitte! Ich bin Professor und möchte gesiezt werden.']).
-%match([sie,_],['Okay, dass macht es nicht viel besser.
-%Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']).
+match([du,X],['Also bitte! Ich bin Professor und möchte gesiezt
+ %werden.']):-beleidigung(X).
+match([sie,X],['Okay, dass macht es nicht viel besser.
+Vielleicht stellen Sie mir lieber ein paar Fragen stattdessen?']):-beleidigung(X).
+match([sie,wissen,nicht],['Das tut mir leid, wenn ich nicht alle Ihre Fragen beantworten kann. Vielleicht versuchen Sie es mit einer anderen Frage.']).
 
 match([geil],['Früher haben wir noch gesagt super-affen-titten-geil.']).
 match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
@@ -738,6 +764,11 @@ match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
 match([wie,alt,_,_],['Es gibt mich erst seit Juni 2016!']).
 match([wer,hat,_,programmiert],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
+match([du,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
+match([sie,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
+match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
+match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
+match([alt],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
 
 %Fragen zum beenden
 match([beende],['Du beendest mich durch die Eingabe: "tschüss"']).
@@ -755,18 +786,10 @@ match([_,wiederholen,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viel
 %empty input
 %match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht helfen.']).
 match([],[]).
-
 % last resort (if user's input can't be matched otherwise)
-% match(_E,X) :- Answers = [['Wussten Sie, dass es mich erst seit Juni
-% 2016 gibt? Es kommt mir so vor als wäre es gestern
-% gewesen.'],['Erzählen Sie mehr.'],['Haben Sie vielleicht noch andere
-% Fragen?'],['Es ist schön sich mit jemanden zu
-% unterhalten.'],['Vielleicht haben Sie ja noch ein dringlicheres
-% Anliegen?'],['Vielleicht haben Sie ja noch ein wichtigeres
-% Anliegen?'],['An Ihrer Ausdrucksweise müssen Sie noch etwas feilen.
-% Versuchen Sie es doch ein wenig studentischer.'],['Ja das ist
-% eine gute Anfrage. Aber bevor ich mich dieser annehmen möchte können
-% wir ja ein Spielchen spielen. Sie starten es mit der Eingabe
-% SPIELEN']], random_permutation(Answers,Random_Answers), Random_Answers
-% = [X|_].
+%match(_E,R) :-findall(Y,zufallsantwort(Y),L),
+	%random_permutation(L,Random),
+	%Random=[R|_],
+	%writeln(R).
+
 match(_,[]).
