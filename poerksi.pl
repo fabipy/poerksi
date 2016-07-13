@@ -656,7 +656,7 @@ match([wo,kann,_,essen],['Als Student ist es wichtig viel und gesund zu essen. S
 match([wo,kann,_,_,essen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Aber das wissen Sie ja bestimmt selbst.
 Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Rund um den Brechtbau können Sie aus folgenden Angeboten wählen.'),nl,nl,print_list(Y,_),nl.
 match([was,gibt,es,in,der,mensa],['Was es in der Mensa gibt kann ich leider nicht beantworten, weil das Angebot täglich wechselt.']).
-
+match([welche,mensa],['Es gibt eine Mensa in der Wilhelmstraße, eine Mensa in den Innenstadt (Prinz Karl) und eine Mensa auf der Morgenstelle.']).
 
 %---------------------------------
 %Info zur Bib
