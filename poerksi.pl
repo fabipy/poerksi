@@ -489,8 +489,8 @@ match([nebenfach,_],['In Tübingen können Sie allerlei Studiengänge als Nebenfach
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
 match([welche,profile],['Sie können das Profil Eins: Konzeption digitaler Medien oder das Profil Zwei: Praxisfelder der Medienkommunikation wählen. Eines der Beiden werden Sie dann ab dem dritten Semester belegen.']).
-match([profil,X],['Denn im Profil',X,' liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(_,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
-match([X,profil],['Denn im',X,'Profil liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(_,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
+match([profil,X],['Denn im Profil',X,' liegt der Schwerpunkt auf',Y]):-profil(X,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
+match([X,profil],['Denn im',X,'Profil liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(X,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
 
 %-------------------------------------------------
 %    Smaltalk
@@ -841,7 +841,6 @@ match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
 % ----------------------------------------------------
 % Fragen zu Pörksi
 % ----------------------------------------------------
-match([wie,alt,_,_],['Es gibt mich erst seit Juni 2016!']).
 match([wer,hat,_,programmiert],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([du,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
@@ -849,6 +848,7 @@ match([sie,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nic
 match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([alt],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
+match([alter],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
 match([rauchen],['Rauchen ist nicht besonders gesund. Ich hoffe, das wissen Sie. Ich für meinen Teil rauche nicht.']).
 match([glauben,sie,an,gott],['In meinem Univerum gibt es drei Schöpfer. Die sollten Sie mal kennenlernen. Aber ob sie wirklich auch Götter sind kann ich Ihnen nicht sagen']).
 match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
