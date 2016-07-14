@@ -357,7 +357,6 @@ lehrredaktion('L5 - Schreibtraining',6,[schreibtraining],l5).
 veranstaltung(Titel,ECTS,Modulbezeichnung,Kürzel) :- vorlesung(Titel,ECTS,Modulbezeichnung,Kürzel);seminar(Titel,ECTS,Modulbezeichnung,Kürzel); lehrredaktion(Titel,ECTS,Modulbezeichnung,Kürzel).
 
 
-
 veranstaltungects('G1 - Einführung in die Medienwissenschaft I - 8 ECTS').
 veranstaltungects('G2 - Einführung in die Medienwissenschaft II - 8 ECTS').
 veranstaltungects('G3 - Forschung und Praxisfelder - 4 ECTS').
@@ -369,7 +368,11 @@ veranstaltungects('L3 - Hypermediasysteme - 6 ECTS').
 veranstaltungects('L4 - Film und Fernsehen - 6 ECTS').
 veranstaltungects('L5 - Schreibtraining - 6 ECTS').
 
-
+themen('Einführung in die Medienwissenschaft').
+themen('Methoden in der Medienforschung').
+themen('Medienwirkung').
+themen('Medienrezeption').
+themen('Praxisfelder der Medien').
 
 % --------------------------------
 % DCG
@@ -510,6 +513,8 @@ match([seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folg
 match([lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_,_),X),print_list(X,_).
 match([veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_,_),X),print_list(X,_).
 
+match([tutorien],['Tutotrien sollen Ihnen dabei helfen den Stoff aus der Vorlesung weiter zu festigen und Ihnen zudem die Möglichkeit geben Fragen zu stellen. Meistens finden mehrere zu unterschiedlichen Uhrzeiten statt. Darüber werden Sie aber in den entsprechenden Vorlesungen ausreichend informiert.']).
+match([tutorium],['Tutotrien sollen Ihnen dabei helfen den Stoff aus der Vorlesung weiter zu festigen und Ihnen zudem die Möglichkeit geben Fragen zu stellen. Meistens finden mehrere zu unterschiedlichen Uhrzeiten statt. Darüber werden Sie aber in den entsprechenden Vorlesungen ausreichend informiert.']).
 match([wer,unterrichtet],['Es unterscheidet sich sehr von Semester zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
 match([wer,macht],['Es unterscheidet sich sehr von Semester zu Semester welcher Dozent der Medienwissenschaft welche Veranstaltungen lehrt. Daher lässt sich diese Frage nicht so pauschal beantworten']).
 match([wann,findet,_,_],['Es unterscheidet sich immer sehr von Semester zu Semester, daher kann ich die Frage leider nicht beantworten.']).
@@ -523,12 +528,28 @@ match([wo,ist,die,vorlesung],['wo die Vorlesung ist, das können Sie auf Campus h
 match([wo,ist,das,seminar],['Wo das Seminar ist, das können Sie auf Campus heraus finden.']).
 match([wo,ist,die,lehrredaktion],['Wo das Lehrredaktion ist, das können Sie auf Campus heraus finden.']).
 
+match([zeitaufwand],['Das kommt ganz darauf an, wie sehr Sie sich ins Studium reinhängen. Ich kann Ihnen nur sagen viel hilft viel. Aber normalerweise werden Sie wohl vier Veranstaltungen in der Woche besuchen. Im Selbststudium können Sie Ihre Kenntnisse dann vertiefen.']).
+match([arbeitsaufwand],['Das kommt ganz darauf an, wie sehr Sie sich ins Studium reinhängen. Ich kann Ihnen nur sagen viel hilft viel. Aber normalerweise werden Sie wohl vier Veranstaltungen in der Woche besuchen. Im Selbststudium können Sie Ihre Kenntnisse dann vertiefen.']).
+match([themen],['kennenlernen.
+Dabei wird je nach Vorlesungsthema aber spezifisch auf bestimmte Phänomene wie z.B. die Nachrichtenfaktoren oder die Beeinflussung durch Werbung eingegangen.
+Was möchten Sie sonst noch wissen']):-writeln('In Ihrem Studium werden Sie unterschiedlichste Themen aus den Bereichen:'), findall(X,themen(X),Y),print_list(Y,_).
+
+
+
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
+match([welche,module],['In der Tübinger Medienwissenschaft sprechen wir von Profilen. Sie können das Profil Eins: Konzeption digitaler Medien oder das Profil Zwei: Praxisfelder der Medienkommunikation wählen. Eines der Beiden werden Sie dann ab dem dritten Semester belegen.']).
 match([welche,profile],['Sie können das Profil Eins: Konzeption digitaler Medien oder das Profil Zwei: Praxisfelder der Medienkommunikation wählen. Eines der Beiden werden Sie dann ab dem dritten Semester belegen.']).
+
 match([profil,X],['Denn im Profil',X,' liegt der Schwerpunkt auf',Y]):-profil(X,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
 match([X,profil],['Denn im',X,'Profil liegt der Schwerpunkt auf',Y]):-write('In diesem Profil sollten Sie folgende Veranstaltungen belegen:'),profil(X,Y),nl,findall(B,verpro(X,B),A),print_list(A,_).
+match([konzeption,digitaler,medien],['In diesem Profil liegt der Schwerpunkt auf', X]):-profil(eins,X).
+match([praxisfelder,der,medienkommunikation],['In diesem Profil liegt der Schwerpunkt auf', X]):-profil(zwei,X).
+
+match([praxisorientiert],['Das Studium ist relativ theoretisch und wissenschaftlich angelegt jedoch werden Sie sich auch in den unterschiedlichen Profilen praktisch betätigen können.']).
+match([praxis],['Das Studium ist relativ theoretisch und wissenschaftlich angelegt jedoch werden Sie sich auch in den unterschiedlichen Profilen praktisch betätigen können. Zudem gibt es ein im Studium integriertes Projektstudium.']).
+
 
 %-------------------------------------------------
 %    Smaltalk
@@ -617,6 +638,14 @@ match([was,kann,_,später],['Durch dieses sehr empfehlenswerte Studium werden Sie
 	Medienkonzeption und -produktion
 	Medienmanagement,
 	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
+match([was,kann,_,_,medienwissenschaft],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
+	Öffentlichkeitsarbeit,
+	(Fach)Journalismus,
+	Verlage,
+	Markt-und Medienforschung,
+	Medienkonzeption und -produktion
+	Medienmanagement,
+	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
 match([was,bringt,_,studium],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
 	Öffentlichkeitsarbeit,
 	(Fach)Journalismus,
@@ -641,7 +670,14 @@ match([nach,dem,studium],['Durch dieses sehr empfehlenswerte Studium werden Sie 
 	Medienkonzeption und -produktion
 	Medienmanagement,
 	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
-
+match([berufsaussichten],['Durch dieses sehr empfehlenswerte Studium werden Sie auf folgende Berufsfelder vorbereitet:
+	Öffentlichkeitsarbeit,
+	(Fach)Journalismus,
+	Verlage,
+	Markt-und Medienforschung,
+	Medienkonzeption und -produktion
+	Medienmanagement,
+	und öffentliche medien- und kommunikationswissenschaftliche Forschung']).
 
 % --------------------------------------------------------------------------
 % Allgemeine Infos zum Studium
@@ -692,6 +728,7 @@ match([wer,_,_,ansprechpartner,für,prakika],['Ansprechpartnerin für Prakitka ist
 % Fragen zum Stundenplan
 % -----------------------------
 
+match([im,ersten,semester,belegen],['Auf jeden Fall sollten Sie die G1 besuchenund den rest können SIe wählen. Schauen Sie doch einfach mal ins Modulhandbuch.']).
 match([wo,finde,_,_,stundenplan],['Ihren Stundenplan finden und erstellen Sie auf Campus-Portal. Das ist ein elektronischen Vorlesungsverzeichnis mit Stundenplan und vielen weiteren Funktionen.']).
 match([wo,_,_,_,stundenplan,_],['Ihren Stundenplan erstellen Sie selbst mithilfe des Modulhandbuchs und dem Campus-Portal']).
 match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktion
@@ -701,6 +738,8 @@ match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktio
 	Prüfungsanmeldung
 	Notenspiegel
 	und vieles mehr schau einfach mal vorbei unter http://campus.verwaltung.uni-tuebingen.de/index2.html']).
+match([modulhandbuch],['Das Modulhandbuch beschreibt alle Veranstaltungen, die Sie während Ihres Studiums besuchen sollten. Das Modulhandbuch für den Bachelor finden Sie unter: http://www.uni-tuebingen.de/fakultaeten/philosophische-fakultaet/fachbereiche/philosophie-rhetorik-medien/institut-fuer-medienwissenschaft/studium.html']).
+match([studienordnung],['Die Studienordnung beschreibt alle wichtigen Randinformationen für Ihr Studium. Dieses finden Sie unter: http://www.uni-tuebingen.de/fakultaeten/philosophische-fakultaet/fachbereiche/philosophie-rhetorik-medien/institut-fuer-medienwissenschaft/studium.html']).
 match([prüfung,anmelden],['Die Prüfungsanmeldung ist auf dem Campus möglich']).
 match([prüfungsanmeldung],['Die Prüfungsanmeldung ist auf dem Campus möglich']).
 match([stunden],['Das finden Sie über Campus heraus. Unter http://campus.verwaltung.uni-tuebingen.de/index2.html können Sie mit Ihren Zugangsdaten sich einfach Ihren Studnenplan erstellen']).
@@ -765,9 +804,8 @@ match([kopieren],['Kopierer finden Sie in so gut wie allen universitären Gebäude
 %---------------------------------
 
 match([wo,ist,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
-match([wo,ist,der,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
-match([wo,befindet,sich,der,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
-match([wo,befindet,sich,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
+match([wo,_,_,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
+match([wo,_,_,_,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([in,welchem,gebäude,ist,raum,X],['Dazu gehen sie einfach in den',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 
 match([wo,ist,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
@@ -868,6 +906,15 @@ match([ects,punkte,_,_,für,die,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
 	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
 match([ects,punkte,_,_,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
 	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,_,_,für,die,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,_,_,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,_,_,für,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,_,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+
 
 
 match([ects,verteilung],['Was möchten Sie noch wissen?']):-write('Hier sehen Sie die enstprechenden Vorlesungen und die ECTS Punkte fürs Grundstudium:'),nl,findall(X,veranstaltungects(X),B),print_list(B,_).
@@ -911,15 +958,20 @@ match([nightline],['Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden
 %     Sonderfälle
 % ------------------------------------------------------------------------
 match([lieblingskollege],['Ich mag alle Menschen, auch meine Kollegen.']).
+match([berühmteste,professor],['Da würde ich mich ja gern an erster Stelle nennen, doch eventuell sind Dr. Claus Kleber und Prof. Dr. Bernhard Pörksen ein wenig bekannter als ich.']).
+match([bekanntester,professor],['Da würde ich mich ja gern an erster Stelle nennen, doch eventuell sind Claus Kleber und Dr. Pörksen ein wenig bekannter als ich.']).
 match([was,halten,sie,von],['Ich schlage vor, dass Sie sich selbst ein Bild machen, denn ich möchte nicht, dass Ihre Erwartungen nicht erfüllt werden.']).
-match([mögen,sie],['Da bin ich mir selbst noch nicht so sicher.']).
-match([macht,man,in],['Nicht so voreilig, das wirst du schon noch erleben.']).
+match([mögen,sie],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+match([macht,man,in,der],['Nicht so voreilig, das werden Sie schon noch erleben.']).
 match([bus],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([busse],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([bushaltestelle],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([bahn],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Lockführer bin müssen Sie sich wohl direkt bei naldo direkt erkundigen.']).
 match([züge],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Lockführer bin müssen Sie sich wohl direkt beim naldo direkt erkundigen.']).
 match([barfuß],['Auch wenn ich keine Füße habe empfehle ich Ihnen doch gutes Schuhwerk zu tragen.']).
+match([bier],['Darum müssen Sie sich leider selbst kümmern.
+Trotzdem Prost! Aber übertreiben Sie es nicht.
+Was möchten Sie denn noch wissen)']).
 
 
 
@@ -968,7 +1020,7 @@ match([wo,wohnen,sie],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im
 match([langweilig],['Langeweile ist manchmal sehr wichtig, um erst auf neue Ideen zu kommen.']).
 match([antworten,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
 match([antwortest,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
-match([anne,will],['Ich habe meine Zeit bei Anne Will in der Fernsehsendung sehr genossen.']).
+match([anne,will],['Oh da müssen Sie mich mit Prof. Dr. Pörksen verwechseln. Aber er hat mir erzählt,dass er seine Zeit bei Anne Will in der Fernsehsendung sehr genossen hat.']).
 match([sind,sie,real],['Ich weiß nicht, ob ich real bin. Das müssen Sie schon selbst heraus finden.']).
 match([mich,X],['Nein ich kann Sie leider nicht',X,'.']):-sinne(X).
 
