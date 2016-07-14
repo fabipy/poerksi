@@ -400,6 +400,8 @@ beleid -->[bescheuert].
 beleid -->[dumm].
 beleid -->[blöd].
 beleid -->[nerven].
+beleid -->[streber].
+beleid -->[angeber].
 beleid -->[behindert].
 artikel --> [ein].
 artikel --> [eine].
@@ -517,6 +519,10 @@ match([nebenfach],['In Tübingen können Sie allerlei Studiengänge als Nebenfach w
 match([nebenfächer],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
 match([master],['Also wenn es Ihnen so gut gefällt können Sie in Tübingen auch einen Master in Medienwissenschaft machen.']).
 
+match([wo,ist,die,vorlesung],['wo die Vorlesung ist, das können Sie auf Campus heraus finden.']).
+match([wo,ist,das,seminar],['Wo das Seminar ist, das können Sie auf Campus heraus finden.']).
+match([wo,ist,die,lehrredaktion],['Wo das Lehrredaktion ist, das können Sie auf Campus heraus finden.']).
+
 %-------------------------------------------------
 %    Eingabemöglichkeiten zur Profilbestimmung
 %-------------------------------------------------
@@ -549,6 +555,11 @@ match([was,machst],['Studenten und allerlei Personen beraten, die meine Hilfe au
 match([was,machen,_],['Studenten und allerlei Personen beraten, die meine Hilfe aufsuchen. Stellen Sie mir doch eine Frage.']).
 
 match([wer,bist,du],['Es ist schön Sie kennenzulernen. Haben Sie denn auch Fragen an mich mitgebracht',Merge,'oder irgendein anderes Anliegen?']) :- name('Gast'),write('Ich bin eine künstliche Intelligenz, die ratlosen Studenten weiterhelfen soll. Mich gibt es aber noch gar nicht so lange hier am Institut.
+Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
+Aber genug philosophiert, wer Sind Sie denn?
+Wie ist denn Ihr Name?'),nl,read_sentence(X),last(X,LastElement),atom_chars(LastElement,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge),retract(name(_)),assert(name(Merge)).
+
+match([wer,sind,sie],['Es ist schön Sie kennenzulernen. Haben Sie denn auch Fragen an mich mitgebracht',Merge,'oder irgendein anderes Anliegen?']) :- name('Gast'),write('Ich bin eine künstliche Intelligenz, die ratlosen Studenten weiterhelfen soll. Mich gibt es aber noch gar nicht so lange hier am Institut.
 Entworfen wurde ich von drei Studenten der Medienwissenschaft. Ihnen verdanke ich meine Existenz, insofern ich überhaupt eine Existenz habe...?
 Aber genug philosophiert, wer Sind Sie denn?
 Wie ist denn Ihr Name?'),nl,read_sentence(X),last(X,LastElement),atom_chars(LastElement,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge),retract(name(_)),assert(name(Merge)).
@@ -588,6 +599,11 @@ match([warum,duzt],['Das ist einfach etwas förmlicher. Gewöhnen Sie sich dran. D
 match([wie,_,das,wetter],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
 match([freund,sein],['Warum nicht. Schließlich ist man als Chatbot meist etwas alleine.']).
 match([wie,viele,studenten],['Puh das sind ganz schön viele! Lassen Sie mich erst einmal zählen 1...2...3..4...... Überlegen Sie sich doch schon einmal Ihre nächste Frage.']).
+match([wie,viele,studierende],['Puh das sind ganz schön viele! Lassen Sie mich erst einmal zählen 1...2...3..4...... Überlegen Sie sich doch schon einmal Ihre nächste Frage.']).
+
+match([kommunikation],['Unter Kommunikation versteht man zum einen die Kommunikation zwischen Menschen durch Sprachgebrauch oder Zeichen und zum anderen den Austasuch von Informationen zwischen Geräten.']).
+match([medienwissenschaft],['In der Medienwissenschaft beschäftigen wir uns mit dem kompletten Medienspektrum von Print- und Onlinemedien über Radio, Film und Fernsehen, Medienwandel und Medieninnovation bis hin zu Werbung, Marketing und Unternehmenskommunikation. In Tübingen werden Sie in der Theorie und in der Praxis geschult.']).
+
 
 
 %----------------------------------------------------------
@@ -640,6 +656,19 @@ match([anwesenheitspflicht],['Grundsätzlich ist das von Veranstaltung zu Veranst
 match([anwesend,sein],['Grundsätzlich ist das von Veranstaltung zu Veranstaltung unterschiedlich. Aber im besten Falle verpassen Sie nichts, denn das Feld der Medienwissenschaft ist eifach zu interessant um etwas zu verpassen.']).
 match([studentensekretariat],['Das Studentensekretariat finden Sie in der Wilhelmstraße 11. Dort wird Ihnen Montags 13.00 Uhr - 15.00 Uhr und Dienstags bis Freitags 08.30 Uhr - 11.30 Uhr gerne jemand weiter helfen.']).
 
+match([kinderbetreuung],['Es gibt Krippen- und Kindergartenplätze an der Universität Tübingen. Weitere Infos bekommen Sie beim Familienbüro unter der Webseite https://www.uni-tuebingen.de/einrichtungen/gleichstellung/gleichstellungsbeauftragte/familienbuero.html']).
+match([kind,betreut],['Es gibt Krippen- und Kindergartenplätze an der Universität Tübingen. Weitere Infos bekommen Sie beim Familienbüro unter der Webseite https://www.uni-tuebingen.de/einrichtungen/gleichstellung/gleichstellungsbeauftragte/familienbuero.html']).
+match([kind,betreuen],['Es gibt Krippen- und Kindergartenplätze an der Universität Tübingen. Weitere Infos bekommen Sie beim Familienbüro unter der Webseite https://www.uni-tuebingen.de/einrichtungen/gleichstellung/gleichstellungsbeauftragte/familienbuero.html']).
+match([mein,kind],['Es gibt Krippen- und Kindergartenplätze an der Universität Tübingen. Weitere Infos bekommen Sie beim Familienbüro unter der Webseite https://www.uni-tuebingen.de/einrichtungen/gleichstellung/gleichstellungsbeauftragte/familienbuero.html']).
+
+match([tübingen,wohnen],['Wenn Sie in einem Studentenwohnheim wohnen möchten ist Ihr Ansprechpartner das Studierendenwerk http://www.my-stuwe.de/wohnen/. Falls Sie nicht in einem Wohnheim unterkommen wollen, bietet sich die Webseite http://www.wg-gesucht.de/ zur Suche an.']).
+match([tübingen,schön],['Tübingen ist eine sehr schöne Stadt mit einer exzellenten Universität.']).
+
+match([studienbeginn],['Für den Studienbeginn sollten Sie sich optimal vorbereiten. Nähere Informationen finden Sie auf der Webseite der Universität Tübingen unter https://www.uni-tuebingen.de/studium/studienanfang.html']).
+match([studienanfang],['Für den Studienanfang sollten Sie sich optimal vorbereiten. Nähere Informationen finden Sie auf der Webseite der Universität Tübingen unter https://www.uni-tuebingen.de/studium/studienanfang.html']).
+match([studienalltag],['Der Studienalltag unterscheidet sich stark von Student zu Student. Für gewöhnlich besuchen Sie aber Vorlesungen und Seminare und treffen sich mit Ihren Kommilitonen.']).
+
+match([fakultät],['Die Medienwissenschaft gehört in Tübingen zu der Philosophischen Fakultät. Diese finden Sie im Internet unter https://www.uni-tuebingen.de/fakultaeten/philosophische-fakultaet/fakultaet.html']).
 
 % -----------------------------
 % Fragen zu Praktikum
@@ -650,6 +679,8 @@ In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtp
 match([muss,_,_,praktikum,machen],['Ja ein Praktikum ist auf jeden Fall empfehlenswert.
 In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
 match([kann,_,_,praktikum,machen],['Ja ein Praktikum ist auf jeden Fall empfehlenswert.
+In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
+match([brauche,_,_,praktikum],['Ja ein Praktikum ist auf jeden Fall empfehlenswert.
 In dem Studium der Medienwissenschaft als Hauptfach ist ein 3-monatiges Pflichtpraktikum vorgesehen. So werden Sie optimal auf das Berufsleben vorbereitet.']).
 match([wann,_,_,_,praktikum],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
 match([wie,lange,_,ein,praktikum],['Es gibt ein Pflichtpraktikum von 3 Monaten vorgesehen. Dieses könne Sie entweder am Stück absolvieren oder in bis zu drei einmonatige Praktika aufteilen. Das Praktikum muss in der vorlesungsfreien Zeit absolviert werden.']).
@@ -670,6 +701,8 @@ match([_,_,campus],['elektronischen Vorlesungsverzeichnis mit Stundenplanfunktio
 	Prüfungsanmeldung
 	Notenspiegel
 	und vieles mehr schau einfach mal vorbei unter http://campus.verwaltung.uni-tuebingen.de/index2.html']).
+match([prüfung,anmelden],['Die Prüfungsanmeldung ist auf dem Campus möglich']).
+match([prüfungsanmeldung],['Die Prüfungsanmeldung ist auf dem Campus möglich']).
 match([stunden],['Das finden Sie über Campus heraus. Unter http://campus.verwaltung.uni-tuebingen.de/index2.html können Sie mit Ihren Zugangsdaten sich einfach Ihren Studnenplan erstellen']).
 match([semesterferien],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
 match([semesterbeginn],['Die aktuellen Termine für die Semesterferien finden Sie hier:https://www.uni-tuebingen.de/studium/studienorganisation/semestertermine.html']).
@@ -716,8 +749,10 @@ match([wo,_,_,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilol
 match([wo,_,_,_,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
 match([wo,_,_,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 match([wo,_,_,_,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
+match([wie,viele,räume],['Die genaue Anzahl der Räume kenne ich leider nicht.']).
 match([wo,_,_,mensa],['In der Wilhelmstraße 13']).
 match([toiletten],['Toiletten finden Sie in jedem universitären Gebäude. Im Brechtbau gibt es in jedem Stockwerk eine in anderen Gebäuden sind sie ausgeschildert. Das finden Sie schon.']).
+match([wc],['WCs finden Sie in jedem universitären Gebäude. Im Brechtbau gibt es in jedem Stockwerk eine in anderen Gebäuden sind sie ausgeschildert. Das finden Sie schon.']).
 match([aufzug],['Barrierefreiheit soll auch im Studium gegeben sein. Daher finden sich in sogut wie allen universitären ein oder mehrere Aufzüge.']).
 match([aufzüge],['Barrierefreiheit soll auch im Studium gegeben sein. Daher finden sich in sogut wie allen universitären ein oder mehrere Aufzüge.']).
 
@@ -806,6 +841,8 @@ match([X,_,raum],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching
 match([X,raum],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_room(ID,Raum).
 match([raumnummer,_,X],['Du findest',Name,'im Raum',Raum]) :-  elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_room(ID,Raum).
 
+% Extrafrage zur Fachschaft
+match([eine,fachschaft],['Die Medienwissenschaft hat eine Fachschaft. Die Aufgabe der Fachschaft ist Vermittlung zwischen Dozenten und Studierenden. Nähere Informationen können Sie per Mail direkt bei der Fachschaft erhalten: fachschaft@medienwissenschaft.uni-tuebingen.de']).
 
 % -------------------------------------------------------------------
 % EasterEggs
@@ -831,6 +868,15 @@ match([ects,punkte,_,_,für,die,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
 	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
 match([ects,punkte,_,_,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
 	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,_,_,für,die,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,_,_,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,_,_,für,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+match([ects,_,A],['Für die',Z,'gibt es',X,'ECTS Punkte']):-
+	lehrredaktion(Z,X,_,A);vorlesung(Z,X,_,A);seminar(Z,X,_,A).
+
 
 
 match([ects,verteilung],['Was möchten Sie noch wissen?']):-write('Hier sehen Sie die enstprechenden Vorlesungen und die ECTS Punkte fürs Grundstudium:'),nl,findall(X,veranstaltungects(X),B),print_list(B,_).
@@ -868,6 +914,7 @@ match([was,_,apa],['APA steht für American Psychological Association. Es handelt
 % ----------------------------------------------------
 
 match([hilfe],['Wenn Sie nicht mehr weiterkommen, dann scheuen Sie sich nicht davor Hilfe zu suchen! Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden für Studierende. Sie erreichen diese immer Montag und Mittwoch von 21.00-1.00 Uhr unter der Nummer: 07071 8895440']).
+match([nightline],['Die Nightline Tübingen ist ein Zuhörtelefon von Studierenden für Studierende. Sie erreichen diese immer Montag und Mittwoch von 21.00-1.00 Uhr unter der Nummer: 07071 8895440']).
 
 % ------------------------------------------------------------------------
 %     Sonderfälle
@@ -924,10 +971,21 @@ match([alter],['Mein geistiges Alter liegt wohl weit über meinem physischen Alte
 match([rauchen],['Rauchen ist nicht besonders gesund. Ich hoffe, das wissen Sie. Ich für meinen Teil rauche nicht.']).
 match([glauben,sie,an,gott],['In meinem Univerum gibt es drei Schöpfer. Die sollten Sie mal kennenlernen. Aber ob sie wirklich auch Götter sind kann ich Ihnen nicht sagen']).
 match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
+match([lieblingsessen],['Ich bin ein Computerprogramm und habe deswegen kein Lieblingsessen.']).
 match([wo,wohnst,du],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
 match([wo,wohnen,sie],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
-match([langweilig],['Langeweile ist manchmal sehr wichtig um erst auf neue Ideen zu kommen.']).
+match([langweilig],['Langeweile ist manchmal sehr wichtig, um erst auf neue Ideen zu kommen.']).
+match([antworten,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
+match([antwortest,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
+match([anne,will],['Ich habe meine Zeit bei Anne Will in der Fernsehsendung sehr genossen.']).
+match([sind,sie,real],['Ich weiß nicht, ob ich real bin. Das müssen Sie schon selbst heraus finden.']).
 match([mich,X],['Nein ich kann Sie leider nicht',X,'.']):-sinne(X).
+
+match([wo,bist,du],['Ich bin in den Weiten des Universums. Manchmal finden Sie mich aber auch in Tübingen.']).
+match([wo,sind,sie],['Ich bin in den Weiten des Universums. Manchmal finden Sie mich aber auch in Tübingen.']).
+
+match([was,unterrichen,sie],['Meine Aufgabe ist es Ihre Fragen zu beantworten, also unterrichte ich Sie.']).
+match([was,unterrichtest,du],['Meine Aufgabe ist es Ihre Fragen zu beantworten, also unterrichte ich Sie.']).
 
 % ----------------------------------------------------
 %Fragen zum beenden
@@ -936,6 +994,7 @@ match([beende],['Du beendest mich durch die Eingabe: "tschüss"']).
 match([beenden],['Du beendest mich durch die Eingabe: "tschüss"']).
 match([beendet],['Du beendest mich durch die Eingabe: "tschüss"']).
 match([ausschalten],['Du beendest mich durch die Eingabe: "tschüss"']).
+match([auf,wiedersehen],['Wenn Sie mich beenden möchten, dann geht das durch die Eingabe "tschüss"']).
 
 %Wie viele Fragen kannst du beeantworten
 match([wie,viele,fragen,kannst,du,beantworten],['Das hängt ganz von Ihren Fragen ab.']).
