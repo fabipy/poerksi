@@ -533,7 +533,8 @@ match([arbeitsaufwand],['Das kommt ganz darauf an, wie sehr Sie sich ins Studium
 match([themen],['kennenlernen.
 Dabei wird je nach Vorlesungsthema aber spezifisch auf bestimmte Phänomene wie z.B. die Nachrichtenfaktoren oder die Beeinflussung durch Werbung eingegangen.
 Was möchten Sie sonst noch wissen']):-writeln('In Ihrem Studium werden Sie unterschiedlichste Themen aus den Bereichen:'), findall(X,themen(X),Y),print_list(Y,_).
-
+match([zulassungsbeschränkt],['Sowohl das B.A.-Haupt- als auch das Nebenfach sind zulassungsbeschränkt. Im Hauptfach werden in jedem Wintersemester 90 Studienplätze vergeben. Im Nebenfach stehen 30 Studienplätze zur Verfügung.']).
+match([zulassungsunbeschränkt],['Nein, leider sind das B.A.-Haupt- wie auch das Nebenfach zulassungsbeschränkt. Im Hauptfach werden in jedem Wintersemester 90 Studienplätze vergeben. Im Nebenfach stehen 30 Studienplätze zur Verfügung.']).
 
 
 %-------------------------------------------------
@@ -620,6 +621,8 @@ match([warum,duzt],['Das ist einfach etwas förmlicher. Gewöhnen Sie sich dran. D
 match([wie,_,das,wetter],['Am besten schauen Sie nach draußen oder Sie fragen einen Meteorologen. Ich mag zwar über künztliche Intelligenz verfügen,doch ein Wetterfrosch bin ich wahrlich nicht.']).
 match([freund,sein],['Warum nicht. Schließlich ist man als Chatbot meist etwas alleine.']).
 match([wie,viele,studenten],['Puh das sind ganz schön viele! Lassen Sie mich erst einmal zählen 1...2...3..4...... Überlegen Sie sich doch schon einmal Ihre nächste Frage.']).
+match([sind,viele,studenten],['Puh das sind ganz schön viele! Lassen Sie mich erst einmal zählen 1...2...3..4...... Überlegen Sie sich doch schon einmal Ihre nächste Frage.']).
+
 match([wie,viele,studierende],['Puh das sind ganz schön viele! Lassen Sie mich erst einmal zählen 1...2...3..4...... Überlegen Sie sich doch schon einmal Ihre nächste Frage.']).
 
 match([kommunikation],['Unter Kommunikation versteht man zum einen die Kommunikation zwischen Menschen durch Sprachgebrauch oder Zeichen und zum anderen den Austasuch von Informationen zwischen Geräten.']).
@@ -686,10 +689,11 @@ match([berufsaussichten],['Durch dieses sehr empfehlenswerte Studium werden Sie 
 match([wie,viele,semester],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
 match([wie,lange,dauert],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
 match([wann,_,das,studium],['Das Studium der Medienwissenschaft können Sie jedes Wintersemester an der Eliteuniversität Tübingen beginnen.']).
-match([was,ist,der,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
-match([gibt,es,einen,nc],['Da der Vergabe der Studienplätze ein hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
+match([was,ist,der,nc],['Da die Vergabe der Studienplätze einem hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
+match([gibt,es,einen,nc],['Da die Vergabe der Studienplätze einem hochkomplexes Verfahren unterliegt kann ich diese Frage nicht beantworten.']).
 match([anwesenheitspflicht],['Grundsätzlich ist das von Veranstaltung zu Veranstaltung unterschiedlich. Aber im besten Falle verpassen Sie nichts, denn das Feld der Medienwissenschaft ist eifach zu interessant um etwas zu verpassen.']).
 match([anwesend,sein],['Grundsätzlich ist das von Veranstaltung zu Veranstaltung unterschiedlich. Aber im besten Falle verpassen Sie nichts, denn das Feld der Medienwissenschaft ist eifach zu interessant um etwas zu verpassen.']).
+match([englisch,kenntnisse],['Das wäre von Vorteil, da Ihnen im Laufe des Studiums viel Literatur begegnen wird, die auf Englisch verfasst wurde.']).
 match([studentensekretariat],['Das Studentensekretariat finden Sie in der Wilhelmstraße 11. Dort wird Ihnen Montags 13.00 Uhr - 15.00 Uhr und Dienstags bis Freitags 08.30 Uhr - 11.30 Uhr gerne jemand weiter helfen.']).
 
 match([kinderbetreuung],['Es gibt Krippen- und Kindergartenplätze an der Universität Tübingen. Weitere Infos bekommen Sie beim Familienbüro unter der Webseite https://www.uni-tuebingen.de/einrichtungen/gleichstellung/gleichstellungsbeauftragte/familienbuero.html']).
@@ -788,6 +792,8 @@ match([wo,_,_,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilol
 match([wo,_,_,_,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
 match([wo,_,_,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 match([wo,_,_,_,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
+match([wo,_,_,unibin],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 32.']).
+match([wo,_,_,_,unibib],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 32.']).
 match([wie,viele,räume],['Die genaue Anzahl der Räume kenne ich leider nicht.']).
 match([wo,_,_,mensa],['In der Wilhelmstraße 13']).
 match([toiletten],['Toiletten finden Sie in jedem universitären Gebäude. Im Brechtbau gibt es in jedem Stockwerk eine in anderen Gebäuden sind sie ausgeschildert. Das finden Sie schon.']).
@@ -809,14 +815,13 @@ match([wo,_,_,_,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und
 match([in,welchem,gebäude,ist,raum,X],['Dazu gehen sie einfach in den',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 
 match([wo,ist,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
-match([wo,ist,der,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
-match([wo,befindet,sich,der,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
-match([wo,befindet,sich,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
+match([wo,_,_,_,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
+match([wo,_,_,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
 match([in,welchem,gebäude,ist,raum,X],['Haben Sie vielleicht eine Null zuviel? So groß ist der Brechtbau nun auch wieder nicht!']) :- atom_number(X,Num),integer(Num),Num > 500.
 
 match([wo,ist,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
-match([wo,ist,der,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
-match([wo,befindet,sich,der,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
+match([wo,_,_,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
+match([wo,_,_,_,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
 match([wo,befindet,sich,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
 match([in,welchem,gebäude,ist,raum,X],['Welcher Raum soll das sein? Tut mir leid da kann ich Ihnen leider nicht weiterhelfen.']) :- not(atom_number(X,_)).
 
