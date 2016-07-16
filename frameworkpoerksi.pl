@@ -74,8 +74,24 @@ pörksi(Input) :-
 
 % regular match
 pörksi(Input) :-
+  retractall(lastAnswer(_)),
   retract(lastInput(_)),assert(lastInput(Input)),
   ntuples(Input,_,0).
+  
+ntuples([],_,_) :-
+	\+ lastAnswer(_),
+	Answers = 
+		   [['Wussten Sie, dass es mich erst seit Juni 2016 gibt? Es kommt mir so vor als wäre es gestern gewesen.'],
+		   ['Erzählen Sie mehr.'],
+		   ['Haben Sie vielleicht noch andere Fragen?'],
+		   ['Es ist schön sich mit jemanden zu unterhalten.'],
+		   ['Vielleicht haben Sie ja noch ein dringlicheres Anliegen?'],
+		   ['Vielleicht haben Sie ja noch ein wichtigeres Anliegen?'],
+		   ['An Ihrer Ausdrucksweise müssen Sie noch etwas feilen. Versuchen Sie es doch ein wenig studentischer.']], 
+	random_permutation(Answers,Random_Answers), 
+	Random_Answers = [[X]|_],
+	write(X),
+	assert(lastAnswer([X])),fail.
 
 ntuples([],_,_) :-
 	retract(poerksi(_)),assert(poerksi('Dr.Pörksi: ')),

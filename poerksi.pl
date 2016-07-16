@@ -1027,7 +1027,7 @@ match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verhe
 match([eltern],['Eltern habe ich keine aber dafür habe ich drei liebevolle Entwickler.']).
 match([vater],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
 match([mutter],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
-match([papa],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
+match([papa],['Naja einen richtigen Vater habe ich nicht, aber einer meiner Entwickler heißt Fabian.']).
 match([mama],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
 match([willst,du,mich,heiraten],['Ist das in Deutschland schon erlaubt? Ich glaube nicht. Aber wir können gerne Freunde sein.']).
 match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
@@ -1075,13 +1075,6 @@ match([wie,viele,fragen,können,sie,beantworten],['Das hängt ganz von Ihren Frage
 match([_,wiederholst,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen?']).
 match([_,wiederholen,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen?']).
 
-%empty input
-%match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht helfen.']).
+% no match possible
 match([],[]).
-% last resort (if user's input can't be matched otherwise)
-%match(_E,R) :-findall(Y,zufallsantwort(Y),L),
-	%random_permutation(L,Random),
-	%Random=[R|_],
-	%writeln(R).
-
 match(_,[]).
