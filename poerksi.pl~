@@ -512,6 +512,8 @@ match([vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten folge
 match([seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_,_),X),print_list(X,_).
 match([lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_,_),X),print_list(X,_).
 match([veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_,_),X),print_list(X,_).
+match([univeranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_,_),X),print_list(X,_).
+
 
 match([tutorien],['Tutotrien sollen Ihnen dabei helfen den Stoff aus der Vorlesung weiter zu festigen und Ihnen zudem die Möglichkeit geben Fragen zu stellen. Meistens finden mehrere zu unterschiedlichen Uhrzeiten statt. Darüber werden Sie aber in den entsprechenden Vorlesungen ausreichend informiert.']).
 match([tutorium],['Tutotrien sollen Ihnen dabei helfen den Stoff aus der Vorlesung weiter zu festigen und Ihnen zudem die Möglichkeit geben Fragen zu stellen. Meistens finden mehrere zu unterschiedlichen Uhrzeiten statt. Darüber werden Sie aber in den entsprechenden Vorlesungen ausreichend informiert.']).
@@ -522,6 +524,7 @@ match([welche,veranstaltungsarten],['An unserer Universität können Sie an Vorles
 
 match([nebenfach],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
 match([nebenfächer],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
+match([was,kann,_,in,tübingen,studieren],['In Tübingen können Sie allerlei Studiengänge wählen, darunter auch Medienwissenschaft. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
 match([master],['Also wenn es Ihnen so gut gefällt können Sie in Tübingen auch einen Master in Medienwissenschaft machen.']).
 
 match([wo,ist,die,vorlesung],['wo die Vorlesung ist, das können Sie auf Campus heraus finden.']).
@@ -974,6 +977,10 @@ match([berühmteste,professor],['Da würde ich mich ja gern an erster Stelle nenne
 match([bekanntester,professor],['Da würde ich mich ja gern an erster Stelle nennen, doch eventuell sind Claus Kleber und Dr. Pörksen ein wenig bekannter als ich.']).
 match([was,halten,sie,von],['Ich schlage vor, dass Sie sich selbst ein Bild machen, denn ich möchte nicht, dass Ihre Erwartungen nicht erfüllt werden.']).
 match([mögen,sie],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+match([magst,du],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+
+match([welche,_,sind,gut],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Da muss ich mir selbst noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+
 match([macht,man,in,der],['Nicht so voreilig, das werden Sie schon noch erleben.']).
 match([bus],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([busse],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
@@ -1011,6 +1018,7 @@ match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
 % ----------------------------------------------------
 % Fragen zu Pörksi
 % ----------------------------------------------------
+match([woher,kommt,_,name],['Das müssten Sie eigentlich meine Entwickler fragen. Ich nenne sie liebevoll Mama und Papa. Aber sie sagten mir der Name leitet sich von einem bekannten Tübinger Professor ab. Und da sie immer wollten dass ich genauso erfolgreich werde, nannten sie mich Pörksi.']).
 match([wer,hat,_,programmiert],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([du,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
@@ -1019,6 +1027,8 @@ match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verhe
 match([eltern],['Eltern habe ich keine aber dafür habe ich drei liebevolle Entwickler.']).
 match([vater],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
 match([mutter],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
+match([papa],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
+match([mama],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
 match([willst,du,mich,heiraten],['Ist das in Deutschland schon erlaubt? Ich glaube nicht. Aber wir können gerne Freunde sein.']).
 match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([alt],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
@@ -1029,6 +1039,9 @@ match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
 match([lieblingsessen],['Ich bin ein Computerprogramm und habe deswegen kein Lieblingsessen.']).
 match([wo,wohnst,du],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
 match([wo,wohnen,sie],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+match([woher,kommst,du],['Aus den Köpfen dreier Studenten. Und nun habe ich keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+match([woher,kommen,sie],['Aus den Köpfen dreier Studenten. Und nun habe ich keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+
 match([langweilig],['Langeweile ist manchmal sehr wichtig, um erst auf neue Ideen zu kommen.']).
 match([antworten,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
 match([antwortest,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
@@ -1041,6 +1054,9 @@ match([wo,sind,sie],['Ich bin in den Weiten des Universums. Manchmal finden Sie 
 
 match([was,unterrichen,sie],['Meine Aufgabe ist es Ihre Fragen zu beantworten, also unterrichte ich Sie.']).
 match([was,unterrichtest,du],['Meine Aufgabe ist es Ihre Fragen zu beantworten, also unterrichte ich Sie.']).
+match([bist,du,schlau],['Ich bin doch Doktor - natürlich bin ich schlau.']).
+match([sind,sie,schlau],['Ich bin doch Doktor - natürlich bin ich schlau.']).
+
 
 % ----------------------------------------------------
 %Fragen zum beenden

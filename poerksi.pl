@@ -524,6 +524,7 @@ match([welche,veranstaltungsarten],['An unserer Universität können Sie an Vorles
 
 match([nebenfach],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
 match([nebenfächer],['In Tübingen können Sie allerlei Studiengänge als Nebenfach wählen. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
+match([was,kann,_,in,tübingen,studieren],['In Tübingen können Sie allerlei Studiengänge wählen, darunter auch Medienwissenschaft. Eine Übersicht über alle Studiengänge finden Sie hier: https://www.uni-tuebingen.de/studium/verzeichnis-der-studiengaenge.html']).
 match([master],['Also wenn es Ihnen so gut gefällt können Sie in Tübingen auch einen Master in Medienwissenschaft machen.']).
 
 match([wo,ist,die,vorlesung],['wo die Vorlesung ist, das können Sie auf Campus heraus finden.']).
@@ -981,7 +982,7 @@ match([magst,du],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.'
 match([welche,_,sind,gut],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Da muss ich mir selbst noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
 
 match([macht,man,in,der],['Nicht so voreilig, das werden Sie schon noch erleben.']).
-match([bus],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
+match([bus],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue erkundigen.']).
 match([busse],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([bushaltestelle],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([bahn],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Lockführer bin müssen Sie sich wohl direkt bei naldo direkt erkundigen.']).
