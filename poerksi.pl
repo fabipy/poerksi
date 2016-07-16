@@ -512,6 +512,8 @@ match([vorlesungen],['Haben Sie noch andere Fragen?']):-write('Sie sollten folge
 match([seminare],['Haben Sie noch andere Fragen?']):-write('Sie sollten das folgende Seminar im Laufe Ihres Studiums besuchen:'),nl,findall(Y,seminar(Y,_,_,_),X),print_list(X,_).
 match([lehrredaktionen],['Haben Sie noch andere Fragen?']):-write('Sie können aus den folgenden Lehrredaktionen auswählen. Besuchen sollten sie mindestens drei:'),nl,findall(Y,lehrredaktion(Y,_,_,_),X),print_list(X,_).
 match([veranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_,_),X),print_list(X,_).
+match([univeranstaltungen],['Haben Sie noch andere Fragen?']):-write('Folgende Veranstaltungen können Sie im Laufe ihres Studiums besuchen'),nl,findall(Y,veranstaltung(Y,_,_,_),X),print_list(X,_).
+
 
 match([tutorien],['Tutotrien sollen Ihnen dabei helfen den Stoff aus der Vorlesung weiter zu festigen und Ihnen zudem die Möglichkeit geben Fragen zu stellen. Meistens finden mehrere zu unterschiedlichen Uhrzeiten statt. Darüber werden Sie aber in den entsprechenden Vorlesungen ausreichend informiert.']).
 match([tutorium],['Tutotrien sollen Ihnen dabei helfen den Stoff aus der Vorlesung weiter zu festigen und Ihnen zudem die Möglichkeit geben Fragen zu stellen. Meistens finden mehrere zu unterschiedlichen Uhrzeiten statt. Darüber werden Sie aber in den entsprechenden Vorlesungen ausreichend informiert.']).
@@ -685,7 +687,7 @@ match([berufsaussichten],['Durch dieses sehr empfehlenswerte Studium werden Sie 
 % --------------------------------------------------------------------------
 % Allgemeine Infos zum Studium
 % -----------------------------
-
+match([was,soll,_,studieren],['Da Sie sich scheinbar schon für Medienwissenschaft interessieren, wie wäre es dann mit einem Bachelor in Medienwissenschaft? Sie könnten sich bei mir auch gerne über die Verantstaltungen im Fach informieren.']).
 match([wie,viele,semester],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
 match([wie,lange,dauert],['Im Bachelor gibt es eine Regelstudienzeit von 6 Semester.']).
 match([wann,_,das,studium],['Das Studium der Medienwissenschaft können Sie jedes Wintersemester an der Eliteuniversität Tübingen beginnen.']).
@@ -772,9 +774,12 @@ Sie wählen Ihren Betreuer, je nach gewähltem Thema, selbstständig aus dem Mitarb
 
 %essen
 %zwischenabstände fehlen noch
-match([wo,kann,_,essen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Warten Sie, ich generiere Ihnen kurz mal eine Liste.'),nl,nl,print_list(Y,_),nl.
+match([wo,_,_,essen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Warten Sie, ich generiere Ihnen kurz mal eine Liste.'),nl,nl,print_list(Y,_),nl.
 match([wo,kann,_,_,essen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Aber das wissen Sie ja bestimmt selbst.
 Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Rund um den Brechtbau können Sie aus folgenden Angeboten wählen.'),nl,nl,print_list(Y,_),nl.
+match([mittagessen],['Als Student ist es wichtig viel und gesund zu essen. So halten Sie ihr Gehirn fit. Aber das wissen Sie ja bestimmt selbst.
+Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Rund um den Brechtbau können Sie aus folgenden Angeboten wählen.'),nl,nl,print_list(Y,_),nl.
+
 match([was,gibt,es,in,der,mensa],['Was es in der Mensa gibt kann ich leider nicht beantworten, weil das Angebot täglich wechselt.']).
 match([welche,mensa],['Es gibt eine Mensa in der Wilhelmstraße, eine Mensa in den Innenstadt (Prinz Karl) und eine Mensa auf der Morgenstelle.']).
 
@@ -788,11 +793,12 @@ match([wann,_,_,X,_],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y)
 % Fragen zu Gebäuden
 % ---------------------------------
 
+match([wo,_,_,uni],['Ich hoffe, dass Sie schon einmal wissen, dass sie sich in Tübingen befindet. Jedoch sind die Gebäude ziemlich verteilt. Meistens werden Sie sich aber im Brechtbau und im Kupferbau wiederfinden.']).
 match([wo,_,_,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
 match([wo,_,_,_,brechtbau],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 50.']).
 match([wo,_,_,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
 match([wo,_,_,_,kupferbau],['Der Kupferbau ist in der Hölderlinstraße 5. Hier finden Vorlesungen statt.']).
-match([wo,_,_,unibin],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 32.']).
+match([wo,_,_,unibib],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 32.']).
 match([wo,_,_,_,unibib],['Der Brechtbau, auch bekannt unter dem Namen Neuphilologikum, befindet sich in der Wilhelmstraße 32.']).
 match([wie,viele,räume],['Die genaue Anzahl der Räume kenne ich leider nicht.']).
 match([wo,_,_,mensa],['In der Wilhelmstraße 13']).
@@ -864,6 +870,9 @@ match([ihre,mailadresse],['Du brauchst meine Mailadresse gar nicht, du kannst do
 match([deine,emailadresse],['Du brauchst meine Mailadresse gar nicht, du kannst doch direkt hier mit mir schreiben. Und jetzt wieder zum Sie']).
 match([ihre,emailadresse],['Du brauchst meine Mailadresse gar nicht, du kannst doch direkt hier mit mir schreiben.']).
 
+match([email,adresse,von,X],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
+match([X,email,adresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
+match([X,_,email,adresse],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
 
 match([telefonnummer,von,X],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
 match([X,telefonnummer],['Die Telefonnumer von',Name,'lautet',Tel]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_phone(ID,Tel).
@@ -967,6 +976,10 @@ match([berühmteste,professor],['Da würde ich mich ja gern an erster Stelle nenne
 match([bekanntester,professor],['Da würde ich mich ja gern an erster Stelle nennen, doch eventuell sind Claus Kleber und Dr. Pörksen ein wenig bekannter als ich.']).
 match([was,halten,sie,von],['Ich schlage vor, dass Sie sich selbst ein Bild machen, denn ich möchte nicht, dass Ihre Erwartungen nicht erfüllt werden.']).
 match([mögen,sie],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+match([magst,du],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+
+match([welche,_,sind,gut],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Da muss ich mir selbst noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+
 match([macht,man,in,der],['Nicht so voreilig, das werden Sie schon noch erleben.']).
 match([bus],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([busse],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
@@ -1004,6 +1017,7 @@ match([cool],['Ja echt knorke. Möchten Sie sonst noch etwas wissen?']).
 % ----------------------------------------------------
 % Fragen zu Pörksi
 % ----------------------------------------------------
+match([woher,kommt,_,name],['Das müssten Sie eigentlich meine Entwickler fragen. Ich nenne sie liebevoll Mama und Papa. Aber sie sagten mir der Name leitet sich von einem bekannten Tübinger Professor ab. Und da sie immer wollten dass ich genauso erfolgreich werde, nannten sie mich Pörksi.']).
 match([wer,hat,_,programmiert],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([wer,hat,_,gemacht],['Ich wurde von drei Medienwissenschaftstudierenden im Rahmen eines Projekts konzipiert.']).
 match([du,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
@@ -1012,6 +1026,8 @@ match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verhe
 match([eltern],['Eltern habe ich keine aber dafür habe ich drei liebevolle Entwickler.']).
 match([vater],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
 match([mutter],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
+match([papa],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
+match([mama],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
 match([willst,du,mich,heiraten],['Ist das in Deutschland schon erlaubt? Ich glaube nicht. Aber wir können gerne Freunde sein.']).
 match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([alt],['Mein geistiges Alter liegt wohl weit über meinem physischen Alter. Mich gibt es nämlich erst seit 2016.']).
@@ -1022,6 +1038,9 @@ match([freizeit],['Freizeit, das kennt man an der Universität nicht.']).
 match([lieblingsessen],['Ich bin ein Computerprogramm und habe deswegen kein Lieblingsessen.']).
 match([wo,wohnst,du],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
 match([wo,wohnen,sie],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+match([woher,kommst,du],['Aus den Köpfen dreier Studenten. Und nun habe ich keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+match([woher,kommen,sie],['Aus den Köpfen dreier Studenten. Und nun habe ich keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+
 match([langweilig],['Langeweile ist manchmal sehr wichtig, um erst auf neue Ideen zu kommen.']).
 match([antworten,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
 match([antwortest,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
@@ -1034,6 +1053,9 @@ match([wo,sind,sie],['Ich bin in den Weiten des Universums. Manchmal finden Sie 
 
 match([was,unterrichen,sie],['Meine Aufgabe ist es Ihre Fragen zu beantworten, also unterrichte ich Sie.']).
 match([was,unterrichtest,du],['Meine Aufgabe ist es Ihre Fragen zu beantworten, also unterrichte ich Sie.']).
+match([bist,du,schlau],['Ich bin doch Doktor - natürlich bin ich schlau.']).
+match([sind,sie,schlau],['Ich bin doch Doktor - natürlich bin ich schlau.']).
+
 
 % ----------------------------------------------------
 %Fragen zum beenden
