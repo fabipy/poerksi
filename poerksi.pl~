@@ -406,6 +406,7 @@ beleid -->[nerven].
 beleid -->[streber].
 beleid -->[angeber].
 beleid -->[behindert].
+beleid -->[enttäuschung].
 artikel --> [ein].
 artikel --> [eine].
 
@@ -463,7 +464,14 @@ verpro(zweiten,' G5-II  Praxisfelder der Medienkommunikation').
 verpro(zweiten,' F3-II  Forschungsprojekt I').
 verpro(zweiten,' F4-II  Forschungsprojekt II').
 
-
+studienberatung('Montags, 10-12 Uhr – Pia Fruth (Beratung Praxiskontakte)').
+studienberatung('Montags, 12-14 Uhr – Torsten Maurer').
+studienberatung('Montags, 14-16 Uhr – Hanne Detel').
+studienberatung('Montags, 15-16 Uhr - Mandy Badermann').
+studienberatung('Dienstags, 10-11 Uhr – Kiron Patka').
+studienberatung('Dienstags, 15-17 Uhr – Jan-Noël Thon').
+studienberatung('Mittwochs, 11-12 Uhr – Ulrich Hägele').
+studienberatung('Donnerstags, 14-15 Uhr - Markus Feiks').
 
 %Essen Name,Adresse
 essen('Cafeteria Unibibliothek in der Wilhelmstraße 32').
@@ -698,6 +706,15 @@ match([anwesenheitspflicht],['Grundsätzlich ist das von Veranstaltung zu Veranst
 match([anwesend,sein],['Grundsätzlich ist das von Veranstaltung zu Veranstaltung unterschiedlich. Aber im besten Falle verpassen Sie nichts, denn das Feld der Medienwissenschaft ist eifach zu interessant um etwas zu verpassen.']).
 match([englisch,kenntnisse],['Das wäre von Vorteil, da Ihnen im Laufe des Studiums viel Literatur begegnen wird, die auf Englisch verfasst wurde.']).
 match([studentensekretariat],['Das Studentensekretariat finden Sie in der Wilhelmstraße 11. Dort wird Ihnen Montags 13.00 Uhr - 15.00 Uhr und Dienstags bis Freitags 08.30 Uhr - 11.30 Uhr gerne jemand weiter helfen.']).
+match([sekretariat],['Das Studentensekretariat finden Sie in der Wilhelmstraße 11. Dort wird Ihnen Montags 13.00 Uhr - 15.00 Uhr und Dienstags bis Freitags 08.30 Uhr - 11.30 Uhr gerne jemand weiter helfen.']).
+match([wie,wechsel,ich,_,studiengang],['Nun zu Ihrer nächsten Frage']):-writeln('Am Besten sprechen Sie in diesem Fall einen der Studienberater an. Hier fidnen Sie alle Studienberatur und ihre Sprechzeiten.'),nl,findall(X,studienberatung(X),Y),print_list(Y,_).
+match([wie,wechselt,man,_,studiengang],['Nun zu Ihrer nächsten Frage']):-writeln('Am Besten sprechen Sie in diesem Fall einen der Studienberater an. Hier fidnen Sie alle Studienberatur und ihre Sprechzeiten.'),nl,findall(X,studienberatung(X),Y),print_list(Y,_).
+match([studiengang,wechseln],['Nun zu Ihrer nächsten Frage']):-writeln('Am Besten sprechen Sie in diesem Fall einen der Studienberater an. Hier fidnen Sie alle Studienberatur und ihre Sprechzeiten.'),nl,findall(X,studienberatung(X),Y),print_list(Y,_).
+match([studienberatung],['Nun zu Ihrer nächsten Frage']):-writeln('Am Besten sprechen Sie in diesem Fall einen der Studienberater an. Hier fidnen Sie alle Studienberatur und ihre Sprechzeiten.'),nl,findall(X,studienberatung(X),Y),print_list(Y,_).
+match([studienbeitrag],['Der Studienbeitrag beläuft sich auf
+143,80 pro Semester.']).
+match([studiengebühren],['Der Studienbeitrag beläuft sich auf
+143,80€ pro Semester.']).
 
 match([kinderbetreuung],['Es gibt Krippen- und Kindergartenplätze an der Universität Tübingen. Weitere Infos bekommen Sie beim Familienbüro unter der Webseite https://www.uni-tuebingen.de/einrichtungen/gleichstellung/gleichstellungsbeauftragte/familienbuero.html']).
 match([kind,betreut],['Es gibt Krippen- und Kindergartenplätze an der Universität Tübingen. Weitere Infos bekommen Sie beim Familienbüro unter der Webseite https://www.uni-tuebingen.de/einrichtungen/gleichstellung/gleichstellungsbeauftragte/familienbuero.html']).
@@ -782,12 +799,15 @@ match([mittagessen],['Als Student ist es wichtig viel und gesund zu essen. So ha
 Ich hoffe ich konnte Ihnen weiterhelfen.']):- bagof(X,essen(X),Y),write('Da kenne ich mich bestens aus. Rund um den Brechtbau können Sie aus folgenden Angeboten wählen.'),nl,nl,print_list(Y,_),nl.
 
 match([was,gibt,es,in,der,mensa],['Was es in der Mensa gibt kann ich leider nicht beantworten, weil das Angebot täglich wechselt.']).
+match([was,gibt,es,heute,in,der,mensa],['Ich schätze mal etwas zu essen.']).
 match([welche,mensa],['Es gibt eine Mensa in der Wilhelmstraße, eine Mensa in den Innenstadt (Prinz Karl) und eine Mensa auf der Morgenstelle.']).
 
 %---------------------------------
 %Info zur Bib
 %---------------------------------
 match([wann,_,_,X,_],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y),atom_chars(X,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge).
+match([wann,_,_,X,offen],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y),atom_chars(X,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge).
+
 
 
 %---------------------------------
@@ -804,6 +824,8 @@ match([wo,_,_,_,unibib],['Der Brechtbau, auch bekannt unter dem Namen Neuphilolo
 match([wie,viele,räume],['Die genaue Anzahl der Räume kenne ich leider nicht.']).
 match([wo,_,_,mensa],['In der Wilhelmstraße 13']).
 match([toiletten],['Toiletten finden Sie in jedem universitären Gebäude. Im Brechtbau gibt es in jedem Stockwerk eine in anderen Gebäuden sind sie ausgeschildert. Das finden Sie schon.']).
+match([toilette],['Toiletten finden Sie in jedem universitären Gebäude. Im Brechtbau gibt es in jedem Stockwerk eine in anderen Gebäuden sind sie ausgeschildert. Das finden Sie schon.']).
+match([klo],['Toiletten finden Sie in jedem universitären Gebäude. Im Brechtbau gibt es in jedem Stockwerk eine in anderen Gebäuden sind sie ausgeschildert. Das finden Sie schon.']).
 match([wc],['WCs finden Sie in jedem universitären Gebäude. Im Brechtbau gibt es in jedem Stockwerk eine in anderen Gebäuden sind sie ausgeschildert. Das finden Sie schon.']).
 match([aufzug],['Barrierefreiheit soll auch im Studium gegeben sein. Daher finden sich in sogut wie allen universitären ein oder mehrere Aufzüge.']).
 match([aufzüge],['Barrierefreiheit soll auch im Studium gegeben sein. Daher finden sich in sogut wie allen universitären ein oder mehrere Aufzüge.']).
@@ -816,7 +838,7 @@ match([kopieren],['Kopierer finden Sie in so gut wie allen universitären Gebäude
 %Fragen zum Raum
 %---------------------------------
 
-match([wo,ist,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
+match([wo,_,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([wo,_,_,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([wo,_,_,_,raum,X],['Dazu gehen sie einfach in das Stockwerk Nr',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
 match([in,welchem,gebäude,ist,raum,X],['Dazu gehen sie einfach in den',Stock,'und schon dürften Sie ihn gefunden haben. Ich hoffe ich konnte Ihnen helfen.']) :- atom_number(X,Num),integer(Num),atom_chars(X,Chars),Chars = [Stock|_], Num < 500.
@@ -952,6 +974,8 @@ match([was,_,st],['s.t. ist die Abkürzung für lateinisch "sine tempore", was im 
 match([wo,_,_,_,aufdruck,für,_,studentenausweis,_,_],['Den Semesteraufdruck ihres Studentenausweis können Sie im Studentensekretariat (Wilhelmstraße 11), in der Universitätsbibliothek (Wilhelmstraße 32) sowie auf der Morgenstelle aktualisieren.']).
 match([wo,_,_,_,neuen,studentenausweis],['Einen neuen Studentenausweis erhalten Sie im Studentensekretariat(Wilhelmstraße 11). Aber passen Sie auf diesen gut auf! Besser als auf den letzten.']).
 match([studentenausweis,verloren],['Das ist natürlich nicht sonderlich optimal. Doch einen neuen erhalten Sie im Studentensekretariat(Wilhelmstraße 11)']).
+match([studentenausweis,geklaut],['Das ist natürlich nicht sonderlich optimal. Doch einen neuen erhalten Sie im Studentensekretariat(Wilhelmstraße 11)']).
+match([wie,viel,kostet,ein,neuer,studentenausweis],['Momentan liegt die Gebühr für einen neuen Studentenausweis bei 15€. Also passen Sie lieber gut darauf auf.']).
 match(['w-lan'],['Funktionierendes W-LAN ist heutzutage ein Muss für jede Universität, also keine Sorge auch in Tübingen können Sie PokemonGO spielen.']).
 
 % ----------------------------------------------------
@@ -976,13 +1000,14 @@ match([lieblingskollege],['Ich mag alle Menschen, auch meine Kollegen.']).
 match([berühmteste,professor],['Da würde ich mich ja gern an erster Stelle nennen, doch eventuell sind Dr. Claus Kleber und Prof. Dr. Bernhard Pörksen ein wenig bekannter als ich.']).
 match([bekanntester,professor],['Da würde ich mich ja gern an erster Stelle nennen, doch eventuell sind Claus Kleber und Dr. Pörksen ein wenig bekannter als ich.']).
 match([was,halten,sie,von],['Ich schlage vor, dass Sie sich selbst ein Bild machen, denn ich möchte nicht, dass Ihre Erwartungen nicht erfüllt werden.']).
-match([mögen,sie],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
-match([magst,du],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+match([mögen,sie],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen.'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+match([magst,du],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Ich denke schon','Da muss ich mir noch einmal Gedanken machen.'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
+match([wie,findest,du,mich],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Sehr attraktiv.','Da muss ich mir noch einmal Gedanken machen.'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
 
 match([welche,_,sind,gut],[X]):- Answers = ['Da bin ich mir selbst noch nicht so sicher.','Da muss ich mir selbst noch einmal Gedanken machen'],random_permutation(Answers,Random_Answers), Random_Answers = [X|_].
 
 match([macht,man,in,der],['Nicht so voreilig, das werden Sie schon noch erleben.']).
-match([bus],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
+match([bus],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue erkundigen.']).
 match([busse],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([bushaltestelle],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Busfahrer bin müssen Sie sich wohl direkt beim swtue direkt erkundigen.']).
 match([bahn],['Tübingen hat ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. Da ich aber kein Lockführer bin müssen Sie sich wohl direkt bei naldo direkt erkundigen.']).
@@ -1027,7 +1052,7 @@ match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verhe
 match([eltern],['Eltern habe ich keine aber dafür habe ich drei liebevolle Entwickler.']).
 match([vater],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
 match([mutter],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
-match([papa],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
+match([papa],['Naja einen richtigen Vater habe ich nicht, aber einer meiner Entwickler heißt Fabian.']).
 match([mama],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
 match([willst,du,mich,heiraten],['Ist das in Deutschland schon erlaubt? Ich glaube nicht. Aber wir können gerne Freunde sein.']).
 match([frau],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
@@ -1075,13 +1100,6 @@ match([wie,viele,fragen,können,sie,beantworten],['Das hängt ganz von Ihren Frage
 match([_,wiederholst,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen?']).
 match([_,wiederholen,_],['Wiederholungen festigen neuerlerntes Wissen. Aber viellecht können Sie ihre Frage ja auch anders stellen?']).
 
-%empty input
-%match([],['Sie müssen schon etwas schreiben, sonst kann ich Ihnen leider nicht helfen.']).
+% no match possible
 match([],[]).
-% last resort (if user's input can't be matched otherwise)
-%match(_E,R) :-findall(Y,zufallsantwort(Y),L),
-	%random_permutation(L,Random),
-	%Random=[R|_],
-	%writeln(R).
-
 match(_,[]).
