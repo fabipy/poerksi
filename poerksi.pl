@@ -411,20 +411,6 @@ artikel --> [ein].
 artikel --> [eine].
 
 
-zufallsantwort('Wussten Sie, dass es mich erst seit Juni
- 2016 gibt? Es kommt mir so vor als wäre es gestern
- gewesen.').
-zufallsantwort('Erzählen Sie mehr.').
-zufallsantwort('Haben Sie vielleicht noch andere Fragen?').
-zufallsantwort('Es ist schön sich mit jemanden zu unterhalten.').
-zufallsantwort('Vielleicht haben Sie ja noch ein dringlicheres Anliegen?').
-zufallsantwort('Vielleicht haben Sie ja noch ein wichtigeres Anliegen?').
-zufallsantwort('An Ihrer Ausdrucksweise müssen Sie noch etwas feilen.
- Versuchen Sie es doch ein wenig studentischer.').
-zufallsantwort('Ja das ist eine gute Anfrage. Aber bevor ich mich dieser annehmen möchte können wir ja ein Spielchen spielen. Sie starten es mit der Eingabe
- SPIELEN').
-
-
 
 %Orte
 
@@ -1050,7 +1036,7 @@ match([du,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nich
 match([sie,kinder],['Naja sich als künstliche Intelligenz fortzupflanzen ist nicht unbedingt leicht. Aber wer weiß vielleicht überlegen sich meine Entwickler ja noch ein Nachfolgermodell.']).
 match([verheiratet],['Gerne hätte ich jemanden der immer bei mir ist, doch verheiratet bin ich nicht. Vielleicht möchten Sie mich aber auch heiraten.']).
 match([eltern],['Eltern habe ich keine aber dafür habe ich drei liebevolle Entwickler.']).
-match([vater],['Naja einen richtigen Vater habe ich nicht aber einer meiner Entwickler heißt Fabian.']).
+match([vater],['Naja einen richtigen Vater habe ich nicht, aber einer meiner Entwickler heißt Fabian.']).
 match([mutter],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
 match([papa],['Naja einen richtigen Vater habe ich nicht, aber einer meiner Entwickler heißt Fabian.']).
 match([mama],['Naja einen richtige Mutter habe ich nicht. Ich hab zwei. Meine Entwicklerinnen heißen Ronja und Patricia.']).
