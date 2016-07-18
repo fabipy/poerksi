@@ -562,8 +562,6 @@ match([gute,nacht],["Ebenso. Machen Sie's gut."]).
 match([haha],["Hahaha."]).
 match([hahaha],["Sehr witzig."]).
 
-match([ja],['Ich stimme Ihnen vollkommen zu. Stellen Sie mir noch eine Frage.']).
-match([nein],['Auch OK.']).
 match([danke],['Immer wieder gerne.']).
 match([_,dank],['Immer wieder gerne.']).
 match([dankeschön],['Gerne, Sie wissen ja wo Sie mich finden.']).
