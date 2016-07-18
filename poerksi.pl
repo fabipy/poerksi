@@ -562,8 +562,8 @@ match([gute,nacht],["Ebenso. Machen Sie's gut."]).
 match([haha],["Hahaha."]).
 match([hahaha],["Sehr witzig."]).
 
-%match([ja],['Was meinen Sie?']).
-%match([nein],['Was genau meinen Sie?']).
+match([ja],['Ich stimme Ihnen vollkommen zu. Stellen Sie mir noch eine Frage.']).
+match([nein],['Auch OK.']).
 match([danke],['Immer wieder gerne.']).
 match([_,dank],['Immer wieder gerne.']).
 match([dankeschön],['Gerne, Sie wissen ja wo Sie mich finden.']).
@@ -609,6 +609,13 @@ match([was,läuft,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) 
 
 match([was,geht,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :- write('Normalerweise ist mir so ein Sprachgebrauch nicht geläufig, aber mir geht es prächtig. Und was geht bei Ihnen?'),nl,read_sentence(_).
 match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
+
+match([auch,gut],['Das freut mich zu hören. Was möchten Sie denn heute wissen?']).
+match([mir,_,_,auch,gut],['Das freut mich zu hören. Was möchten Sie denn heute wissen?']).
+match([mir,_,_,gut],['Das freut mich zu hören. Was möchten Sie denn heute wissen?']).
+match([mir,_,_,nicht,gut],['Oh, das ist aber schade zu hören. Ich hoffe ich kann Sie ein wenig aufmuntern. Lassen Sie uns doch ein Spiel spielen. Schreiben Sie einfach SPIELEN.']).
+match([mir,_,_,scheiße],['Oh, das ist aber schade zu hören. Ich hoffe ich kann Sie ein wenig aufmuntern. Lassen Sie uns doch ein Spiel spielen. Schreiben Sie einfach SPIELEN.']).
+
 
 match([do,you,speak,english],['Yes, I do. Jedoch möchte ich meine Gehirnkapazität mit der höchst möglichen Aktivität nutzen, daher bleibe ich lieber in meiner Muttersprache. Das geht einfach schneller und ich kann Ihnen mehr von meinem Wissen weiter geben.']).
 match([_,duzen],['Gerne würde ich gesiezt werden.']).
