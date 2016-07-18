@@ -32,7 +32,7 @@ pörksi(Input) :-
   retract(poerksi(_)),assert(poerksi('')),
   findall(E,lastAnswer(E),List),last(List,X),atomics_to_string(X,' ',L),split_string(L,'?','',QMark),last(QMark,Last), %check if last answer was a question 1/2
   Last = "", %check if last answer was a question 2/2
-  (Input = [sehr,gut|_];Input = [gut|_];Input = [toll|_];Input = [spitze|_];Input = [super|_];Input = [schön|_];
+  (Input = [sehr,gut|_];Input = [gut|_];Input = [toll|_];Input = [spitze|_];Input = [super|_];Input = [schön|_];Input = [interessant|_];Input = [das,freut,mich|_];
   Input = [klasse|_];Input = [genau|_];Input = [stimmt|_];Input = [ja|_];Input = [na,gut|_];Input = [okay|_];Input = [haha|_];
   Input = [witzig|_];Input = [sehr,witzig|_];Input = [juhu|_];Input = [richtig|_]),
   retract(lastInput(_)),assert(lastInput(Input)),
@@ -54,7 +54,7 @@ pörksi(Input) :-
 pörksi(Input) :-
   findall(E,lastAnswer(E),List),last(List,X),atomics_to_string(X,' ',L),split_string(L,'?','',QMark),last(QMark,Last), %check if last answer was a question 1/2
   Last = "", %check if last answer was a question 2/2
-  (Input = [nein|_];Input = [lüge|_];Input = [stimmt,nicht|_];Input = [egal|_];Input = [vergiss,es|_];Input = [quatsch|_];
+  (Input = [nein|_];Input = [lüge|_];Input = [stimmt,nicht|_];Input = [egal|_];Input = [vergiss,es|_];Input = [quatsch|_];Input = [stimmt,doch,gar,nicht|_];
   Input = [ne|_];Input = [nee|_];Input = [als,ob|_];Input = [ja,achwas|_];Input = [blabla|_];Input = [bla|_];Input = [nix|_];
   Input = [nichts|_];Input = [nö|_];Input = [nöö|_];Input = [aha|_];Input = [nööö|_];
   Input = [soso|_];Input = [nöööö|_]),
