@@ -125,7 +125,7 @@ ntuples([],_,_) :-
 		   ['Vielleicht haben Sie ja noch ein dringlicheres Anliegen?'],
 		   ['Vielleicht haben Sie ja noch ein wichtigeres Anliegen?'],
 		   ['An Ihrer Ausdrucksweise müssen Sie noch etwas feilen. Versuchen Sie es doch ein wenig studentischer.'],
-		   ['Bevor ich mich dieser Anfrage annehmen werde, möchte ich sie erst einmal zu einem kleinen Spiel herausfordern. Sie starten es mit der Eingabe SPIELEN oder "Lass uns spielen".']],
+		   ['Bevor wir weitermachen möchte ich sie erst einmal zu einem kleinen Spiel herausfordern. Sie starten es mit der Eingabe SPIELEN oder "Lass uns spielen".']],
 	random_permutation(Answers,Random_Answers),
 	Random_Answers = [[X]|_],
 	write(X),
