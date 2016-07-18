@@ -1,4 +1,5 @@
 % PROLOG
+% Original Framework aus der Vorlesung
 :- encoding(iso_latin_1).
 
 % alle Zeichen einlesen bis Delimiter
@@ -16,7 +17,7 @@ split_string(SepChar,CharList,[Chunk|SingleLists]) :- get_chunk(SepChar,CharList
 get_chunk(_,[],[],[]).
 get_chunk(SepChar,[SepChar|RestCharList],[],RestCharList) :- !.
 get_chunk(SepChar,[OtherChar|RestCharList],[OtherChar|RestChunk],UnusedCharList) :-
-  get_chunk(SepChar,RestCharList,RestChunk,UnusedCharList).
+get_chunk(SepChar,RestCharList,RestChunk,UnusedCharList).
 
 % String-Darstellung (Zahlenlisten) in Atome umwandeln
 strings_to_atoms([],[]).

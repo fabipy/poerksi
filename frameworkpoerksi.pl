@@ -16,17 +16,20 @@ pörksi :- ansi_format([bg(yellow)], 'Hallo ich bin Dr. Pörksi. Gerne dürfen Sie 
 % Programm beendet sich nach 'tschüss' (halt)
 pörksi([tschüss]) :- writeln('Dr.Pörksi: Ich hoffe ich konnte Ihnen helfen. Viel Spaß beim Studieren! Und Sie wissen ja, falls Sie Fragen haben, wo man mich findet.').
 
-
 % User-Input (after program is started)
 
 % Detect if new Input is same as last Input
+%
 pörksi(Input) :-
   lastInput(Input),
   write('Dr.Pörksi: Jetzt fangen Sie aber an sich zu wiederholen. Vielleicht gibt es ja noch etwas dass Sie wissen möchten?'),
   retractall(lastAnswer(_)),assert(lastAnswer(['Jetzt fangen Sie aber an sich zu wiederholen. Vielleicht gibt es ja noch etwas dass Sie wissen möchten?'])),
   nl,read_sentence(Input1),!,pörksi(Input1).
 
+  
 % positive answers on questions
+% checks if Pörksi's lastAnswer ends with a '?' and replies positive biased / in an affirmative manner
+%
 pörksi(Input) :-
   poerksi(Z),write(Z),
   retract(poerksi(_)),assert(poerksi('')),
@@ -51,6 +54,8 @@ pörksi(Input) :-
   pörksi(Input1).
 
 % negative answers on questions
+% checks if Pörksi's lastAnswer ends with a '?' and replies negative biased / in a dismissive manner
+%
 pörksi(Input) :-
   findall(E,lastAnswer(E),List),last(List,X),atomics_to_string(X,' ',L),split_string(L,'?','',QMark),last(QMark,Last), %check if last answer was a question 1/2
   Last = "", %check if last answer was a question 2/2
@@ -73,11 +78,42 @@ pörksi(Input) :-
   read_sentence(Input1),!,
   pörksi(Input1).
 
-% regular match
+% regular match in pörksi.pl (calls helper function: ntuples/3)
 pörksi(Input) :-
   retractall(lastAnswer(_)),
   retract(lastInput(_)),assert(lastInput(Input)),
   ntuples(Input,_,0).
+
+%! ntuples/3
+%  reads a string from beginning to end in all possible ways, tries to match everything
+%  returns random alternative answer if nothing can be matched
+%
+%  Example Sentence: hallo wie geht es dir heute?
+%
+% hallo <- match
+% hallo wie 
+% hallo wie geht 
+% hallo wie geht es 
+% hallo wie geht es dir 
+% hallo wie geht es dir heute?
+%
+% REMOVE FIRST ELEMENT
+%
+% wie 
+% wie geht 
+% wie geht es 
+% wie geht es dir <- match
+% wie geht es dir heute?
+%
+% REMOVE FIRST ELEMENT
+%
+% geht 
+% geht es 
+% geht es dir 
+% geht es dir heute?
+%
+% es
+% ....
 
 ntuples([],_,_) :-
 	\+ lastAnswer(_),
@@ -88,9 +124,8 @@ ntuples([],_,_) :-
 		   ['Es ist schön sich mit jemanden zu unterhalten.'],
 		   ['Vielleicht haben Sie ja noch ein dringlicheres Anliegen?'],
 		   ['Vielleicht haben Sie ja noch ein wichtigeres Anliegen?'],
-		   ['An Ihrer Ausdrucksweise müssen Sie noch etwas feilen. Versuchen Sie es doch ein wenig studentischer.'];
-		   ['Ja das ist eine gute Anfrage. Aber bevor ich mich dieser annehmen möchte, können wir ja ein Spielchen spielen. Sie starten es mit der Eingabe
- SPIELEN']],
+		   ['An Ihrer Ausdrucksweise müssen Sie noch etwas feilen. Versuchen Sie es doch ein wenig studentischer.'],
+		   ['Bevor ich mich dieser Anfrage annehmen werde, möchte ich sie erst einmal zu einem kleinen Spiel herausfordern. Sie starten es mit der Eingabe SPIELEN oder "Lass uns spielen".']],
 	random_permutation(Answers,Random_Answers),
 	Random_Answers = [[X]|_],
 	write(X),

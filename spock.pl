@@ -3,6 +3,8 @@
 %-------------------------------------------------
 %    EasterEgg --- möchtst du ein Spiel spielen
 %-------------------------------------------------
+
+%weapon/1
 weapon(stein).
 weapon(papier).
 weapon(schere).
