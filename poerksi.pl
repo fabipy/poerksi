@@ -941,7 +941,11 @@ match([the,universe,and,everything],['42, ist doch klar!']).
 % ----------------------------------------------------
 % Spiel
 % ----------------------------------------------------
-match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: stein, papier, schere, echse, spock. Achten Sie auf die Kleinschreibung und beenden Sie Ihre Eingabe mit einem Punkt."), nl, spielen.
+match([spielen],["Schönes Spiel! Wenn du nochmal willst gib schreib einfach 'nochmal spielen'."]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde 'Schere, Stein, Papier, Echse, Spock' mit dir spielen. 
+Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: 
+
+|	STEIN	|	PAPIER	|	SCHERE	|	ECHSE	|	SPOCK	|
+"), nl, spielen, nl.
 
 
 % ----------------------------------------------------

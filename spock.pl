@@ -37,27 +37,24 @@ computer_choice(R):-
     writeln(R).
 
 %result/2
-result(X,X):- ansi_format([bg(yellow)], 'Gleichstand. Glück gehabt.
-Versuchen Sie es noch einmal.', []),nl.
+result(X,X):- ansi_format([bg(yellow)], 'Gleichstand. Glück gehabt. Versuchen Sie es noch einmal.', []).
 result(X,R):- win(X,R),
-	ansi_format([bg(yellow)], 'Sie haben gewonnen!
-	Mal sehen, ob das für Sie so weiter geht!', []).
+	ansi_format([bg(green)], 'Sie haben gewonnen! Mal sehen, ob das für Sie so weiter geht!', []).
 result(X,R):- win(R,X),
-	ansi_format([bg(yellow)],'Sie haben leider verloren!
-	Das leider ist hier ausschließlich eine höflich Floskel meinerseits!', []).
+	ansi_format([bg(red)],'Sie haben leider verloren! Das leider ist hier ausschließlich eine höflich Floskel meinerseits!', []).
 
 
 %evaluate/1
 %und play/0 mit read/1
 evaluate(X):-
     not(weapon(X)),
-    write('Dieses Objekt können Sie leider nicht nehmen.'),nl,
+    write('Dieses Objekt können Sie leider nicht nehmen. Wählen Sie nochmal.'),nl,
     spielen.
 
 evaluate(X):-
     computer_choice(R),
     result(R, X).
 
-spielen :- read(X), evaluate(X).
+spielen :- read_sentence([X]), evaluate(X).
 
 
