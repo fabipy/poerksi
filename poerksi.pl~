@@ -1055,7 +1055,9 @@ match([lieblingsessen],['Ich bin ein Computerprogramm und habe deswegen kein Lie
 match([wo,wohnst,du],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
 match([wo,wohnen,sie],['Ich habe keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
 match([woher,kommst,du],['Aus den Köpfen dreier Studenten. Und nun habe ich keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+match([wo,kommst,du,her],['Aus den Köpfen dreier Studenten. Und nun habe ich keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
 match([woher,kommen,sie],['Aus den Köpfen dreier Studenten. Und nun habe ich keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
+match([wo,kommen,sie,her],['Aus den Köpfen dreier Studenten. Und nun habe ich keinen festen Wohnsitz und schwirre irgendwo im Universum herum. Trotzdem bin ich immer für Sie erreichbar.']).
 
 match([langweilig],['Langeweile ist manchmal sehr wichtig, um erst auf neue Ideen zu kommen.']).
 match([antworten,_,nicht],['Auch ich als künstliche Intelligenz weiß nicht alles. Fragen Sie mich doch einfach noch etwas anderes.']).
