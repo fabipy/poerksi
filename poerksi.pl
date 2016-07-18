@@ -629,7 +629,7 @@ match([sind,viele,studenten],['Puh das sind ganz schön viele! Lassen Sie mich er
 
 match([wie,viele,studierende],['Puh das sind ganz schön viele! Lassen Sie mich erst einmal zählen 1...2...3..4...... Überlegen Sie sich doch schon einmal Ihre nächste Frage.']).
 
-match([kommunikation],['Unter Kommunikation versteht man zum einen die Kommunikation zwischen Menschen durch Sprachgebrauch oder Zeichen und zum anderen den Austasuch von Informationen zwischen Geräten.']).
+match([kommunikation],['Unter Kommunikation versteht man zum einen die Kommunikation zwischen Menschen durch Sprachgebrauch oder Zeichen und zum anderen den Austausch von Informationen zwischen Geräten.']).
 match([medienwissenschaft],['In der Medienwissenschaft beschäftigen wir uns mit dem kompletten Medienspektrum von Print- und Onlinemedien über Radio, Film und Fernsehen, Medienwandel und Medieninnovation bis hin zu Werbung, Marketing und Unternehmenskommunikation. In Tübingen werden Sie in der Theorie und in der Praxis geschult.']).
 
 

@@ -611,7 +611,7 @@ match([was,geht,_],['Läuft bei Ihnen. Errmm.. haben Sie noch andere Fragen?']) :
 match([was,geht,so],['Meine werten Institutskollegen und ich pflegen zu sagen: "Wir wissen nicht WAS geht, wir wissen auch nicht WIEs geht. Aber wir forschen weiter."']).
 
 match([auch,gut],['Das freut mich zu hören. Was möchten Sie denn heute wissen?']).
-match([mir,_,_,_,gut],['Das freut mich zu hören. Was möchten Sie denn heute wissen?']).
+match([mir,_,_,auch,gut],['Das freut mich zu hören. Was möchten Sie denn heute wissen?']).
 match([mir,_,_,gut],['Das freut mich zu hören. Was möchten Sie denn heute wissen?']).
 match([mir,_,_,nicht,gut],['Oh, das ist aber schade zu hören. Ich hoffe ich kann Sie ein wenig aufmuntern. Lassen Sie uns doch ein Spiel spielen. Schreiben Sie einfach SPIELEN.']).
 match([mir,_,_,scheiße],['Oh, das ist aber schade zu hören. Ich hoffe ich kann Sie ein wenig aufmuntern. Lassen Sie uns doch ein Spiel spielen. Schreiben Sie einfach SPIELEN.']).
