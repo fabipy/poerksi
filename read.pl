@@ -23,4 +23,10 @@ strings_to_atoms([],[]).
 strings_to_atoms([X|Xs],[Y|Ys]) :- name(Z,X),downcase_atom(Z,Y),strings_to_atoms(Xs,Ys).
 
 % alles zusammen: ganzen Satz einlesen
-read_sentence(Sentence) :- read_string("\n",String), split_string(32,String,Words), strings_to_atoms(Words,Sentence).
+read_sentence(Sentence) :- read_string("\n",String),
+						   delete(String,44,ModString1), % remove ','
+						   delete(ModString1,63,ModString2), % remove '?'
+						   delete(ModString2,33,ModString3), % remove '!'
+						   delete(ModString3,46,ModString4), % remove '.'
+						   split_string(32,ModString4,Words), 
+						   strings_to_atoms(Words,Sentence).
