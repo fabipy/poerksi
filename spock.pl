@@ -45,7 +45,6 @@ result(X,R):- win(R,X),
 	Das leider ist hier ausschließlich eine höflich Floskel meinerseits!', []).
 
 
-%2c+d
 %evaluate/1
 %und play/0 mit read/1
 evaluate(X):-
