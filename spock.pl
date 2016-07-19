@@ -39,9 +39,9 @@ computer_choice(R):-
 %result/2
 result(X,X):- ansi_format([bg(yellow)], 'Gleichstand. Glück gehabt. Versuchen Sie es noch einmal.', []).
 result(X,R):- win(X,R),
-	ansi_format([bg(green)], 'Sie haben gewonnen! Mal sehen, ob das für Sie so weiter geht!', []).
-result(X,R):- win(R,X),
 	ansi_format([bg(red)],'Sie haben leider verloren! Das leider ist hier ausschließlich eine höflich Floskel meinerseits!', []).
+result(X,R):- win(R,X),ansi_format([bg(green)], 'Sie haben gewonnen! Mal sehen, ob das für Sie so weiter geht!', []).
+
 
 
 %evaluate/1

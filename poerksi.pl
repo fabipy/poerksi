@@ -13,7 +13,7 @@
 
 %--Profs------------------
 
-%prof/2 
+%prof/2
 % Syntax: person(id,[[Nachname,Vorname,Geschlecht,Zusatz],[RaumNr],[Email],[Telefonnr.],[Bereich]])
 %
 
@@ -25,7 +25,7 @@ prof(4,'Herr Prof. Dr. Bernhard Pörksen').
 prof(5,'Frau Prof. Dr. Tanja,Thomas').
 prof(6,'Herr Prof. Dr. Guido Zurstiege').
 
-%person/2 
+%person/2
 % Syntax: person(id,[[Nachname,Vorname,Geschlecht,Zusatz],[RaumNr],[Email],[Telefonnr.],[Bereich]])
 %
 
@@ -328,7 +328,7 @@ print_person_info(ID) :-
 %! get_id_by_*/2
 % retrieve * by id
 %
-	
+
 get_id_by_room(Raum,ID) :-
 	person(ID,[_,_,[Raum],_,_,_]).
 
@@ -446,7 +446,7 @@ profil(ersten,'auf der Konzeption digitaler Medien. Dabei wird besonders auf die
 profil(zwei,'auf den Praxisfeldern der Medienkommunikation. Dabei wird besonders auf aktuelle Trends und Entwicklungslinien im Journalismus, in der Werbung, in Public Relations und Unterhaltung eingegangen. Print- und Onlinemedien werden dabei ebenso berücksichtigt wie Hörfunk, Film und Fernsehen.').
 profil(zweiten,'auf den Praxisfeldern der Medienkommunikation. Dabei wird besonders auf aktuelle Trends und Entwicklungslinien im Journalismus, in der Werbung, in Public Relations und Unterhaltung eingegangen. Print- und Onlinemedien werden dabei ebenso berücksichtigt wie Hörfunk, Film und Fernsehen.').
 
-%! Veranstaltungen Profilbezogen 
+%! Veranstaltungen Profilbezogen
 %verpro/3 (profil,modul,name)
 verpro(eins,' G4-I  Programmierung digitaler Medien').
 verpro(eins,' G5-I  Gestaltung digitaler Medien').
@@ -941,10 +941,11 @@ match([the,universe,and,everything],['42, ist doch klar!']).
 % ----------------------------------------------------
 % Spiel
 % ----------------------------------------------------
-match([spielen],["Schönes Spiel! Wenn du nochmal willst gib schreib einfach 'nochmal spielen'."]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde 'Schere, Stein, Papier, Echse, Spock' mit dir spielen. 
-Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: 
+match([spielen],["Schönes Spiel! Wenn du nochmal willst gib schreib einfach 'nochmal spielen'."]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde 'Schere, Stein, Papier, Echse, Spock' mit dir spielen.
+Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte:
 
-|	STEIN	|	PAPIER	|	SCHERE	|	ECHSE	|	SPOCK	|
+|     STEIN     |     PAPIER	|     SCHERE	|	ECHSE       |      SPOCK      |
+
 "), nl, spielen, nl.
 
 

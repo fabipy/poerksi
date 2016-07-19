@@ -26,7 +26,7 @@ pörksi(Input) :-
   retractall(lastAnswer(_)),assert(lastAnswer(['Jetzt fangen Sie aber an sich zu wiederholen. Vielleicht gibt es ja noch etwas dass Sie wissen möchten?'])),
   nl,read_sentence(Input1),!,pörksi(Input1).
 
-  
+
 % positive answers on questions
 % checks if Pörksi's lastAnswer ends with a '?' and replies positive biased / in an affirmative manner
 %
@@ -91,25 +91,25 @@ pörksi(Input) :-
 %  Example Sentence: hallo wie geht es dir heute?
 %
 % hallo <- match
-% hallo wie 
-% hallo wie geht 
-% hallo wie geht es 
-% hallo wie geht es dir 
+% hallo wie
+% hallo wie geht
+% hallo wie geht es
+% hallo wie geht es dir
 % hallo wie geht es dir heute?
 %
 % REMOVE FIRST ELEMENT
 %
-% wie 
-% wie geht 
-% wie geht es 
+% wie
+% wie geht
+% wie geht es
 % wie geht es dir <- match
 % wie geht es dir heute?
 %
 % REMOVE FIRST ELEMENT
 %
-% geht 
-% geht es 
-% geht es dir 
+% geht
+% geht es
+% geht es dir
 % geht es dir heute?
 %
 % es
@@ -125,7 +125,7 @@ ntuples([],_,_) :-
 		   ['Vielleicht haben Sie ja noch ein dringlicheres Anliegen?'],
 		   ['Vielleicht haben Sie ja noch ein wichtigeres Anliegen?'],
 		   ['An Ihrer Ausdrucksweise müssen Sie noch etwas feilen. Versuchen Sie es doch ein wenig studentischer.'],
-		   ['Bevor wir weitermachen möchte ich sie erst einmal zu einem kleinen Spielchen herausfordern. Sie starten es mit der Eingabe SPIELEN oder "Lass uns spielen".']],
+		   ['Bevor ich mich dieser Angfrage annehmen werde, möchte ich sie erst einmal zu einem kleinen Spielchen herausfordern. Sie starten es mit der Eingabe SPIELEN oder "Lass uns spielen".']],
 	random_permutation(Answers,Random_Answers),
 	Random_Answers = [[X]|_],
 	write(X),

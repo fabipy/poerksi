@@ -7,10 +7,15 @@
 %    Wissensbasis
 %---------------------------------------
 
-%Personen am Institut
-%person/2
-% Syntax: person(id,[[Nachname,Vorname,Geschlecht,Zusatz],[RaumNr],[Email],[Telefonnr.],[Bereich]])
+%---Personen am Institut
 
+
+
+%--Profs------------------
+
+%prof/2
+% Syntax: person(id,[[Nachname,Vorname,Geschlecht,Zusatz],[RaumNr],[Email],[Telefonnr.],[Bereich]])
+%
 
 prof(0,'Herr Prof. Dr. Jürg,Häusermann').
 prof(1,'Herr Prof. Dr. Claus Kleber').
@@ -20,7 +25,9 @@ prof(4,'Herr Prof. Dr. Bernhard Pörksen').
 prof(5,'Frau Prof. Dr. Tanja,Thomas').
 prof(6,'Herr Prof. Dr. Guido Zurstiege').
 
-%--Profs------------------
+%person/2
+% Syntax: person(id,[[Nachname,Vorname,Geschlecht,Zusatz],[RaumNr],[Email],[Telefonnr.],[Bereich]])
+%
 
 person(0,[['Herr Prof. Dr. Jürg,Häusermann'],
 		  [jürg,häusermann],
@@ -277,7 +284,7 @@ person(34,[['Frau Carolin Wiede'],
 		  ["07071 29-74271"],
 		  ["Sekretariat Prof. Marschall"]]).
 
-person(-1,[['null'],
+person(-1,[[''],
 		  [_],
 		  [],
 		  [],
@@ -305,8 +312,10 @@ elaborate_name_matching(Input,NewID) :-   person_name_search(Input,ID),get_perso
 								          person_name_search(Input,ID),lastInput(L),nextto(Input,Y,L),person_name_search(Y,ID2),ID >= 0, ID2 = -1,get_person_room(ID,Raum),get_id_by_room(Raum,NewID),!;
 								          person_name_search(Input,ID),lastInput(L),nextto(Input,Y,L),person_name_search(Y,ID2),ID = -1, ID2 >= 0,get_person_room(ID2,Raum),get_id_by_room(Raum,NewID),!.
 
+
 %! print_person_info/1
 %  returns infos about person
+%
 
 print_person_info(ID) :-
 	person(ID,[[N],_,[R],[E],[T],[Z]]),
@@ -315,6 +324,10 @@ print_person_info(ID) :-
 	write("Email:"),tab(1),write(E),nl,
 	write("Telefon:"),tab(1),write(T),nl,
 	write("Bereich/Aufgabe:"),tab(1),write(Z),nl.
+
+%! get_id_by_*/2
+% retrieve * by id
+%
 
 get_id_by_room(Raum,ID) :-
 	person(ID,[_,_,[Raum],_,_,_]).
@@ -356,7 +369,7 @@ lehrredaktion('L5 - Schreibtraining',6,[schreibtraining],l5).
 %veranstaltung/3 (Titel,ECTS,Modulbezeichnung,Kürzel)
 veranstaltung(Titel,ECTS,Modulbezeichnung,Kürzel) :- vorlesung(Titel,ECTS,Modulbezeichnung,Kürzel);seminar(Titel,ECTS,Modulbezeichnung,Kürzel); lehrredaktion(Titel,ECTS,Modulbezeichnung,Kürzel).
 
-
+%veranstaltungects/1
 veranstaltungects('G1 - Einführung in die Medienwissenschaft I - 8 ECTS').
 veranstaltungects('G2 - Einführung in die Medienwissenschaft II - 8 ECTS').
 veranstaltungects('G3 - Forschung und Praxisfelder - 4 ECTS').
@@ -368,6 +381,7 @@ veranstaltungects('L3 - Hypermediasysteme - 6 ECTS').
 veranstaltungects('L4 - Film und Fernsehen - 6 ECTS').
 veranstaltungects('L5 - Schreibtraining - 6 ECTS').
 
+%themen/1
 themen('Einführung in die Medienwissenschaft').
 themen('Methoden in der Medienforschung').
 themen('Medienwirkung').
@@ -426,13 +440,14 @@ bib('unibib',
 bib('bib',
     'Mo-Fr 8.00-24.00	 Sa 10.00-22.00   So 10.00-22.00').
 
-%Profil/2
+%profil/2
 profil(eins,'auf der Konzeption digitaler Medien. Dabei wird besonders auf die Techniken und Entwicklungen in den digitalen Medien eingegangen. Die Studienangebote in diesem Profil setzen daher einen starken Akzent im Bereich der Medieninformatik. Im Rahmen dieses Profils können Sie sogar selbst Ihren eingenen Dr.Pörksi programmieren.').
 profil(ersten,'auf der Konzeption digitaler Medien. Dabei wird besonders auf die Techniken und Entwicklungen in den digitalen Medien eingegangen. Die Studienangebote in diesem Profil setzen daher einen starken Akzent im Bereich der Medieninformatik. Im Rahmen dieses Profils können Sie sogar selbst Ihren eingenen Dr.Pörksi programmieren.').
 profil(zwei,'auf den Praxisfeldern der Medienkommunikation. Dabei wird besonders auf aktuelle Trends und Entwicklungslinien im Journalismus, in der Werbung, in Public Relations und Unterhaltung eingegangen. Print- und Onlinemedien werden dabei ebenso berücksichtigt wie Hörfunk, Film und Fernsehen.').
 profil(zweiten,'auf den Praxisfeldern der Medienkommunikation. Dabei wird besonders auf aktuelle Trends und Entwicklungslinien im Journalismus, in der Werbung, in Public Relations und Unterhaltung eingegangen. Print- und Onlinemedien werden dabei ebenso berücksichtigt wie Hörfunk, Film und Fernsehen.').
 
-%Veranstaltungen Profilbezogen verpro(profil,modul,name).
+%! Veranstaltungen Profilbezogen
+%verpro/3 (profil,modul,name)
 verpro(eins,' G4-I  Programmierung digitaler Medien').
 verpro(eins,' G5-I  Gestaltung digitaler Medien').
 verpro(eins,' F3-I  Usability Engineering').
@@ -450,6 +465,7 @@ verpro(zweiten,' G5-II  Praxisfelder der Medienkommunikation').
 verpro(zweiten,' F3-II  Forschungsprojekt I').
 verpro(zweiten,' F4-II  Forschungsprojekt II').
 
+%studienberatung/1
 studienberatung('Montags, 10-12 Uhr – Pia Fruth (Beratung Praxiskontakte)').
 studienberatung('Montags, 12-14 Uhr – Torsten Maurer').
 studienberatung('Montags, 14-16 Uhr – Hanne Detel').
@@ -460,6 +476,7 @@ studienberatung('Mittwochs, 11-12 Uhr – Ulrich Hägele').
 studienberatung('Donnerstags, 14-15 Uhr - Markus Feiks').
 
 %Essen Name,Adresse
+%essen/1
 essen('Cafeteria Unibibliothek in der Wilhelmstraße 32').
 essen('Cafeteria im Brechtbau in der Wilhelmstraße 50').
 essen('Mensa in der Wilhelmstraße 13').
@@ -477,6 +494,7 @@ print_list([First|RestInputList], _) :-
 	write(First),nl,
 	print_list(RestInputList,First).
 
+%sinne/1
 sinne(sehen).
 sinne(hören).
 sinne(riechen).
@@ -797,6 +815,8 @@ match([welche,mensa],['Es gibt eine Mensa in der Wilhelmstraße, eine Mensa in de
 %Info zur Bib
 %---------------------------------
 match([wann,_,_,X,_],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y),atom_chars(X,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge).
+match([öffnungszeiten,_,X],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y),atom_chars(X,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge).
+match([öffnungszeiten,_,_,X],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y),atom_chars(X,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge).
 match([wie,lange,_,_,X,_],['Die',Merge,'hat folgende Öffnungszeiten: ',Y]):- bib(X,Y),atom_chars(X,Chars),Chars = [H|Rest],upcase_atom(H,Up),atomics_to_string(Rest,Back),string_concat(Up,Back,Merge).
 
 
@@ -857,6 +877,7 @@ match([wer,ist,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,
 match([infos,zu,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
 match([info,zu,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
 match([info,X],["Was wollen Sie noch wissen?"]) :- elaborate_name_matching(X,ID),print_person_info(ID).
+match([wer,arbeitet],["Was wollen Sie noch wissen?"]) :-write('Warten Sie einen Moment. Ich werde Ihnen eine Liste erstellen.'),nl,findall(X,person(_,[[X],_,_,_,_,_]),B),sleep(3),print_list(B,_).
 
 match([email,von,X],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
 match([X,email],['Die Email von',Name,'lautet',Email]) :- elaborate_name_matching(X,ID),get_person_name(ID,Name),get_person_mail(ID,Email).
@@ -920,7 +941,13 @@ match([the,universe,and,everything],['42, ist doch klar!']).
 % ----------------------------------------------------
 % Spiel
 % ----------------------------------------------------
-match([spielen],[ ]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde Schere, Stein, Papier,Echse, Spock mit dir spielen. Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte: stein, papier, schere, echse, spock. Achten Sie auf die Kleinschreibung und beenden Sie Ihre Eingabe mit einem Punkt."), nl, spielen.
+match([spielen],["Schönes Spiel! Wenn du nochmal willst gib schreib einfach 'nochmal spielen'."]) :- write("Ok, in alter Nerd-Manier möchte ich eine Runde 'Schere, Stein, Papier, Echse, Spock' mit dir spielen.
+Um dieses Spiel zu beginnen wählen Sie bitte eins der folgenden Objekte:
+
+|     STEIN     |     PAPIER	|     SCHERE	|	ECHSE       |      SPOCK      |
+
+und bestätigen Sie Ihre Eingabe mit einem PUNKT am Ende.
+"), nl, spielen, nl.
 
 
 % ----------------------------------------------------
